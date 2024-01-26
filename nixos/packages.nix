@@ -82,6 +82,7 @@ lib.mkMerge [
      eslint_d
      nodePackages_latest.typescript-language-server
      gcc
+     glow
     ]; # Do not add anything after this line
   }
 ]
