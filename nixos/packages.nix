@@ -83,6 +83,7 @@ lib.mkMerge [
      nodePackages_latest.typescript-language-server
      gcc
      glow
+     dolphin-emu
     ]; # Do not add anything after this line
   }
 ]
