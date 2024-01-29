@@ -1,13 +1,12 @@
 { pkgs, ... }:
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      ./nvidia.nix
-      ./packages.nix
-      ./systemd.nix
-      ./services.nix
-    ];
+  imports = [ 
+    ./hardware-configuration.nix
+    ./nvidia.nix
+    ./packages.nix
+    ./systemd.nix
+    ./services.nix
+  ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.auto-optimise-store = true;
