@@ -6,6 +6,7 @@
     ./packages.nix
     ./systemd.nix
     ./services.nix
+    ./security.nix
   ];
 
   nix = {
@@ -33,15 +34,11 @@
   };
   users.defaultUserShell = pkgs.zsh;
 
-  security.rtkit.enable = true;
-
   programs = {
     adb.enable = true;
     hyprland.enable = true;
     zsh.enable = true;
   };
-#  virtualisation.libvirtd.enable = true;
-#  programs.virt-manager.enable = true;
 
   system.stateVersion = "23.11";
 }
