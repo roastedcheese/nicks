@@ -1,5 +1,5 @@
 {
-  description = "My NixOS flake";
+  description = "RoastedCheese's very basic NixOS flake";
 
   outputs = { self, nixpkgs, ... }@inputs: 
   let
@@ -9,7 +9,7 @@
     nixosConfigurations = {
       iupiter = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit system; inherit inputs; };
-        modules = [ ./nixos/configuration.nix ];
+        modules = [ ./system ];
       };
     };
   };
