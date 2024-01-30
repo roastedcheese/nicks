@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [ 
     ./hardware-configuration.nix
@@ -14,12 +14,11 @@
       auto-optimise-store = true;
     };
     nixPath = [ "nixpkgs=flake:nixpkgs" ];
+    registry.nixpkgs.flake = inputs.nixpkgs;
   };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  users.defaultUserShell = pkgs.zsh;
 
   networking.hostName = "iupiter"; # Define your hostname.
   networking.dhcpcd.wait = "background";
@@ -32,6 +31,7 @@
      isNormalUser = true;
      extraGroups = [ "wheel" "libvirtd"]; 
   };
+  users.defaultUserShell = pkgs.zsh;
 
   security.rtkit.enable = true;
 
