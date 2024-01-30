@@ -60,7 +60,6 @@ lib.mkMerge [
      via
      gnumake
      p7zip
-     snes9x-gtk
      android-file-transfer
      heroic
      pavucontrol
@@ -72,7 +71,7 @@ lib.mkMerge [
      gocryptfs
      foot
      pulsemixer
-     fceux
+     # fceux
      lua-language-server
      nil
      stylua
