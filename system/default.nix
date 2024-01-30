@@ -1,11 +1,12 @@
 {
   imports = [ 
-    ./hardware-configuration.nix
+    ./hardware/hardware-configuration.nix
     ./hardware/nvidia.nix
     ./packages.nix
     ./services
     ./security.nix
     ./nix.nix # goofy name
+    ./programs.nix
   ];
 
   boot.loader.systemd-boot.enable = true;

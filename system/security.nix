@@ -8,7 +8,7 @@
   boot.tmp.useTmpfs = lib.mkDefault true;
   # If not using tmpfs, which is naturally purged on reboot, we must clean it
   # /tmp ourselves. /tmp should be volatile storage!
-  boot.tmp.cleanOnBoot = lib.mkDefault (!config.boot.tmpOnTmpfs);
+  boot.tmp.cleanOnBoot = lib.mkDefault (!config.boot.tmp.useTmpfs);
 
   boot.kernel.sysctl = {
     # The Magic SysRq key is a key combo that allows users connected to the
