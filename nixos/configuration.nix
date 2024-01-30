@@ -21,7 +21,7 @@
 
   users.defaultUserShell = pkgs.zsh;
 
-  networking.hostName = "nixdesktop"; # Define your hostname.
+  networking.hostName = "iupiter"; # Define your hostname.
   networking.dhcpcd.wait = "background";
 
   time.timeZone = "Europe/Rome";

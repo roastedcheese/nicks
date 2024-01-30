@@ -7,9 +7,8 @@
   in 
   {
     nixosConfigurations = {
-      myNixos = nixpkgs.lib.nixosSystem {
+      iupiter = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit system; inherit inputs; };
-
         modules = [ ./nixos/configuration.nix ];
       };
     };
