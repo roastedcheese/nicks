@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, ... }:
+{ pkgs, lib, inputs, ... }: # TODO: switch to home-manager for most of these
 lib.mkMerge [
   {
     nixpkgs.config.allowUnfree = true;
@@ -71,7 +71,6 @@ lib.mkMerge [
      gocryptfs
      foot
      pulsemixer
-     # fceux
      lua-language-server
      nil
      stylua
@@ -83,6 +82,6 @@ lib.mkMerge [
      gcc
      glow
      dolphin-emu
-    ]; # Do not add anything after this line
+    ];
   }
 ]

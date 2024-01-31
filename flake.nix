@@ -2,16 +2,8 @@
   description = "RoastedCheese's very basic NixOS flake";
 
   outputs = { self, nixpkgs, ... }@inputs: 
-  let
-    system = "x86_64-linux";
-  in 
   {
-    nixosConfigurations = {
-      iupiter = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit system; inherit inputs; };
-        modules = [ ./system ];
-      };
-    };
+    nixosConfigurations = import ./hosts { inherit inputs; };
   };
 
   inputs = {
