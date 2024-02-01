@@ -4,9 +4,9 @@ let
    ./core/nix.nix
    ./core/security.nix
    ./packages.nix
-   ./services/pipewire.nix
-   ./services/default.nix
-   ./services/systemd.nix
+   ./services
+   ./programs
+   ./programs/hyprland.nix
   ];
   
   laptop = desktop; # Haven't set up any laptop yet :P

@@ -17,7 +17,7 @@ let
     ];
   };
 in {
-  "nick_iupiter" = homeManagerConfiguration {
+  "nick@iupiter" = homeManagerConfiguration {
     modules = homeImports."nick@iupiter";
     inherit pkgs extraSpecialArgs;
   };
