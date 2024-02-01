@@ -2,7 +2,6 @@ let
   desktop = [
    ./core/default.nix
    ./core/nix.nix
-   ./core/programs.nix
    ./core/security.nix
    ./packages.nix
    ./services/pipewire.nix

@@ -4,8 +4,8 @@ A basic NixOS flake
 
 ## Credits
 
-People I ~~stole from~~ got inspired by
+People I ~~stole from~~ was inspired by
 
-[fufexan](https://github.com/fufexan)
+[fufexan](https://github.com/fufexan) - most of the flake's structure
 
 The folks over on the [unofficial nix discord](https://discord.gg/RbvHtGa) for answering my stupid questions
