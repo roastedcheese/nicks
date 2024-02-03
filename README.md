@@ -1,6 +1,6 @@
 # nicks
 
-A basic NixOS flake
+A basic NixOS and home-manager flake
 
 ## Credits
 
