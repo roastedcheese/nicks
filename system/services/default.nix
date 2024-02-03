@@ -2,7 +2,6 @@
 {
   imports = [
     ./pipewire.nix
-    ./systemd.nix
   ];
   services = {
     automatic-timezoned.enable = true;
