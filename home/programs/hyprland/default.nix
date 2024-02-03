@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, config, ... }:
 {
   imports = [
     inputs.hyprland.homeManagerModules.default 
@@ -7,10 +7,11 @@
   
   home.packages = [ inputs.hyprcontrib.packages.${pkgs.system}.grimblast ];
 
-  home.file.scripts = {
+  home.file.hyprScripts = {
     executable = true;
     recursive = true;
     source = ./scripts;
+    target = "${config.xdg.configHome}/hypr/scripts";
   }; 
 
   wayland.windowManager.hyprland = {
