@@ -6,5 +6,6 @@
     ../../programs/foot
     ../../programs/media/ncmpcpp
     ../../services/mpd
+    ../../programs/nvim
   ];
 }
