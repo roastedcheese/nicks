@@ -110,7 +110,10 @@
         ffmpeg="ffmpeg -hide_banner"\
         irssi="irssi --home=$XDG_CONFIG_HOME/irssi"\
         lf="lfub"\
-        rebuild="nixos-rebuild switch --use-remote-sudo --flake $HOME/nicks --show-trace"
+        rebuild="nixos-rebuild switch --use-remote-sudo --flake $HOME/nicks --show-trace"\
+        hm="home-manager switch --flake . -b backup"\
+        update="nix flake update; npins upgrade"
+
 
       # Colorize commands when possible.
       alias \
