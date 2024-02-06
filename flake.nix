@@ -5,6 +5,10 @@
   {
     nixosConfigurations = import ./hosts { inherit inputs; };
     homeConfigurations = import ./home/profiles { inherit inputs; };
+
+    lib = {
+      pins = import ./npins;
+    };
   };
 
   inputs = {

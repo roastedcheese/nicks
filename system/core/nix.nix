@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   nix = {
     nixPath = [ "nixpkgs=flake:nixpkgs" ];
@@ -8,4 +8,5 @@
       auto-optimise-store = true;
     };
   };
+  environment.systemPackages = with pkgs; [ git npins ];
 }

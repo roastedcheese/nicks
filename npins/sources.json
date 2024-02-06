@@ -1,0 +1,19 @@
+{
+  "pins": {
+    "user.js": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "arkenfox",
+        "repo": "user.js"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "version": "122.0",
+      "revision": "33a84b608c8a1f871c6ce9c4d2b932dc57078fae",
+      "url": "https://api.github.com/repos/arkenfox/user.js/tarball/122.0",
+      "hash": "14ibz8s0m0wfddwmd125qdx3lvsd8jpiip3c82bzfk9mxa50cvpb"
+    }
+  },
+  "version": 3
+}
