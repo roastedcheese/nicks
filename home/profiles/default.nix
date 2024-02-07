@@ -1,6 +1,6 @@
-{ inputs, ...}:
+{ self, inputs, ...}:
 let
-  extraSpecialArgs = {inherit inputs;};
+  extraSpecialArgs = {inherit inputs self;};
   inherit (inputs.hm.lib) homeManagerConfiguration;
 
   pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;

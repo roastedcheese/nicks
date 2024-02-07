@@ -16,7 +16,6 @@ lib.mkMerge [
     environment.systemPackages = with pkgs; [
      wget
      neovim
-     mpd
      ncmpcpp
      firefox
      swww

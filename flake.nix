@@ -4,7 +4,7 @@
   outputs = { self, nixpkgs, ... }@inputs: 
   {
     nixosConfigurations = import ./hosts { inherit inputs; };
-    homeConfigurations = import ./home/profiles { inherit inputs; };
+    homeConfigurations = import ./home/profiles { inherit self inputs; };
 
     lib = {
       pins = import ./npins;

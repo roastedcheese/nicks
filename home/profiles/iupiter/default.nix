@@ -7,5 +7,6 @@
     ../../programs/media/ncmpcpp
     ../../services/mpd
     ../../programs/nvim
+    # ../../programs/firefox
   ];
 }
