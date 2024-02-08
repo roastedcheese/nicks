@@ -2,7 +2,6 @@
 {
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
     autocd = true;
     dotDir = ".config/zsh";
     defaultKeymap = "viins";
