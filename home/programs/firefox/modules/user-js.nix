@@ -4,4 +4,5 @@ let
 in 
 {
   programs.firefox.profiles.schizo.extraConfig = user-js;
+  programs.firefox.profiles.logins.extraConfig = user-js;
 }
