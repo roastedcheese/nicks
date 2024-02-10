@@ -9,5 +9,7 @@
     ../../programs/nvim
     ../../programs/firefox
     ../../services/xdg
+    ../../services/gtk
+    ../../programs/misc
   ];
 }

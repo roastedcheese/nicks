@@ -21,8 +21,8 @@
       
       exec-once = [
         "swww init & ~/.config/hypr/scripts/wp.sh"
-        ''dconf write /org/gnome/desktop/interface/font-name "'Inter Nerd Font Mono'" & dconf write /org/gnome/desktop/interface/cursor-theme "'Catppuccin-Mocha-Rosewater-Cursors'" & copyq & dconf write /org/gnome/desktop/interface/gtk-theme "'rose-pine'" & playerctld daemon''
-        "swayidle -w timeout 300 '~/.config/hypr/scripts/lock.sh'"
+        ''dconf write /org/gnome/desktop/interface/font-name "'Inter Nerd Font Mono'" & dconf write /org/gnome/desktop/interface/cursor-theme "'BreezeX-RoséPine'" & copyq & dconf write /org/gnome/desktop/interface/gtk-theme "'rose-pine'"''
+        "swayidle -w timeout 300 '~/${config.xdg.configHome}/hypr/scripts/lock.sh'"
         "ags"
       ];
 
