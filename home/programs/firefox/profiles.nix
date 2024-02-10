@@ -23,6 +23,7 @@
       extraConfig = import ./modules/overrides.nix + ''
         user_pref("privacy.resistFingerprinting", false);
         user_pref("privacy.sanitize.sanitizeOnShutdown", false);
+        user_pref("privacy.antitracking.enableWebcompat", false);
       '';
 
       extensions = builtins.attrValues {

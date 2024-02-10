@@ -19,10 +19,6 @@
    * [3] https://developer.mozilla.org/en-US/docs/Web/Privacy/State_Partitioning#storage_access_heuristics ***/
    user_pref("privacy.antitracking.enableWebcompat", true);
 
-  user_pref("privacy.clearOnShutdown.siteSettings", true);
-  // user_pref("privacy.cpd.offlineApps", true);
-  user_pref("privacy.cpd.cookies", true);
-
   /* [SETUP-WEB] RFP can cause some website breakage: mainly canvas, use a canvas site exception via the urlbar.
    * RFP also has a few side effects: mainly timezone is UTC, and websites will prefer light theme
    * [NOTE] pbmode applies if true and the original pref is false
