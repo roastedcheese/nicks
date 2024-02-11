@@ -8,6 +8,7 @@
     dataDir = config.xdg.dataHome + "/mpd";
     dbFile = config.xdg.dataHome + "/mpd" + "/database";
     playlistDirectory = config.xdg.dataHome + "/mpd" + "/playlists";
+    musicDirectory = config.xdg.userDirs.music;
     extraConfig = ''
       input {
         plugin "curl"

@@ -1,4 +1,4 @@
-{ self, ... }: # arkenfox's user.js
+{ self, ... }: # arkenfox user.js
 let
   user-js = builtins.readFile (self.lib.pins."user.js".outPath + "/user.js");
 in 

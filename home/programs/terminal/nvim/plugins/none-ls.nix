@@ -3,6 +3,11 @@
   programs.neovim = {
     plugins = [ pkgs.vimPlugins.none-ls-nvim ];
 
+    extraPackages = builtins.attrValues {
+      inherit (pkgs) statix stylua alejandra eslint_d;
+      inherit (pkgs.nodePackages) prettier;
+    };
+
     extraLuaConfig = ''
       local null_ls = require("null-ls")
       null_ls.setup({

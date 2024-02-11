@@ -1,5 +1,19 @@
 {
   "pins": {
+    "qbt-theme": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "jagannatharjun",
+        "repo": "qbt-theme"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "version": "V2.1",
+      "revision": "13ae30f9adb14ffe0814cfb27a47ee4415f4cd5d",
+      "url": "https://api.github.com/repos/jagannatharjun/qbt-theme/tarball/V2.1",
+      "hash": "1lcjbk3j5636bncbvd34js2hj8v58vqzvysiv3mvjb8vdb5syry6"
+    },
     "user.js": {
       "type": "GitRelease",
       "repository": {

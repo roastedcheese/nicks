@@ -5,7 +5,11 @@
     ./binds.nix
   ];
   
-  home.packages = [ inputs.hyprcontrib.packages.${pkgs.system}.grimblast ];
+  home.packages = [
+    inputs.hyprcontrib.packages.${pkgs.system}.grimblast
+    pkgs.rose-pine-gtk-theme
+  ];
+
 
   home.file.hyprScripts = {
     executable = true;
@@ -20,9 +24,9 @@
       monitor = ",2560x1440@165,auto,auto";
       
       exec-once = [
-        "swww init & ~/.config/hypr/scripts/wp.sh"
+        "swww init & ${config.xdg.configHome}/hypr/scripts/wp.sh"
         ''dconf write /org/gnome/desktop/interface/font-name "'Inter Nerd Font Mono'" & dconf write /org/gnome/desktop/interface/cursor-theme "'BreezeX-RoséPine'" & copyq & dconf write /org/gnome/desktop/interface/gtk-theme "'rose-pine'"''
-        "swayidle -w timeout 300 '~/${config.xdg.configHome}/hypr/scripts/lock.sh'"
+        "swayidle -w timeout 300 '${config.xdg.configHome}/hypr/scripts/lock.sh'"
         "ags"
       ];
 

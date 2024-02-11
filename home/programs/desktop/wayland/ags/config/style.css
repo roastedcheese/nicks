@@ -1,0 +1,192 @@
+@import "themes/rose-pine.css";
+
+
+* {
+  border-radius: 5;
+  color: @text;
+}
+
+
+/* Bar */
+
+.bar button {
+  all: unset;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 2;
+    color: @text;
+}
+
+.bar { 
+  background-color: transparent;
+}
+
+.barbox {
+  background-color: @base;
+  border-radius: 5;
+  margin: 4 10 0 10;
+  }
+
+.distro label {
+  margin-top: 0;
+}
+
+
+.bar button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.workspaces > button:active,
+.media:active {
+    background-color: rgba(255, 255, 255, 0.2);
+} .workspaces button.focused {
+    background-color: @rose;
+}
+
+.workspaces > button.focused label {
+  color: @overlay;
+}
+
+.traymenu{
+  background-color: @overlay;
+  border: @rose;
+}
+
+.workspaces{
+    background-color: @overlay;
+}
+
+.bar button {
+  border-radius: 5;
+  background-color: @overlay;
+  padding-left: 13;
+  padding-right: 13;
+}
+
+
+.distro {
+  background-color: transparent; 
+  padding: 0 10 0 10;
+  min-height: 34px;
+}
+
+.networkindicator {
+  margin: 4 0 4 5;
+  background-color: @overlay;
+  padding: 0 10 0 10;
+}
+
+.workspaces,
+button.media-box,
+button.ncentertoggle {
+  margin: 4 0 4 5;
+}
+
+button.weather,
+button.kblayout,
+.clock,
+.systray,
+button.micvolume,
+button.volume {
+  background-color: @overlay;
+  padding: 0 13 0 13;
+  margin: 4 0 4 5;
+}
+
+.systray {
+  padding: 0 0 0 0;
+}
+
+.micvolume label,
+.volume label {
+  margin-left: 5;
+}
+
+.clock {
+  margin-right: 4;
+}
+
+.empty {
+  margin: 0 0 0 0;
+}
+
+
+/* Notifications */
+
+#notification-center {
+  background-color: transparent;
+}
+
+#notification-center > box {
+  margin-right: 10;
+  margin-top: 9;
+  background-color: @base;
+}
+
+#popup-window {
+  background-color: transparent;
+}
+
+.list {
+  background-color: transparent;
+  min-width: 380px;
+}
+
+.list box{
+  /* background-color: @base; */
+  border-radius: 5;
+}
+
+.n > * {
+    margin: 4px;
+    padding: 8px;
+    border-radius: 5px;
+    /* border: 2px solid @iris; */
+    background-color: @surface;
+}
+
+button.close-button{
+  margin: 0 0 0 0;
+}
+
+#popup-window .list{
+    margin-right: 5;
+}
+
+#notification-center > box {
+  background-color: transparent;
+}
+
+#notification-center > box > box {
+    min-height: 500px;
+    min-width: 400px;
+    background-color: rgba(25, 23, 36, 0.9);
+}
+
+.n .title {
+  color: @text;
+  font-size: 1.1em;
+}
+
+.n .text {
+  margin: 5px 3px 5px 10px;
+}
+.n .icon {
+  margin-left: 5; 
+}
+
+button.on.dndswitch {
+  background-color: @pine;
+}
+
+button.clear,
+button.dndswitch {
+  border: 1px solid @subtle;
+  background-color: @surface;
+}
+
+.header {
+  margin: 5 5 5 5;
+}

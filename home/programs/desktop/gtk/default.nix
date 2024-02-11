@@ -1,8 +1,8 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
   gtk = {
     theme = {
-      name = "rose-pine-gtk";
+      name = "rose-pine";
       package = pkgs.rose-pine-gtk-theme;
     };
 
