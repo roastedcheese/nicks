@@ -9,6 +9,8 @@
      extraGroups = [ "wheel" "libvirtd"]; 
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   # no change this
   system.stateVersion = "23.11";
 }

@@ -3,10 +3,10 @@ let
    ./core/default.nix
    ./core/nix.nix
    ./core/security.nix
-   ./packages.nix
    ./services
    ./programs
    ./programs/hyprland.nix
+   ./programs/fonts.nix
   ];
   
   laptop = desktop; # Haven't set up any laptop yet :P

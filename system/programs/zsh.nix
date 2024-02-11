@@ -5,6 +5,8 @@
   environment.pathsToLink = ["/share/zsh"];
   users.defaultUserShell = pkgs.zsh;
 
+  environment.systemPackages = [ pkgs.zip pkgs.wget ];
+
   programs = {
     zsh = {
       enable = true;
