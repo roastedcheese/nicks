@@ -22,8 +22,8 @@ in {
     inherit pkgs extraSpecialArgs;
   };
 
-  server = homeManagerConfiguration {
-    modules = homeImports.server;
+  "nick@mercurius" = homeManagerConfiguration {
+    modules = homeImports."nick@mercurius";
     inherit pkgs extraSpecialArgs;
   };
 }
