@@ -1,4 +1,9 @@
 {
+  imports = [
+    ./nix.nix
+    ./security.nix
+  ];
+
   # This way it forks immediately and doesn't slow down boot
   networking.dhcpcd.wait = "background";
 
