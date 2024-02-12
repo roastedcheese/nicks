@@ -1,8 +1,9 @@
+# Stuff for anything that's not a server
 { pkgs, ... }:
-{ # Stuff for anything that's not a server
-  imports = [ ./default.nix ];
+{
+  imports = [ ./default.nix ./foot];
 
   home.packages = builtins.attrValues {
-    inherit (pkgs) yt-dlp btop fscrypt-experimental gocryptfs android-file-transfer pulsemixer glow killall pulseaudio;
+    inherit (pkgs) yt-dlp fscrypt-experimental gocryptfs android-file-transfer pulsemixer glow killall pulseaudio;
   };
 }

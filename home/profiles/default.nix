@@ -11,9 +11,9 @@ let
       ./iupiter
     ];
 
-    server = [
+    "nick@mercurius" = [
       ../.
-      ./server
+      ./mercurius
     ];
   };
 in {

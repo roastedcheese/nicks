@@ -1,7 +1,8 @@
+{ pkgs, ... }:
 {
   imports = [
-    ./foot
     ./nvim
     ./zsh
   ];
+  home.packages = [ pkgs.btop ];
 }
