@@ -7,6 +7,7 @@ let
    ./programs
    ./programs/hyprland.nix
    ./programs/fonts.nix
+   ./programs/gpg
   ];
   
   laptop = desktop; # Haven't set up any laptop yet :P
