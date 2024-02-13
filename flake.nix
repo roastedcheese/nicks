@@ -1,7 +1,7 @@
 {
   description = "RoastedCheese's very basic NixOS flake";
 
-  outputs = { self, nixpkgs, ... }@inputs: 
+  outputs = { self, nixpkgs, ... }@inputs:
   {
     nixosConfigurations = import ./hosts { inherit inputs; };
     homeConfigurations = import ./home/profiles { inherit self inputs; };
@@ -33,6 +33,17 @@
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    snm = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
     };
   };
 }
