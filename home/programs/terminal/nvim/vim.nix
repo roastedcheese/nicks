@@ -23,6 +23,11 @@
         command = "setlocal noundofile",
       })
 
+      au({"BufWritePre"}, {
+        pattern = "*.age", -- Disable saving undo history for matching files
+        command = "setlocal noundofile",
+      })
+
       vim.g.mapleader = " "
     '';
   };

@@ -1,6 +1,6 @@
 import App from 'resource:///com/github/Aylur/ags/app.js';
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import { exec, execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
+import { execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
 const { Box, Button, Stack, Label, Icon, CenterBox, Window, Slider, ProgressBar } = Widget;
 
 let fetch;
@@ -18,7 +18,6 @@ export const Weather = () => Button({
     children: [
       Stack({
         items: [
-          ['', Label('')],
           ['clear', Icon('weather-clear-symbolic')],
           ['clear-night', Icon('weather-clear-night-symbolic')],
           ['cloudy', Icon('weather-few-clouds-symbolic')],
