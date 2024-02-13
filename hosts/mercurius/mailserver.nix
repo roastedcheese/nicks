@@ -5,9 +5,9 @@
 
   mailserver = {
     enable = true;
-    mailDirectory = "/srv/mail/vmail";
-    dkimKeyDirectory = "/srv/mail/dkim";
-    indexDir = "/srv/mail/index";
+    mailDirectory = "/srv/storage/mail/vmail";
+    dkimKeyDirectory = "/srv/storage/mail/dkim";
+    indexDir = "/srv/storage/mail/index";
     fqdn = "mail.roastedcheese.org";
     domains = [ "example.com" ];
 
