@@ -79,7 +79,9 @@
 
     useFsLayout = true;
   };
-
+  
+  # Fix a crash on unstable
+  services.dovecot2.sieve.extensions = [ "fileinto" ];
   security.acme.acceptTerms = true;
   security.acme.defaults.email = "security@roastedcheese.org";
 }
