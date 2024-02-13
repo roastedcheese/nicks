@@ -9,7 +9,7 @@
     # dkimKeyDirectory = "/srv/storage/mail/dkim";
     indexDir = "/var/index";
     fqdn = "mail.roastedcheese.org";
-    domains = [ "roastedcheeese.org" ];
+    domains = [ "roastedcheese.org" ];
 
     enableImap = true;
     enableImapSsl = true;
