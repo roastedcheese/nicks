@@ -1,3 +1,6 @@
+{ pkgs, ... }:
 {
-  programs.thunderbird.enable = true;
+  home.packages = builtins.attrValues {
+    inherit (pkgs) thunderbird element-desktop; # Ew electron
+  };
 }
