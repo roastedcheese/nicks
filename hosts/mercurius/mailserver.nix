@@ -38,6 +38,12 @@
       "bill@roastedcheese.org" = { # Bill
         hashedPasswordFile = config.age.secrets.mailserver.path;
       };
+
+      "matrix@roastedcheese.org" = {
+        hashedPasswordFile = config.age.secrets.mailserver_matrix.path;
+        sendOnly = true;
+        sendOnlyRejectMessage = "no reply";
+      };
     };
 
     mailboxes = {
