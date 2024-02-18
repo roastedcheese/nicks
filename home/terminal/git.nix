@@ -6,6 +6,9 @@
       co = "checkout";
       c = "commit";
       b = "branch";
+      s = "switch";
+      ss = "status";
+      d = "diff";
     };
 
     delta.enable = true;
@@ -16,8 +19,9 @@
 
     userEmail = "cheese@roastedcheese.org";
     userName = "RoastedCheese";
-    extraConfig =''
-      defaultBranch = main
-    '';
+    extraConfig = {
+      user.defaultBranch = "main";
+      push.autoSetupRemote = true;
+    };
   };
 }
