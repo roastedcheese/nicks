@@ -16,5 +16,8 @@
 
     userEmail = "cheese@roastedcheese.org";
     userName = "RoastedCheese";
+    extraConfig =''
+      defaultBranch = main
+    '';
   };
 }
