@@ -6,6 +6,7 @@
     ./wayland
     ./xdg
     ./media
+    ./communication
   ];
   home.packages = builtins.attrValues {
     inherit (pkgs)

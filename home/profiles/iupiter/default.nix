@@ -1,6 +1,6 @@
 {
   imports = [
-    ../../programs/desktop
-    ../../programs/terminal/desktop.nix
+    ../../desktop
+    ../../terminal/desktop.nix
   ];
 }
