@@ -1,3 +1,3 @@
 {
-  imports = [ ../../programs/terminal ];
+  imports = [ ../../terminal ];
 }
