@@ -19,12 +19,7 @@
       })
 
       au({"BufWritePre"}, {
-        pattern = {vim.fn.expand("~") .. "/docs/*"}, -- Disable saving undo history for matching files
-        command = "setlocal noundofile",
-      })
-
-      au({"BufWritePre"}, {
-        pattern = "*.age", -- Disable saving undo history for matching files
+        pattern = {vim.fn.expand("~") .. "/docs/*", "*.age", "*.ssh/*", "*.gnupg/*", "*/etc/ssh*"}, -- Disable saving undo history for matching files
         command = "setlocal noundofile",
       })
 
