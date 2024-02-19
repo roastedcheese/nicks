@@ -23,5 +23,6 @@
     mailserver_matrix.file = inputs.self + "/secrets/mailserver_matrix.age";
     # We need it unhashed for matrix
     matrix_mail.file = inputs.self + "/secrets/matrix_mail.age";
+    matrix_secret.file = inputs.self + "/secrets/matrix_secret.age";
   };
 }

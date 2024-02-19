@@ -35,10 +35,12 @@
       settings = { 
         server_name = "roastedcheese.org";
         public_baseurl = "https://roastedcheese.org";
+        withJemallock = true;
+        registration_shared_secret = config.age.secrets.matrix_secret.path;
 
-        enable_registration = true;
-        registration_requires_token = true;
-
+        allow_public_rooms_without_auth = true;
+        allow_public_rooms_over_federation = true;
+        
         report_stats = false;
 
         database = {

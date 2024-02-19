@@ -4,4 +4,5 @@ in {
   "mailserver.age".publicKeys = [ mercurius ];
   "mailserver_matrix.age".publicKeys = [ mercurius ];
   "matrix_mail.age".publicKeys = [ mercurius ];
+  "matrix_secret.age".publicKeys = [ mercurius ];
 }
