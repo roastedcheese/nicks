@@ -38,6 +38,16 @@
       "bill@roastedcheese.org" = { # Bill
         hashedPasswordFile = config.age.secrets.mailserver.path;
       };
+
+      "security@roastedcheese.org" = {
+        hashedPasswordFile = config.age.secrets.mailserver.path;
+      };
+
+      "matrix@roastedcheese.org" = {
+        hashedPasswordFile = config.age.secrets.mailserver_matrix.path;
+        sendOnly = true;
+        sendOnlyRejectMessage = "no reply";
+      };
     };
 
     mailboxes = {
@@ -72,7 +82,7 @@
 
     # Use Let's Encrypt certificates. Note that this needs to set up a stripped
     # down nginx and opens port 80.
-    certificateScheme = "acme-nginx";
+    certificateScheme = "acme";
 
     vmailUserName = "vmail";
     vmailGroupName = "vmail";
@@ -82,6 +92,10 @@
   
   # Fix a crash on unstable
   services.dovecot2.sieve.extensions = [ "fileinto" ];
-  security.acme.acceptTerms = true;
-  security.acme.defaults.email = "security@roastedcheese.org";
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "security@roastedcheese.org";
+    # Use the caddy webserver to get the cert
+    certs."mail.roastedcheese.org".webroot = "/var/www";
+  };
 }
