@@ -3,7 +3,6 @@
   imports = [
     ./hardware-configuration.nix 
     ./mailserver.nix
-    ./matrix.nix
     inputs.agenix.nixosModules.default
   ];
 
