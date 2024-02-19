@@ -3,12 +3,17 @@
   services =  {
     # Borrowed from @notashelf
     postgresql = {
+      enable = true;
       initialScript = pkgs.writeText "synapse-init.sql" ''
         CREATE ROLE "synapse" WITH LOGIN PASSWORD 'synapse';
         CREATE DATABASE "synapse" WITH OWNER "synapse"
           TEMPLATE template0
           LC_COLLATE = "C"
           LC_CTYPE = "C";
+      '';
+      
+      authentication = ''
+        local synapse synapse md5
       '';
     };
 
@@ -20,7 +25,7 @@
           header /.well-known/matrix/* Content-Type application/json
           header /.well-known/matrix/* Access-Control-Allow-Origin *
           respond /.well-known/matrix/server `{"m.server": "matrix.roastedcheese.org:443"}`
-          respond /.well-known/matrix/client `{"m.homeserver":{"base_url":"https://matrix.roastedcheese.org"},"m.identity_server":{"base_url":"https://identity.roastedcheese.org"}}`
+          respond /.well-known/matrix/client `{"m.homeserver":{"base_url":"https://matrix.roastedcheese.org"},"m.identity_server":{"base_url":"https://identity.matrix.org"}}`
         }
 
         matrix.roastedcheese.org {
@@ -34,8 +39,11 @@
       enable = true;
       settings = { 
         server_name = "roastedcheese.org";
-        public_baseurl = "https://roastedcheese.org";
+        public_baseurl = "https://matrix.roastedcheese.org";
         withJemallock = true;
+
+        enable_registration = true;
+        registration_requires_token = true;
         registration_shared_secret = config.age.secrets.matrix_secret.path;
 
         allow_public_rooms_without_auth = true;
@@ -48,7 +56,7 @@
           args = {
             user = "synapse";
             password = "synapse";
-            dbname = "synapse";
+            database = "synapse";
             host = "/run/postgresql";
             cp_min = 5;
             cp_max = 10;
