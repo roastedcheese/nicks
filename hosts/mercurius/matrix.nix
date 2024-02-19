@@ -28,7 +28,7 @@
           respond /.well-known/matrix/client `{"m.homeserver":{"base_url":"https://matrix.roastedcheese.org"},"m.identity_server":{"base_url":"https://identity.matrix.org"}}`
         }
 
-        matrix.roastedcheese.org {
+        matrix.roastedcheese.org:443 {
             reverse_proxy /_matrix/* localhost:8008
             reverse_proxy /_synapse/client/* localhost:8008
         }
@@ -90,7 +90,7 @@
 
         listeners = [{
           port = 8008;
-          bind_addresses = ["127.0.0.1"];
+          bind_addresses = ["localhost"];
           tls = false;
           type = "http";
           x_forwarded = true;

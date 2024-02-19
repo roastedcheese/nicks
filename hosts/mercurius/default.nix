@@ -15,7 +15,7 @@
   networking = {
     hostName = "mercurius";
     domain = "roastedcheese.org";
-    firewall.allowedTCPPorts = [ 80 443 ];
+    firewall.allowedTCPPorts = [ 80 443 8008 8448 ];
   };
 
   age.secrets = {
