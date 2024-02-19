@@ -16,6 +16,7 @@
       enable = true;
       extraConfig = ''
         roastedcheese.org {
+          root * /var/www
           header /.well-known/matrix/* Content-Type application/json
           header /.well-known/matrix/* Access-Control-Allow-Origin *
           respond /.well-known/matrix/server `{"m.server": "matrix.roastedcheese.org:443"}`
@@ -31,7 +32,15 @@
   
     matrix-synapse = {
       enable = true;
-      settings = {
+      settings = { 
+        server_name = "roastedcheese.org";
+        public_baseurl = "https://roastedcheese.org";
+
+        enable_registration = true;
+        registration_requires_token = true;
+
+        report_stats = false;
+
         database = {
           name = "psycopg2";
           args = {

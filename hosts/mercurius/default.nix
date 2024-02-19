@@ -12,8 +12,11 @@
       efi.canTouchEfiVariables = true;
   };
 
-  networking.hostName = "mercurius";
-  networking.domain = "roastedcheese.org";
+  networking = {
+    hostName = "mercurius";
+    domain = "roastedcheese.org";
+    firewall.allowedTCPPorts = [ 80 443 ];
+  };
 
   age.secrets = {
     mailserver.file = inputs.self + "/secrets/mailserver.age";
