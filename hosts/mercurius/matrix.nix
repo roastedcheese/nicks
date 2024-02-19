@@ -101,16 +101,16 @@
         }];
 
         # Send notifications and password reset
-        email = {
-          smtp_host = "email.roastedcheese.org";
-          smtp_port = 465;
-          smtp_user = "matrix";
-          smtp_pass = config.age.secrets.matrix_mail.path;
-          force_tls = true;
-          notif_from = "matrix@roastedcheese.org";
-          enable_notifs = true;
-          notif_for_new_users = false;
-        };
+        # email = {
+        #   smtp_host = "mail.roastedcheese.org";
+        #   smtp_port = 465;
+        #   smtp_user = "matrix";
+        #   smtp_pass = builtins.readFile config.age.secrets.matrix_mail.path;
+        #   force_tls = true;
+        #   notif_from = "matrix@roastedcheese.org";
+        #   enable_notifs = true;
+        #   notif_for_new_users = false;
+        # };
       };
     };
   };
