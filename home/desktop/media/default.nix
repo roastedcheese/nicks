@@ -5,6 +5,7 @@
     ./mpv.nix
     ./ncmpcpp.nix
     ./qbittorrent.nix
+    ./games
   ];
 
   home.packages = builtins.attrValues {
