@@ -7,11 +7,6 @@
     dotDir = ".config/zsh";
     defaultKeymap = "viins";
 
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" ];
-    };
-
     history = {
       expireDuplicatesFirst = true;
       extended = true;
