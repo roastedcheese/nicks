@@ -21,7 +21,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      monitor = ",2560x1440@165,auto,auto";
       
       exec-once = [
         "swww init & ${config.xdg.configHome}/hypr/scripts/wp.sh"
