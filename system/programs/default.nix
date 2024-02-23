@@ -1,6 +1,6 @@
 {
   imports = [
-    ./zsh.nix
+    ./fish.nix
     ./home-manager.nix
   ];
 

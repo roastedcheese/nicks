@@ -2,8 +2,9 @@
 {
   imports = [
     ./nvim
-    ./zsh
     ./git.nix
+    ./starship.nix
+    ./fish
   ];
   home.packages = [ pkgs.btop ];
 }

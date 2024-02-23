@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  imports = [ ./starship.nix ];
+  programs.starship.enableZshIntegration = true;
   programs.zsh = {
     enable = true;
     autocd = true;

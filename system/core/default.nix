@@ -14,6 +14,9 @@
      extraGroups = [ "wheel" "libvirtd"]; 
   };
 
+  # Until this isn't fixed with flakes
+  programs.command-not-found.enable = false;
+
   nixpkgs.config.allowUnfree = true;
 
   # no change this
