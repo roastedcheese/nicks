@@ -21,7 +21,6 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      
       exec-once = [
         "swww init & ${config.xdg.configHome}/hypr/scripts/wp.sh"
         ''dconf write /org/gnome/desktop/interface/font-name "'Inter Nerd Font Mono'" & dconf write /org/gnome/desktop/interface/cursor-theme "'BreezeX-RoséPine'" & copyq & dconf write /org/gnome/desktop/interface/gtk-theme "'rose-pine'"''
