@@ -15,6 +15,11 @@ let
       ../.
       ./mercurius
     ];
+
+    "nick@apollo" = [
+      ../.
+      ./iupiter
+    ];
   };
 in {
   "nick@iupiter" = homeManagerConfiguration {
@@ -24,6 +29,11 @@ in {
 
   "nick@mercurius" = homeManagerConfiguration {
     modules = homeImports."nick@mercurius";
+    inherit pkgs extraSpecialArgs;
+  };
+
+  "nick@apollo" = homeManagerConfiguration {
+    modules = homeImports."nick@apollo";
     inherit pkgs extraSpecialArgs;
   };
 }
