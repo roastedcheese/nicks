@@ -18,7 +18,7 @@ let
 
     "nick@apollo" = [
       ../.
-      ./iupiter
+      ./apollo
     ];
   };
 in {
