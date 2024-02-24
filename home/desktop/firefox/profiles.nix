@@ -28,7 +28,7 @@
 
       extensions = builtins.attrValues {
         inherit (inputs.firefox-addons.packages.${pkgs.system}) 
-          ublock-origin darkreader noscript localcdn firefox-color;
+          ublock-origin darkreader noscript localcdn firefox-color vimium;
       };
     };
   };
