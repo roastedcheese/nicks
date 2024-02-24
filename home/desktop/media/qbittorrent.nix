@@ -5,6 +5,6 @@ in {
   home.packages = [ pkgs.qbittorrent ];
   home.file.qbtheme = {
     source = theme;
-    target = config.xdg.configHome + "/qbittorrent/mumble-dark.qbtheme";
+    target = config.xdg.configHome + "/qBittorrent/mumble-dark.qbtheme";
   };
 }
