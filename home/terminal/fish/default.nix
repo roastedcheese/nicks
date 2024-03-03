@@ -32,9 +32,17 @@
     };
 
     shellInit = ''
-      set EDITOR "nvim";
+      set EDITOR "nvim"
+      set -U fish_greeting
+      set -U fish_cursor_insert line blink
+
       function fish_user_key_bindings
         fish_vi_key_bindings
+      end
+
+      # Starship's newline is stupid
+      function newline --on-event fish_postexec
+        echo
       end
     '';
   };
