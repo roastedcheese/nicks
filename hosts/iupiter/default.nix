@@ -8,5 +8,9 @@
       efi.canTouchEfiVariables = true;
   };
 
-  networking.hostName = "iupiter";
+  networking = {
+    firewall.allowedTCPPorts = [ 2234 ]; # Soulseek
+    hostName = "iupiter";
+    nameservers = [ "1.1.1.1" ];
+  };
 }
