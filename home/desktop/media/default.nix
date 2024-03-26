@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ./mpd.nix
@@ -9,6 +9,7 @@
   ];
 
   home.packages = builtins.attrValues {
-    inherit (pkgs) nicotine-plus gimp ffmpeg rnnoise-plugin tenacity sxiv;
+    inherit (pkgs) gimp ffmpeg rnnoise-plugin tenacity sxiv;
+    inherit (inputs.nixpkgs-stable.legacyPackages.${pkgs.system}) nicotine-plus;
   };
 }
