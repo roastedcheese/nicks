@@ -2,6 +2,7 @@
   imports = [
     ./nix.nix
     ./security.nix
+    ./networking.nix
   ];
 
   # This way it forks immediately and doesn't slow down boot
