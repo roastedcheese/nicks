@@ -24,7 +24,7 @@
     };
 
     "hm options search" = {
-      urls = [{ template = "https://mipmip.github.io/home-manager-option-search/?query={searchTerms}"; }];
+      urls = [{ template = "https://home-manager-options.extranix.com/?query={searchTerms}"; }];
       iconUpdateURL = "https://mipmip.github.io/home-manager-option-search/images/favicon.png";
       updateInterval = 24 * 60 * 60 * 1000; # every day
       definedAliases = [ "@hm" ];
