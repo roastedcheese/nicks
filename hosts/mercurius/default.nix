@@ -2,6 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix 
+    ./acme.nix
     ./mailserver.nix
     ./znc.nix
     inputs.agenix.nixosModules.default
@@ -27,28 +28,5 @@
 
     znc_admin.file = inputs.self + "/secrets/znc_admin.age";
     znc_user.file = inputs.self + "/secrets/znc_user.age";
-  };
-
-  security.acme = {
-    acceptTerms = true;
-    defaults = {
-      email = "security@roastedcheese.org";
-      webroot = "/var/www";
-    };
-    certs."roastedcheese.org".extraDomainNames = [
-      "www.roastedcheese.org"
-      "mail.roastedcheese.org"
-    ];
-  };
-  services.caddy = {
-    enable = true;
-    extraConfig = ''
-      {
-        auto_https off
-      }
-      roastedcheese.org {
-        root * /var/www
-      }
-    '';
   };
 }

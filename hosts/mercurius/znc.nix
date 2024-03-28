@@ -40,22 +40,20 @@
   # interaction with saslauthd's unix socket
   systemd.services.znc.serviceConfig.RestrictAddressFamilies = [ "AF_UNIX" ];
 
-  security.acme.certs."roastedcheese.org" = {
-    postRun = let
-      cert = "/home/znc/.znc/znc.pem";
-    in ''
-      cat {key,fullchain}.pem > ${cert}
-      chown znc:znc ${cert}
-    '';
-  };
+  users.users.znc.extraGroups = [ "acme" ];
 
   services.znc = {
     enable = true;
     mutable = false;
     useLegacyConfig = false;
     openFirewall = true;
-    config = {
+    config = let
+      certDir = "/var/lib/acme/roastedcheese.org";
+    in {
       LoadModule = [ "adminlog" "cyrusauth saslauthd" ];
+      SSLCertFile = certDir + "/fullchain.pem";
+      SSLDHParamFile = certDir + "/fullchain.pem";
+      SSLKeyFile = certDir + "/key.pem";
       Listener.l = {
         Port = 5000;
         IPv4 = true;
