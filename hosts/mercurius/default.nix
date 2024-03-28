@@ -2,7 +2,9 @@
 {
   imports = [
     ./hardware-configuration.nix 
+    ./acme.nix
     ./mailserver.nix
+    ./znc.nix
     inputs.agenix.nixosModules.default
   ];
 
@@ -23,5 +25,8 @@
     # We need it unhashed for matrix
     matrix_mail.file = inputs.self + "/secrets/matrix_mail.age";
     matrix_secret.file = inputs.self + "/secrets/matrix_secret.age";
+
+    znc_admin.file = inputs.self + "/secrets/znc_admin.age";
+    znc_user.file = inputs.self + "/secrets/znc_user.age";
   };
 }
