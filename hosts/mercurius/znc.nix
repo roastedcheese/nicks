@@ -1,18 +1,21 @@
 { pkgs, config, ... }:
 {
-  users.users = {
-    "znc-admin" = {
-      isSystemUser = true;
-      group = "znc-admin";
-      hashedPasswordFile = config.age.secrets.znc_admin.path;
+  users = {
+    users = {
+      "znc-admin" = {
+        isSystemUser = true;
+        group = "znc-admin";
+        hashedPasswordFile = config.age.secrets.znc_admin.path;
+      };
+      "roastedcheese" = {
+        isSystemUser = true;
+        group = "znc-user";
+        hashedPasswordFile = config.age.secrets.znc_user.path;
+      };
+      znc.extraGroups = [ "nginx" "sasl" ];
     };
-    "roastedcheese" = {
-      isSystemUser = true;
-      group = "znc-user";
-      hashedPasswordFile = config.age.secrets.znc_user.path;
-    };
+    groups = { "znc-admin" = {}; "znc-user" = {}; };
   };
-  users.groups = { "znc-admin" = {}; "znc-user" = {}; };
 
   services.saslauthd.enable = true;
 
@@ -40,8 +43,6 @@
   # interaction with saslauthd's unix socket
   systemd.services.znc.serviceConfig.RestrictAddressFamilies = [ "AF_UNIX" ];
 
-  users.users.znc.extraGroups = [ "acme" ];
-
   services.znc = {
     enable = true;
     mutable = false;
@@ -55,7 +56,7 @@
       SSLDHParamFile = certDir + "/fullchain.pem";
       SSLKeyFile = certDir + "/key.pem";
       Listener.l = {
-        Port = 5000;
+        Port = 6697;
         IPv4 = true;
         IPv6 = true;
         SSL = true;
@@ -67,14 +68,13 @@
           Pass = "md5#::#::#";
         };
         "roastedcheese" = {
-          LoadModule = [ "sasl" ];
           Pass = "md5#::#::#";
           Nick = "RoastedCheese";
           AltNick = "RoastedCheese_";
           Ident = "roastedcheese";
           Network."liberachat" = {
-            LoadModule = [ "simple_away" ];
-            Server = "libera.chat +6697";
+            LoadModule = [ "sasl" "simple_away" ];
+            Server = "irc.libera.chat +6697";
             Chan."#nixos" = {};
           };
         };
