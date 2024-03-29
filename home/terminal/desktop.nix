@@ -2,7 +2,7 @@
 # TODO: Better dir naming
 { pkgs, ... }:
 {
-  imports = [ ./default.nix ./irssi.nix ./foot ];
+  imports = [ ./default.nix ./irc/weechat.nix ./foot ];
 
   home.packages = builtins.attrValues {
     inherit (pkgs) yt-dlp fscrypt-experimental gocryptfs android-file-transfer pulsemixer glow killall pulseaudio;
