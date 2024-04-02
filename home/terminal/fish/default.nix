@@ -2,7 +2,6 @@
   programs.starship.enableFishIntegration = true;
   programs.fish = {
     enable = true;
-
     shellAbbrs = {
       po = "poweroff";
       rb = "reboot";
@@ -24,9 +23,9 @@
       lf = "lfub";
       v = "$EDITOR";
 
+
       update = "nix flake update; npins upgrade";
 
-      ls = "ls -hN --color=auto --group-directories-first";
       grep = "grep --color=auto";
       diff = "diff --color=auto";
     };
