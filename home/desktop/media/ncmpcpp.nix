@@ -8,7 +8,7 @@
     settings = {
       ncmpcpp_directory = "${config.xdg.dataHome}/ncmpcpp";
       lyrics_directory = config.xdg.dataHome;
-
+      media_library_primary_tag = "album_artist";
 
       # Window #
       # song_window_title_format = "Music"
