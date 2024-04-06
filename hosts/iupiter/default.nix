@@ -12,4 +12,10 @@
     firewall.allowedTCPPorts = [ 2234 ]; # Soulseek
     hostName = "iupiter";
   };
+
+  opt = {
+    nixpkgs.config.allowUnfree = true;
+    hardware.nvidia.enable = true;
+    programs.hyprland.enable = true;
+  };
 }

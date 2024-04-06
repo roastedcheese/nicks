@@ -1,31 +1,16 @@
 { inputs, ... }:
 let
-  inherit (inputs.nixpkgs.lib) nixosSystem;
-  sys = "${inputs.self}/system";
-  
-  inherit (import sys) laptop desktop server;
+  nixosSystem = { name, arch ? "x86_64-linux" }:
+    inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = { system = arch; inherit inputs; };
+      modules = [
+        ./${name}
+        ../modules
+      ];
+    };
+   
 in {    
-  iupiter = nixosSystem {
-    specialArgs = { system = "x86_64-linux"; inherit inputs; };
-    modules = desktop
-    ++ [
-      ./iupiter
-      "${sys}/hardware/nvidia.nix"
-    ];
-  };
-
-  apollo = nixosSystem {
-    specialArgs = { system = "x86_64-linux"; inherit inputs; };
-    modules = laptop
-    ++ [
-      ./apollo
-      "${sys}/hardware/nvidia.nix"
-    ];
-  };
-
-  mercurius = nixosSystem { # Email Server VPS
-    specialArgs = { system = "x86_64-linux"; inherit inputs; };
-    modules = server
-    ++ [ ./mercurius ];
-  };
+  iupiter = nixosSystem { name = "iupiter"; };
+  apollo = nixosSystem { name = "apollo"; };
+  mercurius = nixosSystem { name = "mercurius"; };
 }
