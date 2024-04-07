@@ -1,6 +1,6 @@
 {
   imports = [
-    ./core
+    ./system
     ./services
     ./hardware
     ./programs
