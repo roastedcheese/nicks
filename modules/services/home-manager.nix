@@ -19,11 +19,11 @@ in
       backupFileExtension = "bak";
       extraSpecialArgs = { inherit inputs; };
 
-      users.${username} = {
+      users.nick = {
         programs.home-manager.enable = true;
         home = {
           inherit username;
-          homeDirectory = "/home/${username}";
+          homeDirectory = "/home/nick";
           stateVersion = "23.11";
         };
       };
