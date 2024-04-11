@@ -39,6 +39,7 @@ in
     (g "hyprland")
     (g "ncmpcpp")
     (g "ags")
+    (g "thunderbird")
     
   ]))  (mkIf cfg.workstation {
     system.fonts.packages = [ (pkgs.nerdfonts.override { fonts = [ "Hack" "FiraCode" ]; }) ];

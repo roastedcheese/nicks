@@ -19,7 +19,10 @@
       gaming = true;
     };
     nixpkgs.config.allowUnfree = true;
-    hardware.nvidia.enable = true;
+    hardware = {
+      nvidia.enable = true;
+      displays."" = "2560x1440@165";
+    };
 
     services.xdg.userDirs = {
       download = "misc/Downloads";

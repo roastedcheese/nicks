@@ -44,7 +44,7 @@ in
       wayland.windowManager.hyprland = {
         enable = true;
         settings = {
-
+          monitor = builtins.attrValues (builtins.mapAttrs (n: v: "${n},${v},auto,auto") config.opt.hardware.displays);
           # fuck anime
           misc.disable_hyprland_logo = true;
 
