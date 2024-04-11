@@ -1,0 +1,44 @@
+{
+    "foot-rose-pine": {
+        "sha256": "1ffp4r0ks0xa5vqjia31j977nya6ksmjjqzpdjck6cb5b1yn3c6h",
+        "type": "file",
+        "url": "https://codeberg.org/dnkl/foot/raw/branch/master/themes/rose-pine",
+        "url_template": "https://codeberg.org/dnkl/foot/raw/branch/master/themes/rose-pine"
+    },
+    "qbt-theme": {
+        "branch": "master",
+        "description": "collection of themes for qbittorrent",
+        "homepage": "",
+        "owner": "jagannatharjun",
+        "repo": "qbt-theme",
+        "rev": "c6b93a8a0a0e00d500fd206550f2d76c33385596",
+        "sha256": "162b2a75qnjrbn3sx1agalw0i0gi67icprfyhi87c91sd5z5nrfx",
+        "type": "tarball",
+        "url": "https://github.com/jagannatharjun/qbt-theme/archive/c6b93a8a0a0e00d500fd206550f2d76c33385596.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "rose-pine-cursor": {
+        "branch": "main",
+        "description": "moment",
+        "homepage": "",
+        "owner": "roastedcheese",
+        "repo": "rose-pine-cursor",
+        "rev": "8080ba007c5796ea70f963abb7fc9324911820bb",
+        "sha256": "012x7ifk3lrb7xbd3xyd7kh5sxr46misa4h2ic3p9w7mdzx2fd5f",
+        "type": "tarball",
+        "url": "https://github.com/roastedcheese/rose-pine-cursor/archive/8080ba007c5796ea70f963abb7fc9324911820bb.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "user.js": {
+        "branch": "master",
+        "description": "Firefox privacy, security and anti-tracking: a comprehensive user.js template for configuration and hardening",
+        "homepage": "",
+        "owner": "arkenfox",
+        "repo": "user.js",
+        "rev": "33a84b608c8a1f871c6ce9c4d2b932dc57078fae",
+        "sha256": "14ibz8s0m0wfddwmd125qdx3lvsd8jpiip3c82bzfk9mxa50cvpb",
+        "type": "tarball",
+        "url": "https://github.com/arkenfox/user.js/archive/33a84b608c8a1f871c6ce9c4d2b932dc57078fae.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}
