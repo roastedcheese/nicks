@@ -25,7 +25,7 @@ in
       comment = mkPlOption "the comment plugin";
       completions = mkPlOption "the completions plugin";
       gitsigns = mkPlOption "the gitsigns plugin";
-      lspConfigenable = mkPlOption "lsp support";
+      lspConfig = mkPlOption "lsp support";
       lualine = mkPlOption "the lualine plugin";
       noneLs = mkPlOption "the none-ls plugin";
       nvimTree = mkPlOption "the nvim-tree plugin";

@@ -6,7 +6,7 @@
     nixosConfigurations = import ./hosts { inherit inputs; };
 
     lib = {
-      pins = import ./npins;
+      niv = import ./nix/sources.nix;
     };
   };
 

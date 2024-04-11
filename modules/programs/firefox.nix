@@ -52,7 +52,7 @@ let
     };
   };
 
-  overrides = (builtins.readFile (inputs.self.lib.pins."user.js".outPath + "/user.js")) + ''
+  overrides = (builtins.readFile (inputs.self.lib.niv."user.js" + "/user.js")) + ''
     user_pref("_user.js.parrot", "NIX: The parrot is finally home"); // Test pref for home-manager overrides
     user_pref("browser.search.suggest.enabled", true);
     user_pref("browser.urlbar.suggest.searches", true);

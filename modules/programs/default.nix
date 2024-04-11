@@ -1,18 +1,26 @@
 { lib, config, pkgs, ... }:
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption optional;
   cfg = config.opt.programs;
 in 
 {
   imports = [
     ./gpg.nix
-    ./fonts.nix
     ./hyprland
     ./nvim
     ./git.nix
     ./fish.nix
     ./firefox.nix
     ./fish.nix
+    ./eza.nix
+    ./foot.nix
+    ./ncmpcpp.nix
+    ./mpv.nix
+    ./gaming.nix
+    ./qbittorrent.nix
+    ./starship.nix
+    ./nicotineplus.nix
+    ./ags
   ];
 
   options.opt.programs = {
@@ -20,7 +28,6 @@ in
     element.enable = mkEnableOption "element desktop";
   };
 
-  config.home-manager.users.${config.opt.system.username}.home = {
-    packages = (mkIf cfg.thunderbird.enable [ pkgs.thunderbird ]) // (mkIf cfg.element.enable [ pkgs.element-desktop ]);
-  };
+  config.opt.home.packages = with pkgs; [ niv tree zip ] ++ (optional cfg.thunderbird.enable [ pkgs.thunderbird ]) 
+  ++ (optional cfg.element.enable [ pkgs.element-desktop ]);
 }

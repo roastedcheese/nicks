@@ -7,9 +7,15 @@ in
 {
   imports = [ inputs.hm.nixosModules.home-manager ];
 
-  options.opt.home-manager.enable = mkOption { 
-    type = types.bool;
-    default = true;
+  options.opt= {
+    home.packages = mkOption {
+      type = types.listOf types.package;
+      default = [];
+    };
+    home-manager.enable = mkOption { 
+      type = types.bool;
+      default = true;
+    };
   };
 
   config = mkIf cfg.enable {
@@ -19,11 +25,12 @@ in
       backupFileExtension = "bak";
       extraSpecialArgs = { inherit inputs; };
 
-      users.nick = {
+      users.${username} = {
         programs.home-manager.enable = true;
         home = {
           inherit username;
-          homeDirectory = "/home/nick";
+          packages = config.opt.home.packages;
+          homeDirectory = "/home/${username}";
           stateVersion = "23.11";
         };
       };

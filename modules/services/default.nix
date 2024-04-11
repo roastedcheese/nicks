@@ -7,5 +7,6 @@
     ./stubby.nix
     ./home-manager.nix
     ./xdg.nix
+    ./gtk.nix
   ];
 }

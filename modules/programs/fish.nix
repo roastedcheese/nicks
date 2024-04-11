@@ -36,7 +36,7 @@ in
           v = "$EDITOR";
 
 
-          update = "nix flake update; npins upgrade";
+          update = "nix flake update; niv update";
 
           grep = "grep --color=auto";
           diff = "diff --color=auto";

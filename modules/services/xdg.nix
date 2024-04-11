@@ -1,6 +1,6 @@
 { lib, config, pkgs, ... }:
 let
-  inherit (lib) mkOption types mkEnableOption;
+  inherit (lib) mkOption types mkEnableOption mkIf;
   mkDirOption = name: mkOption {
     type = with types; nullOr (coercedTo path toString str);
     default = name;
@@ -33,7 +33,7 @@ in
         exec = "${pkgs.firefox}/bin/firefox -P logins";
       };
 
-      steam = {
+      steam = mkIf config.opt.programs.gaming.steam {
         name = "Steam";
         type = "Application";
         exec = "${pkgs.steam}/bin/steam";

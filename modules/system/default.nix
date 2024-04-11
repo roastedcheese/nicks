@@ -5,7 +5,9 @@ in
 {
   imports = [
     ./security.nix 
+    ./fonts.nix
     ./nix.nix
+    ./roles.nix
   ];
 
   options.opt.system = {

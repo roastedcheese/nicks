@@ -1,14 +1,13 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 let
-  inherit (lib) mkOption types mkIf;
+  inherit (lib) mkIf mkEnableOption;
+  cfg = config.opt.services.pipewire;
 in 
 {
-  options.opt.services.pipewire.enable = mkOption {
-    type = types.bool;
-    default = true;
-  };
+  options.opt.services.pipewire.enable = mkEnableOption "PipeWire sound server";
 
-  config = mkIf config.opt.services.pipewire.enable {
+  config = mkIf cfg.enable {
+    opt.home.packages = [ pkgs.pulseaudio ];
     services.pipewire = {
       enable = true;
       pulse.enable = true;

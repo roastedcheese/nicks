@@ -14,8 +14,16 @@
   };
 
   opt = {
+    system.roles = {
+      workstation = true;
+      gaming = true;
+    };
     nixpkgs.config.allowUnfree = true;
     hardware.nvidia.enable = true;
-    programs.hyprland.enable = true;
+
+    services.xdg.userDirs = {
+      download = "misc/Downloads";
+      music = "Music";
+    };
   };
 }

@@ -35,10 +35,11 @@ in
         target = "${configHome}/hypr/scripts";
       };
 
-      home.packages = [
-        inputs.hyprcontrib.packages.${pkgs.system}.grimblast
-        pkgs.rose-pine-gtk-theme
-      ];
+      home.packages = builtins.attrValues {
+          inherit (pkgs) wofi swww swaylock swayidle glib wl-clipboard copyq rose-pine-gtk-theme;
+          inherit (inputs.hyprcontrib.packages.${pkgs.system}) grimblast;
+      };
+
 
       wayland.windowManager.hyprland = {
         enable = true;
@@ -49,7 +50,6 @@ in
 
           exec-once = [
             "swww init & ${configHome}/hypr/scripts/wp.sh"
-            ''dconf write /org/gnome/desktop/interface/font-name "'Inter Nerd Font Mono'" & dconf write /org/gnome/desktop/interface/cursor-theme "'BreezeX-RoséPine'" & copyq & dconf write /org/gnome/desktop/interface/gtk-theme "'rose-pine'"''
             "swayidle -w timeout 300 '${configHome}/hypr/scripts/lock.sh'"
             "ags"
           ];

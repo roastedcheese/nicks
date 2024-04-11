@@ -1,13 +1,13 @@
 # nicks
 
-A basic NixOS and home-manager flake
+My personal NixOS and home-manager flake.
 
 ## Credits
 
-People I ~~stole from~~ was inspired by
+Flakes I ~~stole from~~ was inspired by
 
-[fufexan](https://github.com/fufexan) - most of the flake's structure
-
-[raf](https://github.com/notashelf) - cool guy even tho I can't read his flake
+[poz](https://git.jacekpoz.pl/niksos)
+[fufexan](https://github.com/fufexan/dotfiles)
+[raf](https://github.com/notashelf/nyx)
 
 The folks over on the [unofficial nix discord](https://discord.gg/RbvHtGa) for answering my stupid questions

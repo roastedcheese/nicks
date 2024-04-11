@@ -3,7 +3,7 @@ let
   inherit (lib) mkEnableOption mkIf;
 in 
 {
-  options.opt.services.ssh.enable = mkEnableOption "Wheter to enable the openssh daemon";
+  options.opt.services.ssh.enable = mkEnableOption "the openssh daemon";
 
   config = mkIf config.opt.services.ssh.enable {
     services.openssh = {
