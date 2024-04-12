@@ -2,6 +2,7 @@
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.opt.programs.fish;
+  home = config.home-manager.${config.system.username};
 in 
 {
   options.opt.programs.fish.enable = mkEnableOption "fish shell";
@@ -34,6 +35,7 @@ in
           irssi = "irssi --home=$XDG_CONFIG_HOME/irssi";
           lf = "lfub";
           v = "$EDITOR";
+          adb = "HOME=${home.xdg.dataHome}/android adb";
 
 
           update = "nix flake update; niv update";
@@ -55,6 +57,14 @@ in
           function newline --on-event fish_postexec
             echo
           end
+
+          # env vars
+          export ANDROID_USER_HOME=${home.xdg.dataHome}/android
+          export HISTFILE=${home.xdg.stateHome}/bash/history
+          export CUDA_CACHE_PATH=${home.xdg.cacheHome}/nv
+          export FCEUX_HOME=${home.xdg.configHome}/fceux
+          export GNUPGHOME=${home.xdg.dataHome}/gnupg
+
         '';
       };
     };
