@@ -49,9 +49,10 @@ in
           misc.disable_hyprland_logo = true;
 
           exec-once = [
-            "swww init & ${configHome}/hypr/scripts/wp.sh"
+            "swww-daemon & ${configHome}/hypr/scripts/wp.sh"
             "swayidle -w timeout 300 '${configHome}/hypr/scripts/lock.sh'"
             "ags"
+            "copyq"
           ];
 
           env = [
