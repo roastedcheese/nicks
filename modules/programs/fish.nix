@@ -2,7 +2,7 @@
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.opt.programs.fish;
-  home = config.home-manager.${config.system.username};
+  home = config.home-manager.users.${config.opt.system.username};
 in 
 {
   options.opt.programs.fish.enable = mkEnableOption "fish shell";
