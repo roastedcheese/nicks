@@ -1,18 +1,7 @@
 # took inspiration from @notashelf's config
-{ config, pkgs, lib, inputs, ... }:
-let
-  dovecot_fts_xapian = pkgs.dovecot_fts_xapian.overrideAttrs (new: old: {
-      src = pkgs.fetchFromGitHub {
-      owner = "grosjo";
-      repo = "fts-xapian";
-      rev = old.version;
-      sha256 = "sha256-Yd14kla33qAx4Hy0ZdE08javvki3t+hCEc3OTO6YfkQ=";
-    };
-  });
-in 
+{ config, inputs, ... }:
 {
   imports = [ inputs.snm.nixosModule ];
-  services.dovecot2.modules = lib.mkForce [ pkgs.dovecot_pigeonhole dovecot_fts_xapian ];
 
   mailserver = {
     enable = true;
