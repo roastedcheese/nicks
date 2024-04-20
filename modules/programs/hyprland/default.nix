@@ -3,6 +3,14 @@ let
   inherit (lib) mkEnableOption mkOption types mkIf;
   cfg = config.opt.programs.hyprland;
   inherit (config.home-manager.users.${config.opt.system.username}.xdg) configHome;
+  package = pkgs.hyprland.overrideAttrs (final: prev: {
+    postPatch = ''
+      # Useless 48MB default wallpapers
+      rm assets/wall*.png
+      tail -n 1 assets/meson.build > assets/meson.build
+
+    '' + prev.postPatch;
+  });
 in 
 {
   options.opt.programs.hyprland = {
@@ -25,7 +33,10 @@ in
       settings.default_session.command = "${pkgs.greetd.greetd}/bin/agreety --cmd Hyprland";
     };
 
-    programs.hyprland.enable = true;
+    programs.hyprland = {
+      inherit package;
+      enable = true;
+    };
 
     home-manager.users.${config.opt.system.username} = {
       home.file.hyprScripts = {
@@ -42,12 +53,13 @@ in
 
 
       wayland.windowManager.hyprland = {
+        inherit package;
         enable = true;
         settings = {
           monitor = builtins.attrValues (builtins.mapAttrs (n: v: "${n},${v},auto,auto") config.opt.hardware.displays);
           # fuck anime
           misc.disable_hyprland_logo = true;
-
+          general.allow_tearing = true;
           exec-once = [
             "swww-daemon & ${configHome}/hypr/scripts/wp.sh"
             "swayidle -w timeout 300 '${configHome}/hypr/scripts/lock.sh'"
