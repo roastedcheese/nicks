@@ -21,6 +21,7 @@ in
     ./starship.nix
     ./nicotineplus.nix
     ./ags
+    ./zathura.nix
   ];
 
   options.opt.programs = {
@@ -28,6 +29,6 @@ in
     element.enable = mkEnableOption "element desktop";
   };
 
-  config.opt.home.packages = with pkgs; [ niv tree zip ] ++ (optional cfg.thunderbird.enable pkgs.thunderbird) 
+  config.opt.home.packages = with pkgs; [ niv tree zip mediainfo] ++ (optional cfg.thunderbird.enable pkgs.thunderbird) 
   ++ (optional cfg.element.enable pkgs.element-desktop);
 }
