@@ -40,6 +40,7 @@ in
     (g "ncmpcpp")
     (g "ags")
     (g "thunderbird")
+    (g "zathura")
     
   ]))  (mkIf cfg.workstation {
     system.fonts.packages = [ (pkgs.nerdfonts.override { fonts = [ "Hack" "FiraCode" ]; }) ];
