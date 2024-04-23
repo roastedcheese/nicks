@@ -8,6 +8,7 @@
     inputs.agenix.nixosModules.default
   ];
 
+  opt.system.roles.headless = true;
   boot.loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -16,7 +17,7 @@
   networking = {
     hostName = "mercurius";
     domain = "roastedcheese.org";
-    firewall.allowedTCPPorts = [ 80 443 8008 8448 ];
+    firewall.allowedTCPPorts = [ 80 443 ];
   };
 
   age.secrets = {

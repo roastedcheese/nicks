@@ -193,7 +193,7 @@ in
 
             # Misc
             '', Print, exec, grimblast --notify copysave screen ~/Pictures/Screenshots/$(date "+%d-%m-%y_%H:%M:%S").png''
-            ''ctrl, Print, exec, grimblast --notify copysave area ~/Pictures/Screenshots/$(date "+%d-%m-%y_%H:%M").png''
+            ''ctrl, Print, exec, grimblast --notify --freeze copysave area ~/Pictures/Screenshots/$(date "+%d-%m-%y_%H:%M").png''
             "$mainMod SHIFT, P, exec, ~/.config/hypr/scripts/lock.sh"
             "$mainMod SHIFT, M, exec, pidof mpd || mpd; foot ncmpcpp "
             "$mainMod SHIFT, W, exec, ~/.config/hypr/scripts/wpnext.sh 9"
