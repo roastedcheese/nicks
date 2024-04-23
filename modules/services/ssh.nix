@@ -9,9 +9,11 @@ in
     services.openssh = {
       enable = true;
       ports = [ 4545 ];
+      sftpFlags = [ "-f AUTHPRIV" "-l INFO" ];
       settings = {
         PermitRootLogin = "no";
         PasswordAuthentication = false;
+        AuthenticationMethods = "publickey";
         LogLevel = "VERBOSE";
       };
     };
