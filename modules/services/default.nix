@@ -8,5 +8,6 @@
     ./home-manager.nix
     ./xdg.nix
     ./gtk.nix
+    ./mailserver.nix
   ];
 }
