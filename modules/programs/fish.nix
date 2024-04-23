@@ -12,15 +12,18 @@ in
     users.defaultUserShell = pkgs.fish;
     environment.systemPackages = [ pkgs.zip pkgs.wget ];
 
-    home-manager.users.${config.opt.system.username} = {
-      programs.fish = {
-      enable = true;
+    home-manager.users.${config.opt.system.username}.programs = {
+      ripgrep.enable = true;
+      fish = {
+        enable = true;
+
         shellAbbrs = {
           po = "poweroff";
           rb = "reboot";
           ka = "killall";
           g = "git";
           sctl = "systemctl";
+          rg = "ripgrep";
 
           rebuild = "nixos-rebuild switch --use-remote-sudo --flake ~/nicks --show-trace";
           hm = "home-manager switch --flake ~/nicks -b backup";
