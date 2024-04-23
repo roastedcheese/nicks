@@ -1,19 +1,9 @@
 # took inspiration from @notashelf's config
 { config, inputs, ... }:
 {
-  imports = [ inputs.snm.nixosModule ];
-
-  mailserver = {
+  opt.services.mailserver = {
     enable = true;
-    # mailDirectory = "/srv/storage/mail/vmail";
-    # dkimKeyDirectory = "/srv/storage/mail/dkim";
-    indexDir = "/var/index";
-    fqdn = "mail.roastedcheese.org";
-    domains = [ "roastedcheese.org" ];
-
-    enableImap = true;
-    enableImapSsl = true;
-    hierarchySeparator = "/";
+    domain = "roastedcheese.org";
 
     # A list of all login accounts. To create the password hashes, use
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
@@ -46,45 +36,5 @@
         sendOnlyRejectMessage = "no reply";
       };
     };
-
-    mailboxes = {
-      Drafts = {
-        auto = "subscribe";
-        specialUse = "Drafts";
-      };
-      Junk = {
-        auto = "subscribe";
-        specialUse = "Junk";
-      };
-      Sent = {
-        auto = "subscribe";
-        specialUse = "Sent";
-      };
-      Trash = {
-        auto = "no";
-        specialUse = "Trash";
-      };
-      Archive = {
-        auto = "subscribe";
-        specialUse = "Archive";
-      };
-    };
-
-    fullTextSearch = {
-      enable = true;
-      autoIndex = true;
-      indexAttachments = true;
-      enforced = "body";
-    };
-
-    certificateScheme = "acme";
-
-    vmailUserName = "vmail";
-    vmailGroupName = "vmail";
-
-    useFsLayout = true;
   };
-  
-  # Fix a crash on unstable
-  services.dovecot2.sieve.extensions = [ "fileinto" ];
 }
