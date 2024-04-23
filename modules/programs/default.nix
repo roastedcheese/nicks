@@ -22,6 +22,7 @@ in
     ./nicotineplus.nix
     ./ags
     ./zathura.nix
+    ./ssh.nix
   ];
 
   options.opt.programs = {
