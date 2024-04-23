@@ -24,6 +24,7 @@ in
     "services.mpd.enable"
     "services.pipewire.enable"
     "services.xdg.enable"
+    "services.gtk.enable"
     "hardware.opengl.enable"
     (g "fish")
     (g "starship")

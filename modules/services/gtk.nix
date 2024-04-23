@@ -1,6 +1,6 @@
 { lib, pkgs, config, inputs, ... }:
 let
-  inherit (lib) mkOption types mkIf;
+  inherit (lib) mkOption types mkIf mkEnableOption;
   mkGtk = n: pkg: {
     name = mkOption {
       type = types.str;
@@ -15,12 +15,13 @@ let
 in 
 {
   options.opt.services.gtk = {
+    enable = mkEnableOption "gtk";
     theme = mkGtk "rose-pine" pkgs.rose-pine-gtk-theme;
     font = mkGtk "Inter Nerd Font Mono" pkgs.rose-pine-gtk-theme;
     cursorTheme = mkGtk "BreezeX-RoséPine" null;
   };
 
-  config.home-manager.users.${config.opt.system.username} = {
+  config.home-manager.users.${config.opt.system.username} = mkIf cfg.enable {
     inherit (config.opt.services) gtk;
     dconf.settings = let
       notNull = k: mkIf (k != null) k;
