@@ -42,7 +42,7 @@ in
     (g "thunderbird")
     (g "zathura")
     
-  ]))  (mkIf cfg.workstation {
+  ])) (mkIf cfg.workstation {
     system.fonts.packages = [ (pkgs.nerdfonts.override { fonts = [ "Hack" "FiraCode" ]; }) ];
     home.packages = builtins.attrValues {
       inherit (pkgs)
