@@ -19,6 +19,7 @@ in
     (g "neovim")
     (g "eza")
     (g "starship")
+    (g "ssh")
   ]))
     (mkIf cfg.workstation (mkTrue [
     "services.mpd.enable"
@@ -27,6 +28,7 @@ in
     "services.gtk.enable"
     "hardware.opengl.enable"
     (g "fish")
+    (g "ssh")
     (g "starship")
     (g "git")
     (g "neovim")
