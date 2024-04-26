@@ -7,6 +7,7 @@ in
   options.opt.hardware.nvidia.enable = mkEnableOption "the nvidia drivers";
 
   config = mkIf cfg.enable {
+    opt.hardware.opengl.enable = true;
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia = {
       modesetting.enable = true;
