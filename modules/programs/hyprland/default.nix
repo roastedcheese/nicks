@@ -4,6 +4,13 @@ let
   cfg = config.opt.programs.hyprland;
   inherit (config.home-manager.users.${config.opt.system.username}.xdg) configHome;
   package = pkgs.hyprland.overrideAttrs (final: prev: {
+    version = "0.39.1";
+    src = pkgs.fetchFromGitHub {
+      owner = "hyprwm";
+      repo = final.pname;
+      rev = "v${final.version}";
+      hash = "sha256-Urb/njWiHYUudXpmK8EKl9Z58esTIG0PxXw5LuM2r5g=";
+    };
     postPatch = ''
       # Useless 48MB default wallpapers
       rm assets/wall*.png
@@ -56,6 +63,7 @@ in
         inherit package;
         enable = true;
         settings = {
+          debug.disable_logs = false;
           monitor = builtins.attrValues (builtins.mapAttrs (n: v: "${n},${v},auto,auto") config.opt.hardware.displays);
           # fuck anime
           misc.disable_hyprland_logo = true;
@@ -69,7 +77,7 @@ in
 
           env = [
             "XCURSOR_SIZE,24"
-            "LIBVA_DRIVER_NAME,nvidia"
+            "WLR_NO_HARDWARE_CURSORS,1"
             "XDG_SESSION_TYPE,wayland"
             "__GLX_VENDOR_LIBRARY_NAME,nvidia"
           ];

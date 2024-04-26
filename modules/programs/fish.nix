@@ -23,7 +23,6 @@ in
           ka = "killall";
           g = "git";
           sctl = "systemctl";
-          rg = "ripgrep";
 
           rebuild = "nixos-rebuild switch --use-remote-sudo --flake ~/nicks --show-trace";
           hm = "home-manager switch --flake ~/nicks -b backup";
