@@ -28,6 +28,7 @@ in
     "services.gtk.enable"
     "hardware.opengl.enable"
     (g "fish")
+    (g "yt-dlp")
     (g "ssh")
     (g "starship")
     (g "git")

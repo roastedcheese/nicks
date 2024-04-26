@@ -23,6 +23,7 @@ in
     ./ags
     ./zathura.nix
     ./ssh.nix
+    ./yt-dlp.nix
   ];
 
   options.opt.programs = {

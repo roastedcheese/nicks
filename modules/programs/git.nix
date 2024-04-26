@@ -16,6 +16,12 @@ in
         type = types.str;
         default = "RoastedCheese";
       };
+
+      key = mkOption {
+        type = types.nullOr types.str;
+        default = null;
+        description = "key used to sign commits";
+      };
     };
   };
 
@@ -33,7 +39,7 @@ in
 
     delta.enable = true;
     signing = {
-      key = "B31F6D32812D476A330F25CBACFA5BAF88B22D43";
+      inherit (cfg.user) key;
       signByDefault = true;
     };
 
