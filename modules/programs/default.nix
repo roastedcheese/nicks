@@ -24,6 +24,7 @@ in
     ./zathura.nix
     ./ssh.nix
     ./yt-dlp.nix
+    ./beets.nix
   ];
 
   options.opt.programs = {

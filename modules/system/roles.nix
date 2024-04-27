@@ -29,6 +29,7 @@ in
     "hardware.opengl.enable"
     (g "fish")
     (g "yt-dlp")
+    (g "beets")
     (g "ssh")
     (g "starship")
     (g "git")
