@@ -1,4 +1,4 @@
-{ options, config, lib, ... }:
+{ config, lib, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.opt.programs.beets;
