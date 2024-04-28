@@ -1,14 +1,25 @@
-{ lib, config, ... }:
+{ lib, pkgs, config, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.opt.programs.ncmpcpp;
   home = config.home-manager.users.${config.opt.system.username};
+  package = (pkgs.ncmpcpp.overrideAttrs (f: p: {
+    src = pkgs.fetchFromGitHub {
+      owner = "ncmpcpp";
+      repo = "ncmpcpp";
+      rev = "dc46f7a49b5bd0fdd2b3b181ece88a3fb8482dc5";
+      sha256 = "sha256-3fyW5zhJxNVFBXNcdWhXR2A0W6mG2dQ0YSeZARsCrUE=";
+    };
+    preConfigure = "./autogen.sh";
+    nativeBuildInputs = with pkgs; [ m4 autoconf automake libtool ] ++ p.nativeBuildInputs;
+  })).override { visualizerSupport = true; };
 in 
 {
   options.opt.programs.ncmpcpp.enable = mkEnableOption "NCurses Music Player Client (Plus Plus)";
   
   config.home-manager.users.${config.opt.system.username}.programs.ncmpcpp = mkIf cfg.enable {
     enable = true;
+    package = package;
 
     mpdMusicDir = home.xdg.userDirs.music;
 
@@ -21,7 +32,7 @@ in
       # song_window_title_format = "Music"
       song_window_title_format = "{%a - }{%t}|{%f}";
       statusbar_visibility = "yes";
-      header_visibility = "no";
+      header_visibility = "yes";
       titles_visibility = "no";
 
       # Song list #
@@ -29,7 +40,7 @@ in
       song_list_format = "  %t $R%a %l  ";
       song_columns_list_format = "(53)[white]{tr} (45)[blue]{a}";
 
-      song_library_format = "{{%a - %t} (%b)}|{%f}";
+      song_library_format = "{%a - %t}|{%f}";
 
       # Colors #
       main_window_color = "blue";
