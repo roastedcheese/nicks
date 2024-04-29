@@ -84,10 +84,10 @@ in
 
           input = {
             kb_layout = "us,it";
-
             follow_mouse = 1;
-
             touchpad.natural_scroll = "no";
+            accel_profile = "flat";
+            sensitivity = 0.4;
           };
 
           general = {
