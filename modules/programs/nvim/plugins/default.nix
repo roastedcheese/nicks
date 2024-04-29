@@ -2,7 +2,6 @@
   imports = [
     ./alpha.nix
     ./autopairs.nix
-    ./barbar.nix
     ./colorizer.nix
     ./comment.nix
     ./completions.nix
@@ -14,5 +13,6 @@
     ./rosePine.nix
     ./telescope.nix
     ./treesitter.nix
+    ./bufferline.nix
   ];
 }
