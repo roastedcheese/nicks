@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, ... }:
 let
   cfg = config.opt.programs.neovim;
   inherit (lib) strings mkOption mkEnableOption types mkIf;
@@ -20,7 +20,7 @@ in
     plugins = {
       alpha = mkPlOption "the alpha.nvim dashboard";
       autopairs = mkPlOption "the nvim-autopairs plugin";
-      barbar = mkPlOption "the barbar plugin";
+      bufferline = mkPlOption "the bufferline plugin";
       colorizer = mkPlOption "the colorizer plugin";
       comment = mkPlOption "the comment plugin";
       completions = mkPlOption "the completions plugin";
@@ -44,6 +44,9 @@ in
       in ''
         local opt = vim.opt
         local au = vim.api.nvim_create_autocmd
+        local map = vim.keymap.set
+        local opts = { noremap = true, silent = true }
+
 
         opt.expandtab = true
         opt.tabstop = 2
@@ -52,7 +55,7 @@ in
         opt.number = true
         opt.undofile = true
         opt.clipboard = "unnamedplus" -- use system clipboard
-        opt.termguicolors = true -- required for colorizer to work
+        opt.termguicolors = true -- required for colorizer (and others) to work
 
         au({"VimLeave"}, {
           pattern = {"*"},
@@ -65,6 +68,9 @@ in
         })
 
         vim.g.mapleader = " "
+
+        map('n', '<leader>t', ':term<CR>', opts)
+        map('t', '<C-n>', '<C-\\><C-n>', opts)
       '';
     };
   };
