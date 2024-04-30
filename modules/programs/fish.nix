@@ -23,9 +23,9 @@ in
           ka = "killall";
           g = "git";
           sctl = "systemctl";
+          grep = "rg";
 
           rebuild = "nixos-rebuild switch --use-remote-sudo --flake ~/nicks --show-trace";
-          hm = "home-manager switch --flake ~/nicks -b backup";
         };
 
         shellAliases = {
@@ -42,7 +42,6 @@ in
 
           update = "nix flake update; niv update";
 
-          grep = "grep --color=auto";
           diff = "diff --color=auto";
         };
 

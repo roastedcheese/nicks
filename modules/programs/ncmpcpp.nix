@@ -27,6 +27,7 @@ in
       ncmpcpp_directory = "${home.xdg.dataHome}/ncmpcpp";
       lyrics_directory = "${home.xdg.dataHome}/ncmpcpp/lyrics";
       media_library_primary_tag = "album_artist";
+      lyrics_fetchers = "genius, azlyrics, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet";
 
       # Window #
       # song_window_title_format = "Music"
