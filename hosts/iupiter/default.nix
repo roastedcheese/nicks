@@ -34,9 +34,10 @@
   fileSystems.media = {
     device = "/dev/mapper/media";
     mountPoint = "/home/${config.opt.system.username}/Media";
+    fsType = "ext4";
     encrypted = {
       enable = true;
-      blkDev = "/dev/disk/by-uuid/1aa6fea0-da16-4ffe-b58b-875197155793";
+      blkDev = "/dev/disk/by-uuid/655e6a3b-f08e-495e-aa53-0d8e6fb33943";
       label = "media";
       keyFile = "/mnt-root/etc/media.key";
     };
