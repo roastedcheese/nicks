@@ -17,6 +17,7 @@ let
         urls = [{ template = "https://yewtu.be/search?q={searchTerms}"; }];
         iconUpdateURL = "https://yewtu.be/favicon-32x32.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
+        definedAliases = [ "@iv" ];
       };
 
       "Searx" = {

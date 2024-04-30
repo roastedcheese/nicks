@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -27,6 +28,17 @@
     services.xdg.userDirs = {
       download = "misc/Downloads";
       music = "Music";
+    };
+  };
+
+  fileSystems.media = {
+    device = "/dev/mapper/media";
+    mountPoint = "/home/${config.opt.system.username}/Media";
+    encrypted = {
+      enable = true;
+      blkDev = "/dev/disk/by-uuid/1aa6fea0-da16-4ffe-b58b-875197155793";
+      label = "media";
+      keyFile = "/mnt-root/etc/media.key";
     };
   };
 }
