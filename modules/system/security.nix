@@ -1,6 +1,6 @@
 # security tweaks stolen from @fufexan
 # security tweaks borrowed from @hlissner
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 {
 
   boot = {
@@ -57,6 +57,13 @@
   security = {
     # allow wayland lockers to unlock the screen
     pam.services.swaylock.text = "auth include login";
+    sudo = {
+      execWheelOnly = true;
+      package = pkgs.sudo.override { withInsults = true; };
+      extraConfig = ''
+        Defaults insults
+      '';
+    };
 
     # userland niceness
     rtkit.enable = true;
