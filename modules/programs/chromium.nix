@@ -13,6 +13,7 @@ in
     programs.chromium = mkIf cfg.enable {
       enable = true;
       package = pkgs.brave;
+      commandLineArgs = [ "--ozone-platform=wayland" ];
       extensions = mkIf cfg.vencord [
         {
           id = "cbghhgpcnddeihccjmnadmkaejncjndb";
