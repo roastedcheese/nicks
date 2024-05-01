@@ -5,6 +5,7 @@ let
 in 
 {
   imports = [
+    ./chromium.nix
     ./gpg.nix
     ./hyprland
     ./nvim
