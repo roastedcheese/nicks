@@ -24,21 +24,8 @@ in
     };
   };
 
-  config.home-manager.users.${config.opt.system.username}.xdg = {
+  config.home-manager.users.${config.opt.system.username}.xdg = mkIf cfg.enable {
     enable = true;
-    desktopEntries = {
-      firefox-logins = {
-        name = "Firefox (logins)";
-        type = "Application";
-        exec = "${pkgs.firefox}/bin/firefox -P logins";
-      };
-
-      steam = mkIf config.opt.programs.gaming.steam {
-        name = "Steam";
-        type = "Application";
-        exec = "${pkgs.steam}/bin/steam";
-      };
-    };
 
     userDirs = (builtins.mapAttrs (name: value: "${home.home.homeDirectory}/${value}") cfg.userDirs) // { enable = true; };
   };

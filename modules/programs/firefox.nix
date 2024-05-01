@@ -90,27 +90,37 @@ in
 {
   options.opt.programs.firefox.enable = mkEnableOption "firefox";
 
-  config.home-manager.users.${config.opt.system.username}.programs.firefox = mkIf cfg.enable {
-    enable = true;
-    profiles = {
-      schizo = { 
-        isDefault = true;
-        inherit extensions search;
+  config.home-manager.users.${config.opt.system.username} = {
+    programs.firefox = mkIf cfg.enable {
+      enable = true;
+      profiles = {
+        schizo = { 
+          isDefault = true;
+          inherit extensions search;
 
-        extraConfig = overrides + ''
-          user_pref("media.peerconnection.ice.no_host", true);
-        ''; # Overrides for arkenfox's user.js, we have to set them with extraConfig because otherwise they'll end up before the other options
+          extraConfig = overrides + ''
+            user_pref("media.peerconnection.ice.no_host", true);
+          ''; # Overrides for arkenfox's user.js, we have to set them with extraConfig because otherwise they'll end up before the other options
+        };
+        
+        logins = { # Slightly less schizophrenic, only used for certain websites
+          id = 1;
+          inherit search extensions;
+
+          extraConfig = overrides + ''
+            user_pref("privacy.resistFingerprinting", false);
+            user_pref("privacy.sanitize.sanitizeOnShutdown", false);
+            user_pref("privacy.antitracking.enableWebcompat", false);
+          '';
+        };
       };
-      
-      logins = { # Slightly less schizophrenic, only used for certain websites
-        id = 1;
-        inherit search extensions;
+    };
 
-        extraConfig = overrides + ''
-          user_pref("privacy.resistFingerprinting", false);
-          user_pref("privacy.sanitize.sanitizeOnShutdown", false);
-          user_pref("privacy.antitracking.enableWebcompat", false);
-        '';
+    xdg.desktopEntries = {
+      firefox-logins = {
+        name = "Firefox (logins)";
+        type = "Application";
+        exec = "${pkgs.firefox}/bin/firefox -P logins";
       };
     };
   };
