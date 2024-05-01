@@ -1,0 +1,24 @@
+{ lib, config, pkgs, ... }:
+let
+  inherit (lib) mkEnableOption mkIf ;
+  cfg = config.opt.programs.chromium;
+in 
+{
+  options.opt.programs.chromium = {
+    enable = mkEnableOption "the chromium browser";
+    vencord = mkEnableOption "the vencord extension for chromium";
+  };
+
+  config.home-manager.users.${config.opt.system.username} = {
+    programs.chromium = mkIf cfg.enable {
+      enable = true;
+      package = pkgs.brave;
+      extensions = mkIf cfg.vencord [
+        {
+          id = "cbghhgpcnddeihccjmnadmkaejncjndb";
+          version = "1.8.0";
+        }
+      ];
+    };
+  };
+}
