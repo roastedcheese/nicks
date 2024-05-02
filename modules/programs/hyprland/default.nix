@@ -47,23 +47,19 @@ in
       };
 
       home.packages = builtins.attrValues {
-          inherit (pkgs) wofi swww swaylock swayidle glib wl-clipboard copyq rose-pine-gtk-theme;
+          inherit (pkgs) wofi swww swaylock swayidle glib wl-clipboard copyq rose-pine-gtk-theme jq;
           inherit (inputs.hyprcontrib.packages.${pkgs.system}) grimblast;
       };
 
 
       wayland.windowManager.hyprland = {
-        inherit package;
         enable = true;
+        inherit package;
         settings = {
           debug.disable_logs = false;
-          monitor = builtins.attrValues (builtins.mapAttrs (n: v: "${n},${v},auto,auto") config.opt.hardware.displays)
-            # TODO: Remove this if upgrading to 545+
-            ++ lib.optional config.opt.hardware.nvidia.enable "Unknown-1,disable";
-
-          # fuck anime
-          misc.disable_hyprland_logo = true;
+          misc.disable_hyprland_logo = true; # fuck anime
           general.allow_tearing = true;
+
           exec-once = [
             "swww-daemon & ${configHome}/hypr/scripts/wp.sh"
             "swayidle -w timeout 300 '${configHome}/hypr/scripts/lock.sh'"
@@ -71,12 +67,22 @@ in
             "copyq"
           ];
 
+          general = {
+            gaps_in = cfg.settings.gapsIn;
+            gaps_out = cfg.settings.gapsOut;
+            border_size = 0;
+          };
+
           env = [
             "XCURSOR_SIZE,24"
           ] ++ (lib.optionals config.opt.hardware.nvidia.enable [
             "XDG_SESSION_TYPE,wayland"
             "__GLX_VENDOR_LIBRARY_NAME,nvidia"
           ]);
+
+          monitor = builtins.attrValues (builtins.mapAttrs (n: v: "${n},${v},auto,auto") config.opt.hardware.displays)
+            # TODO: Remove this if upgrading to 545+
+            ++ lib.optional config.opt.hardware.nvidia.enable "Unknown-1,disable";
 
           input = {
             kb_layout = "us,it";
@@ -86,21 +92,8 @@ in
             sensitivity = 0.4;
           };
 
-          general = {
-            gaps_in = cfg.settings.gapsIn;
-            gaps_out = cfg.settings.gapsOut;
-            border_size = 0;
-          };
-
           decoration = {
             rounding = 3;
-            
-            # blur = {
-            #   enabled = true;
-            #   size = 12;
-            #   passes = 3;
-            # };
-
             drop_shadow = "yes";
             shadow_range = 4;
             shadow_render_power = 3;
@@ -109,7 +102,6 @@ in
 
           animations = {
             enabled = "yes";
-
             bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
 
             animation = [
@@ -166,6 +158,8 @@ in
             "$mainMod, 8, workspace, 8"
             "$mainMod, 9, workspace, 9"
             "$mainMod, 0, workspace, 10"
+            "$mainMod, S, togglespecialworkspace, magic"
+            "$mainMod CTRL, M, togglespecialworkspace, min"
 
             # Move active window to a workspace with mainMod + SHIFT + [0-9]
             "$mainMod SHIFT, 1, movetoworkspace, 1"
@@ -178,6 +172,8 @@ in
             "$mainMod SHIFT, 8, movetoworkspace, 8"
             "$mainMod SHIFT, 9, movetoworkspace, 9"
             "$mainMod SHIFT, 0, movetoworkspace, 10"
+            "$mainMod SHIFT, S, movetoworkspace, special:magic"
+            "$mainMod, M, exec, bash ~/.config/hypr/scripts/minimize.sh special:min"
 
             # Scroll through existing workspaces with mainMod + scroll
             "$mainMod, mouse_down, workspace, e+1"
