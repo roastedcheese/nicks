@@ -3,14 +3,7 @@ let
   inherit (lib) mkEnableOption mkOption types mkIf;
   cfg = config.opt.programs.hyprland;
   inherit (config.home-manager.users.${config.opt.system.username}.xdg) configHome;
-  package = pkgs.hyprland.overrideAttrs (final: prev: {
-    version = "0.39.1";
-    src = pkgs.fetchFromGitHub {
-      owner = "hyprwm";
-      repo = final.pname;
-      rev = "v${final.version}";
-      hash = "sha256-Urb/njWiHYUudXpmK8EKl9Z58esTIG0PxXw5LuM2r5g=";
-    };
+  package = inputs.hyprland.packages.${pkgs.system}.default.overrideAttrs (final: prev: {
     postPatch = ''
       # Useless 48MB default wallpapers
       rm assets/wall*.png
@@ -64,7 +57,10 @@ in
         enable = true;
         settings = {
           debug.disable_logs = false;
-          monitor = builtins.attrValues (builtins.mapAttrs (n: v: "${n},${v},auto,auto") config.opt.hardware.displays);
+          monitor = builtins.attrValues (builtins.mapAttrs (n: v: "${n},${v},auto,auto") config.opt.hardware.displays)
+            # TODO: Remove this if upgrading to 545+
+            ++ lib.optional config.opt.hardware.nvidia.enable "Unknown-1,disable";
+
           # fuck anime
           misc.disable_hyprland_logo = true;
           general.allow_tearing = true;
@@ -77,10 +73,10 @@ in
 
           env = [
             "XCURSOR_SIZE,24"
-            "WLR_NO_HARDWARE_CURSORS,1"
+          ] ++ (lib.optionals config.opt.hardware.nvidia.enable [
             "XDG_SESSION_TYPE,wayland"
             "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-          ];
+          ]);
 
           input = {
             kb_layout = "us,it";
