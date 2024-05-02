@@ -9,6 +9,8 @@ in
   config = mkIf cfg.enable {
     opt.hardware.opengl.enable = true;
     services.xserver.videoDrivers = [ "nvidia" ];
+    boot.kernelParams = mkIf config.opt.programs.hyprland.enable [ "nvidia-drm.fbdev=1" "nvidia_drm.modeset=1" ]; # Fixes ghost workspace issue
+
     hardware.nvidia = {
       modesetting.enable = true;
       powerManagement.enable = mkDefault true; # nvidia power management, experimental and can cause sleep/suspend to fail.
@@ -20,6 +22,7 @@ in
               url = "https://github.com/gentoo/gentoo/raw/c64caf53/x11-drivers/nvidia-drivers/files/nvidia-drivers-470.223.02-gpl-pfn_valid.patch";
               hash = "sha256-eZiQQp2S/asE7MfGvfe6dA/kdCvek9SYa/FFGp24dVg=";
           };
+
           linux_6_8_patch = pkgs.fetchpatch {
               url = "https://gist.github.com/joanbm/24f4d4f4ec69f0c37038a6cc9d132b43/raw/bacb9bf3617529d54cb9a57ae8dc9f29b41d4362/nvidia-470xx-fix-linux-6.8.patch";
               hash = "sha256-SPLC2uGdjHSy4h9i3YFjQ6se6OCdWYW6tlC0CtqmP50=";
