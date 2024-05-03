@@ -25,7 +25,7 @@ in
           sctl = "systemctl";
           grep = "rg";
 
-          rebuild = "nixos-rebuild switch --use-remote-sudo --flake ~/nicks --show-trace";
+          rebuild = "nh os switch";
         };
 
         shellAliases = {

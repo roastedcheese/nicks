@@ -8,6 +8,7 @@ in
     ./chromium.nix
     ./gpg.nix
     ./hyprland
+    ./nh.nix
     ./nvim
     ./git.nix
     ./fish.nix

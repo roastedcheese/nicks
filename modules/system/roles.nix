@@ -14,6 +14,7 @@ in
 
   config.opt = lib.mkMerge [(mkIf cfg.headless (mkTrue [
     "services.ssh.enable"
+    (g "nh")
     (g "fish")
     (g "git")
     (g "neovim")
@@ -27,6 +28,7 @@ in
     "services.xdg.enable"
     "services.gtk.enable"
     "hardware.opengl.enable"
+    (g "nh")
     (g "fish")
     (g "yt-dlp")
     (g "beets")
