@@ -14,12 +14,12 @@
     hostName = "iupiter";
   };
 
+  nixpkgs.config.allowUnfree = true;
   opt = {
     system.roles = {
       workstation = true;
       gaming = true;
     };
-    nixpkgs.config.allowUnfree = true;
     hardware = {
       nvidia.enable = true;
       displays."" = "2560x1440@165";
