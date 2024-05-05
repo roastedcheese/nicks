@@ -25,6 +25,7 @@ in
     (mkIf cfg.workstation (mkTrue [
     "services.mpd.enable"
     "services.pipewire.enable"
+    "services.pipewire.noiseTorch"
     "services.xdg.enable"
     "services.gtk.enable"
     "hardware.opengl.enable"
