@@ -21,11 +21,12 @@ in
     users.users.${config.opt.system.username} = {
        isNormalUser = true;
        extraGroups = [ "wheel" ]; 
-
     };
     ## Global unconditional stuff we're always gonna need
 
     networking.dhcpcd.wait = "background"; # TODO: write networking module
+    services.localtimed.enable = true;
+    services.geoclue2.enable = true;
 
     # Until this isn't fixed with flakes https://github.com/NixOS/nixpkgs/issues/171054
     programs.command-not-found.enable = false;
