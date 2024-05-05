@@ -12,11 +12,18 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/a43dc40e-0c0e-41f5-9edb-4baa86d25b53";
-      fsType = "ext4";
+    { device = "/dev/disk/by-uuid/64283b96-81ba-472d-a937-0ba554729a88";
+      fsType = "btrfs";
+      options = [ "subvol=root" ];
     };
 
   boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/c64aaa5e-0f90-49c6-b2cc-394419d15c77";
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/64283b96-81ba-472d-a937-0ba554729a88";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
+    };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/3E88-8B94";

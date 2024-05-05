@@ -36,15 +36,15 @@
     };
   };
 
-  fileSystems.media = {
-    device = "/dev/mapper/media";
-    mountPoint = "/home/${config.opt.system.username}/Media";
-    fsType = "ext4";
-    encrypted = {
-      enable = true;
-      blkDev = "/dev/disk/by-uuid/655e6a3b-f08e-495e-aa53-0d8e6fb33943";
-      label = "media";
-      keyFile = "/mnt-root/etc/media.key";
-    };
-  };
+ fileSystems.media = {
+   device = "/dev/mapper/media";
+   mountPoint = "/home/${config.opt.system.username}/Media";
+   fsType = "ext4";
+   encrypted = {
+     enable = true;
+     blkDev = "/dev/disk/by-uuid/655e6a3b-f08e-495e-aa53-0d8e6fb33943";
+     label = "media";
+     keyFile = "/mnt-root/etc/media.key";
+   };
+ };
 }
