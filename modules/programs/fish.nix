@@ -23,9 +23,13 @@ in
           ka = "killall";
           g = "git";
           sctl = "systemctl";
+          sctlu = "systemctl --user";
+          jctl = "journalctl";
+          jctlu = "journalctl --user";
           grep = "rg";
 
           rebuild = "nh os switch";
+          nh = "nh os switch";
         };
 
         shellAliases = {
