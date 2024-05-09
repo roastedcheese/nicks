@@ -10,7 +10,7 @@ in
   config = mkIf cfg.enable {
     programs.fish.enable = true;
     users.defaultUserShell = pkgs.fish;
-    environment.systemPackages = [ pkgs.zip pkgs.wget ];
+    environment.systemPackages = with pkgs; [ zip wget killall ];
 
     home-manager.users.${config.opt.system.username}.programs = {
       ripgrep.enable = true;
