@@ -1,4 +1,7 @@
-{ inputs, config, ... }:
+{ inputs, config, pkgs, ... }:
+let
+  user = config.opt.system.username;
+in 
 {
   imports = [ inputs.disko.nixosModules.disko];
 
@@ -53,20 +56,21 @@
 
       media = {
         type = "disk";
-        device = "/dev/disk/by-id/0x5000c500e324ad19";
+        device = "/dev/disk/by-id/wwn-0x5000c500e324ad19";
         content = {
           type = "gpt";
           partitions = {
             media = {
+              start = "1M";
               size = "100%";
+              device = "/dev/disk/by-id/wwn-0x5000c500e324ad19-part2";
               content = {
                 type = "luks";
+                initrdUnlock = false;
                 name = "media";
-                settings.keyFile = "/etc/media.key";
                 content = {
                   type = "filesystem";
                   format = "ext4";
-                  mountpoint = "/home/${config.opt.system.username}/Media";
                 };
               };
             };
@@ -75,4 +79,17 @@
       };
     };
   };
+
+  environment.etc.crypttab.text = ''
+    media /dev/disk/by-id/wwn-0x5000c500e324ad19-part2 /etc/media.key luks
+  '';
+
+  systemd.mounts = [
+    {
+      wantedBy = [ "cryptsetup.target" ];
+      what = "/dev/mapper/media";
+      where = "/home/${user}/Media";
+      type = "ext4";
+    }
+  ];
 }
