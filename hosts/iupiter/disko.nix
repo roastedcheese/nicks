@@ -38,6 +38,7 @@ in
 
                   subvolumes = {
                     root.mountpoint = "/";
+                    persist.mountpoint = "/persist";
                     home = {
                       mountpoint = "/home";
                       mountOptions = [ "compress=zstd" ];
@@ -53,32 +54,10 @@ in
           };
         };
       };
-
-      media = {
-        type = "disk";
-        device = "/dev/disk/by-id/wwn-0x5000c500e324ad19";
-        content = {
-          type = "gpt";
-          partitions = {
-            media = {
-              start = "1M";
-              size = "100%";
-              device = "/dev/disk/by-id/wwn-0x5000c500e324ad19-part2";
-              content = {
-                type = "luks";
-                initrdUnlock = false;
-                name = "media";
-                content = {
-                  type = "filesystem";
-                  format = "ext4";
-                };
-              };
-            };
-          };
-        };
-      };
     };
   };
+
+
 
   environment.etc.crypttab.text = ''
     media /dev/disk/by-id/wwn-0x5000c500e324ad19-part2 /etc/media.key luks
