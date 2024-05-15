@@ -38,7 +38,6 @@ in
 
                   subvolumes = {
                     root.mountpoint = "/";
-                    persist.mountpoint = "/persist";
                     home = {
                       mountpoint = "/home";
                       mountOptions = [ "compress=zstd" ];
@@ -58,14 +57,13 @@ in
   };
 
 
-
   environment.etc.crypttab.text = ''
     media /dev/disk/by-id/wwn-0x5000c500e324ad19-part2 /etc/media.key luks
   '';
 
   systemd.mounts = [
     {
-      wantedBy = [ "cryptsetup.target" ];
+      wantedBy = [ "multi-user.target" ];
       what = "/dev/mapper/media";
       where = "/home/${user}/Media";
       type = "ext4";
