@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, ... }:
 let
   user = config.opt.system.username;
 in 
@@ -38,6 +38,10 @@ in
 
                   subvolumes = {
                     root.mountpoint = "/";
+                    "/persist" = {
+                      mountOptions = [ "subvol=persist" ];
+                      mountpoint = "/persist";
+                    };
                     home = {
                       mountpoint = "/home";
                       mountOptions = [ "compress=zstd" ];
@@ -56,6 +60,7 @@ in
     };
   };
 
+  fileSystems."/persist".neededForBoot = true;
 
   environment.etc.crypttab.text = ''
     media /dev/disk/by-id/wwn-0x5000c500e324ad19-part2 /etc/media.key luks
