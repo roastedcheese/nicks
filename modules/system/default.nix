@@ -8,6 +8,7 @@ in
     ./fonts.nix
     ./nix.nix
     ./roles.nix
+    ./impermanence.nix
   ];
 
   options.opt.system = {
