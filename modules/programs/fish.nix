@@ -28,8 +28,7 @@ in
           jctlu = "journalctl --user";
           grep = "rg";
 
-          rebuild = "nh os switch";
-          nh = "nh os switch";
+          rebuild = "nixos-rebuild switch --use-remote-sudo --flake ~/nicks --show-trace";
         };
 
         shellAliases = {
@@ -56,6 +55,14 @@ in
 
           function fish_user_key_bindings
             fish_vi_key_bindings
+          end
+
+          function nh
+            if test -z "$argv"
+              command nh os switch
+            else
+              command nh $argv
+            end
           end
 
           # Starship's newline is stupid
