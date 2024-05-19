@@ -1,6 +1,6 @@
 { lib, config, inputs, ... }:
 let
-  inherit (lib) mkOption mkEnableOption optionals types;
+  inherit (lib) mkOption mkEnableOption optionals types mkIf;
   cfg = config.opt.system.impermanence;
 in 
 {
@@ -56,7 +56,7 @@ in
     };
   };
 
-  config = {
+  config = mkIf cfg.enable {
     # Wipe root subvolume on boot
     boot.initrd.postDeviceCommands = lib.mkAfter ''
       mkdir /btrfs_tmp
