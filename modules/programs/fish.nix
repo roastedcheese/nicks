@@ -40,7 +40,7 @@ in
           irssi = "irssi --home=$XDG_CONFIG_HOME/irssi";
           lf = "lfub";
           v = "$EDITOR";
-          adb = "HOME=${home.xdg.dataHome}/android adb";
+          adb = "HOME=${home.xdg.dataHome}/android command adb";
 
 
           update = "nix flake update; niv update";
