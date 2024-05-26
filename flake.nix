@@ -52,5 +52,10 @@
     };
 
     impermanence.url = "github:nix-community/impermanence";
+
+    rock = {
+      url = "github:aciceri/rock5b-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }

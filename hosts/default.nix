@@ -13,4 +13,5 @@ in {
   iupiter = nixosSystem { name = "iupiter"; };
   apollo = nixosSystem { name = "apollo"; };
   mercurius = nixosSystem { name = "mercurius"; };
+  neptunus = nixosSystem { name = "neptunus"; arch = "aarch64-linux"; };
 }
