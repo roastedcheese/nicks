@@ -13,28 +13,7 @@
     package = inputs.rock.packages.${pkgs.system}.fan-control;
   };
 
-  users = {
-    mutableUsers = false;
-    users = {
-      nick.hashedPasswordFile = "/persist/passwords/nick";
-      root.hashedPasswordFile = "/persist/passwords/root";
-    };
-  };
-
-  opt.system = {
-    roles.headless = true;
-    impermanence = {
-      enable = true;
-      root = {
-        device = "/dev/disk/by-partlabel/disk-root-root";
-        subvolume = "root";
-      };
-      persistent = "/persist";
-      directories = [ 
-        "/home"
-      ];
-    };
-  };
+  opt.system.roles.headless = true;
 
   boot = {
     loader = {
