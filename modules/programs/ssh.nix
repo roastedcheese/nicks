@@ -22,6 +22,11 @@ in
         port = 4545;
         user = "nick";
       };
+      "neptunus" = {
+        hostname = "192.168.1.99";
+        port = 4545;
+        user = "nick";
+      };
     };
   };
 }
