@@ -48,7 +48,9 @@ in
 
   config.mailserver = mkIf cfg.enable {
     enable = true;
-    indexDir = "/var/index";
+    mailDirectory = "/var/mail/vmail";
+    indexDir = "/var/mail/index";
+    sieveDirectory = "/var/mail/sieve";
     fqdn = "mail.${cfg.domain}";
     domains = [ cfg.domain ];
 
