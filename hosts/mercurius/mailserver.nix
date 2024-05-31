@@ -1,6 +1,6 @@
-# took inspiration from @notashelf's config
-{ config, inputs, ... }:
+{ config, ... }:
 {
+  users.users.${config.opt.system.username}.extraGroups = [ "vmail" ];
   opt.services.mailserver = {
     enable = true;
     domain = "roastedcheese.org";

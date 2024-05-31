@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix 
@@ -9,10 +9,12 @@
   ];
 
   opt.system.roles.headless = true;
+  services.openssh.settings.PermitRootLogin = lib.mkForce "prohibit-password"; # :P
   boot.loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
   };
+
 
   networking = {
     hostName = "mercurius";
