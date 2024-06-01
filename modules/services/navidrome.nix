@@ -7,7 +7,7 @@ in
   options.opt.services.navidrome = {
     enable = mkEnableOption "the Navidrome music server";
     musicDir = mkOption {
-      type = types.str;
+      type = types.path;
       default = "/srv/music";
     };
     domain = mkOption {
@@ -42,9 +42,11 @@ in
     services.navidrome = {
       enable = true;
       settings = {
+        LogLevel = "DEBUG";
         Address = "localhost";
         Port = 4533;
         MusicFolder = cfg.musicDir;
+        TranscodingCacheSize = "10GB";
       };
     };
   };

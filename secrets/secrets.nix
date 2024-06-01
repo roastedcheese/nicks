@@ -9,4 +9,5 @@ in {
   "znc_admin.age".publicKeys = [ mercurius ];
   "znc_user.age".publicKeys = [ mercurius ];
   "mail_backup.age".publicKeys = [ neptunus ];
+  "slskd_env.age".publicKeys = [ neptunus ];
 }
