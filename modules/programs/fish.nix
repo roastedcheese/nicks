@@ -27,11 +27,13 @@ in
           jctl = "journalctl";
           jctlu = "journalctl --user";
           grep = "rg";
+          rs = "rsync";
 
           rebuild = "nixos-rebuild switch --use-remote-sudo --flake ~/nicks --show-trace";
         };
 
         shellAliases = {
+          rsync = "rsync -a --info=progress2";
           mv = "mv -iv";
           cp = "cp -riv";
           rm = "rm -vI";
