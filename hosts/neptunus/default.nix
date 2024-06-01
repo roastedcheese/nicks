@@ -1,10 +1,16 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, config, ... }:
 {
   imports = [ 
     ./disko.nix
     ./backup.nix
     inputs.rock.nixosModules.fan-control
+    inputs.agenix.nixosModules.default
   ];
+
+  age.secrets = { 
+    slskd_env.file = "${inputs.self}/secrets/slskd_env.age";
+    mail_backup.file = "${inputs.self}/secrets/mail_backup.age";
+  };
 
   nixpkgs.hostPlatform = "aarch64-linux";
   networking.hostName = "neptunus";
@@ -35,10 +41,18 @@
       enable = true;
       domain = "example.org";
     };
+
+    services.slskd = {
+      enable = true;
+      domain = "example.org";
+      envFile = config.age.secrets.slskd_env.path;
+    };
+
     programs.beets = {
       enable = true;
       musicDir = "/srv/music";
     };
+
     system.roles.headless = true;
   };
 

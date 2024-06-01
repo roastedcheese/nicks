@@ -10,5 +10,6 @@
     ./gtk.nix
     ./mailserver.nix
     ./navidrome.nix
+    ./slskd.nix
   ];
 }

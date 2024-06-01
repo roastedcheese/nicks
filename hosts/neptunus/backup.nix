@@ -1,9 +1,6 @@
 { inputs, config, pkgs, ... }:
 {
-  imports = [ inputs.agenix.nixosModules.default ];
-
   environment.systemPackages = [ pkgs.sshfs ];
-  age.secrets.mail_backup.file = "${inputs.self}/secrets/mail_backup.age";
   fileSystems.mail = {
     device = "root@roastedcheese.org:/var/mail";
     mountPoint = "/mnt/mail";
