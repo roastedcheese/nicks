@@ -35,6 +35,10 @@
       enable = true;
       domain = "example.org";
     };
+    programs.beets = {
+      enable = true;
+      musicDir = "/srv/music";
+    };
     system.roles.headless = true;
   };
 
