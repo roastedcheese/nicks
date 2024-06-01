@@ -9,5 +9,6 @@
     ./xdg.nix
     ./gtk.nix
     ./mailserver.nix
+    ./navidrome.nix
   ];
 }
