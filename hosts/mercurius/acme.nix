@@ -6,9 +6,11 @@
       "acmechallenge.roastedcheese.org" = {
         # Catchall vhost, will redirect users to HTTPS for all vhosts
         serverAliases = [ "*.roastedcheese.org" ];
+
         locations."/.well-known/acme-challenge" = {
           root = "/var/lib/acme/.challenges";
         };
+
         locations."/" = {
           return = "301 https://$host$request_uri";
         };
