@@ -15,7 +15,7 @@ in
     };
   };
 
-  config= mkIf cfg.enable {
+  config = mkIf cfg.enable {
     services.nginx = {
       enable = true;
       enableReload = true;
@@ -25,11 +25,7 @@ in
         locations."/" = {
           proxyPass = "http://localhost:4533";
         };
-        extraConfig = ''
-          location /.well-known/ {
-            try_files $uri $uri/ =404;
-          }
-        '';
+        locations."/.well-known/".tryFiles = "$uri $uri/ =404";
       };
     };
 

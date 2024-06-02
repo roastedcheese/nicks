@@ -34,6 +34,14 @@
       interval = "5min";
       configFile = "/root/ddclient.conf";
     };
+
+    nginx.virtualHosts."nromano.net" = {
+      default = true;
+      enableACME = true;
+      forceSSL = true;
+      locations."/.well-known/".tryFiles = "$uri $uri/ =404"; # otherwise ACME challenge might error out
+      locations."/".return = "403"; # TODO: something idk
+    };
   };
 
   opt = {
@@ -44,7 +52,7 @@
 
     services.slskd = {
       enable = true;
-      domain = "nromano.net";
+      domain = "slsk.nromano.net";
       envFile = config.age.secrets.slskd_env.path;
     };
 
