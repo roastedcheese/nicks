@@ -8,7 +8,7 @@ in
     enable = mkEnableOption "beets music tagger";
     musicDir = mkOption {
       type = types.str;
-      default = config.xdg.userDirs.music;
+      default = config.home-manager.users.${config.opt.system.username}.xdg.userDirs.music;
     };
   };
 
@@ -19,7 +19,7 @@ in
       settings = {
         directory = cfg.musicDir;
         library = "~/.local/share/beets/library.db";
-        plugins = [ "info" "missing" "fetchart"];
+        plugins = [ "info" "missing" "fetchart" "lyrics" ];
       };
     };
   };
