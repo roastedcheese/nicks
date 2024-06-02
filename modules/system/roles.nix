@@ -23,7 +23,6 @@ in
     (g "ssh")
   ]))
     (mkIf cfg.workstation (mkTrue [
-    "services.mpd.enable"
     "services.pipewire.enable"
     "services.pipewire.noiseTorch"
     "services.xdg.enable"
@@ -45,7 +44,6 @@ in
     (g "qbittorrent")
     (g "nicotinePlus")
     (g "hyprland")
-    (g "ncmpcpp")
     (g "ags")
     (g "thunderbird")
     (g "zathura")
