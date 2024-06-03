@@ -81,5 +81,6 @@
       "console=tty1"
       "console=ttyS0,1500000"
     ];
+    kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
   };
 }
