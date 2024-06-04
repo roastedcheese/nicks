@@ -31,7 +31,7 @@
         };
       };
       enable = true;
-      interval = "5min";
+      interval = "3min";
       configFile = "/root/ddclient.conf";
     };
 
