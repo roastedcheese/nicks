@@ -17,6 +17,11 @@ in
         user = "git";
         identityFile = "${home.home.homeDirectory}/.ssh/github";
       };
+      gitlab = {
+        hostname = "gitlab.com";
+        user = "git";
+        identityFile = "${home.home.homeDirectory}/.ssh/github";
+      };
       "roastedcheese.org" = {
         hostname = "roastedcheese.org";
         port = 4545;
