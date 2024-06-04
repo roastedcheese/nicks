@@ -36,7 +36,7 @@
     };
 
     snm = {
-      url = "gitlab:roastedcheese/nixos-mailserver";
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
