@@ -38,7 +38,7 @@ in
     services.navidrome = {
       enable = true;
       settings = {
-        LogLevel = "DEBUG";
+        LogLevel = "INFO";
         Address = "localhost";
         Port = 4533;
         MusicFolder = cfg.musicDir;
