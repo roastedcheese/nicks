@@ -56,10 +56,5 @@
       download = "misc/Downloads";
       music = "Music";
     };
-
-    programs.chromium = {
-      enable = true;
-      vencord = true;
-    };
   };
 }
