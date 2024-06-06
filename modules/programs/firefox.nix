@@ -54,7 +54,6 @@ let
   };
 
   overrides = (builtins.readFile (inputs.self.lib.niv."user.js" + "/user.js")) + ''
-    user_pref(extensions.autoDisableScopes", 0);
     user_pref("_user.js.parrot", "NIX: The parrot is finally home"); // Test pref for home-manager overrides
     user_pref("browser.search.suggest.enabled", true);
     user_pref("browser.urlbar.suggest.searches", true);
@@ -86,6 +85,9 @@ let
     user_pref("browser.search.separatePrivateDefault", false);
     user_pref("browser.urlbar.suggest.engines", false);
     user_pref("browser.search.region", "US");
+    user_pref("extensions.autoDisableScopes", 0);
+    user_pref("signon.rememberSignons", false);
+    user_pref("_user.js.parrot", "overrides");
   '';
 in 
 {
@@ -101,6 +103,7 @@ in
 
           extraConfig = overrides + ''
             user_pref("media.peerconnection.ice.no_host", true);
+            user_pref("_user.js.parrot", "b");
           ''; # Overrides for arkenfox's user.js, we have to set them with extraConfig because otherwise they'll end up before the other options
         };
         
@@ -112,6 +115,7 @@ in
             user_pref("privacy.resistFingerprinting", false);
             user_pref("privacy.sanitize.sanitizeOnShutdown", false);
             user_pref("privacy.antitracking.enableWebcompat", false);
+            user_pref("_user.js.parrot", "b");
           '';
         };
       };
