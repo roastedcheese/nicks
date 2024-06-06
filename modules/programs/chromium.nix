@@ -9,8 +9,8 @@ in
     vencord = mkEnableOption "the vencord extension for chromium";
   };
 
-  config.home-manager.users.${config.opt.system.username} = {
-    programs.chromium = mkIf cfg.enable {
+  config.home-manager.users.${config.opt.system.username} = mkIf cfg.enable {
+    programs.chromium = {
       enable = true;
       package = pkgs.brave;
       commandLineArgs = [ "--ozone-platform=wayland" ];
