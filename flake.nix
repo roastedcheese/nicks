@@ -1,5 +1,5 @@
 {
-  description = "RoastedCheese's very basic NixOS flake";
+  description = "RoastedCheese's NixOS flake";
 
   outputs = { self, nixpkgs, ... }@inputs:
   {
@@ -55,6 +55,11 @@
 
     rock = {
       url = "github:aciceri/rock5b-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    p2n = {
+      url = "github:nix-community/poetry2nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

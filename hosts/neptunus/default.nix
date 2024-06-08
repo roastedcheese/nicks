@@ -1,4 +1,4 @@
-{ inputs, pkgs, config, ... }:
+{ inputs, pkgs, config, lib, ... }:
 {
   imports = [ 
     ./disko.nix
@@ -65,6 +65,21 @@
     };
 
     system.roles.headless = true;
+    home.packages = let
+      inherit (inputs.p2n.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryApplication;
+    in [
+      (mkPoetryApplication {
+        projectDir = pkgs.applyPatches {  
+          src = pkgs.fetchFromGitHub {
+            owner = "nathom";
+            repo = "streamrip";
+            rev = "41c0c3e3a017207f803a232b1ce214891570a1d8";
+            hash = "sha256-vYmOA5uehyLc+NkZ+Ryfri01ItvS8uOVOBtFm1nbPb0=";
+          };
+          patches = [ ./streamrip.patch ]; # I hate python so much
+        };
+      })
+    ];
   };
 
   boot = {
