@@ -43,6 +43,7 @@ in
         Port = 4533;
         MusicFolder = cfg.musicDir;
         TranscodingCacheSize = "10GB";
+        EnableSharing = true;
       };
     };
   };
