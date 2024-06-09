@@ -14,7 +14,10 @@
   };
 
   nixpkgs.hostPlatform = "aarch64-linux";
-  networking.hostName = "neptunus";
+  networking = {
+    hostName = "neptunus";
+    hosts."192.168.1.99" = [ "bt.nromano.net" ];
+  };
 
   services = {
     rock5b-fan-control = {
@@ -53,7 +56,7 @@
         enable = true;
         domain = "nromano.net";
       };
-      qbittorrent = {
+      bittorrent = {
         enable = true;
         domain = "nromano.net";
       };
