@@ -45,7 +45,7 @@
         default = true;
         useACMEHost = "nromano.net";
         forceSSL = true;
-        locations."/".return = "403"; # TODO: something idk
+        root = "/var/www";
       };
     };
   };

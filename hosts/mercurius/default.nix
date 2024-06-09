@@ -9,7 +9,15 @@
   ];
 
   opt.system.roles.headless = true;
-  services.openssh.settings.PermitRootLogin = lib.mkForce "prohibit-password"; # :P
+  services = {
+    openssh.settings.PermitRootLogin = lib.mkForce "prohibit-password"; # :P
+    nginx.virtualHosts."roastedcheese.org" = {
+      default = true;
+      useACMEHost = "roastedcheese.org";
+      forceSSL = true;
+      root = "/var/www";
+    };
+  };
   boot.loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;

@@ -12,6 +12,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    networking.firewall.allowedTCPPorts = [ 27194 ];
     services.prowlarr.enable = true;
     systemd.packages = [ pkgs.qbittorrent-nox ];
     systemd.services."qbittorrent-nox@qbt" = {
