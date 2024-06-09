@@ -53,12 +53,6 @@
       domain = "example.org";
     };
 
-    services.slskd = {
-      enable = true;
-      domain = "slsk.example.org";
-      envFile = config.age.secrets.slskd_env.path;
-    };
-
     programs.beets = {
       enable = true;
       musicDir = "/srv/music";
