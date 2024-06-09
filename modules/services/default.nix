@@ -11,5 +11,6 @@
     ./mailserver.nix
     ./navidrome.nix
     ./slskd.nix
+    ./bittorrent
   ];
 }
