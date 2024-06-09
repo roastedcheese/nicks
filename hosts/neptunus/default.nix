@@ -45,7 +45,7 @@
         default = true;
         useACMEHost = "example.org";
         forceSSL = true;
-        locations."/".return = "403"; # TODO: something idk
+        root = "/var/www";
       };
     };
   };
