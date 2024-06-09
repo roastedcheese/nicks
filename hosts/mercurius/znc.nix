@@ -48,6 +48,7 @@
     mutable = false;
     useLegacyConfig = false;
     openFirewall = true;
+    confOptions.modules = [ "adminlog" ];
     config = let
       certDir = "/var/lib/acme/roastedcheese.org";
     in {
@@ -72,10 +73,16 @@
           Nick = "RoastedCheese";
           AltNick = "RoastedCheese_";
           Ident = "roastedcheese";
+          QuitMsg = "Bye Bye";
+          realname = "RoastedCheese";
           Network."liberachat" = {
             LoadModule = [ "sasl" "simple_away" ];
             Server = "irc.libera.chat +6697";
             Chan."#nixos" = {};
+          };
+          Network."ops" = {
+            LoadModule = [ "nickserv" "simple_away" ];
+            Server = "irc.orpheus.network +7000";
           };
         };
       };
