@@ -53,12 +53,6 @@
       domain = "nromano.net";
     };
 
-    services.slskd = {
-      enable = true;
-      domain = "slsk.nromano.net";
-      envFile = config.age.secrets.slskd_env.path;
-    };
-
     programs.beets = {
       enable = true;
       musicDir = "/srv/music";
