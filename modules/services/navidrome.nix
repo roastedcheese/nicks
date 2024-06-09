@@ -21,17 +21,11 @@ in
       enableReload = true;
       virtualHosts."music.${cfg.domain}" = {
         forceSSL = true;
-        enableACME = true;
+        useACMEHost = cfg.domain;
         locations."/" = {
           proxyPass = "http://localhost:4533";
         };
-        locations."/.well-known/".tryFiles = "$uri $uri/ =404";
       };
-    };
-
-    security.acme = {
-      defaults.email = "security@roastedcheese.org";
-      acceptTerms = true;
     };
 
     networking.firewall.allowedTCPPorts = [ 443 80 ];

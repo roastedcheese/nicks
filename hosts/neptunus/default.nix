@@ -3,6 +3,7 @@
   imports = [ 
     ./disko.nix
     ./backup.nix
+    ./acme.nix
     inputs.rock.nixosModules.fan-control
     inputs.agenix.nixosModules.default
   ];
@@ -39,18 +40,23 @@
       logError = "stderr notice";
       virtualHosts."example.org" = {
         default = true;
-        enableACME = true;
+        useACMEHost = "example.org";
         forceSSL = true;
-        locations."/.well-known/".tryFiles = "$uri $uri/ =404"; # otherwise ACME challenge might error out
         locations."/".return = "403"; # TODO: something idk
       };
     };
   };
 
   opt = {
-    services.navidrome = {
-      enable = true;
-      domain = "example.org";
+    services = {
+      navidrome = {
+        enable = true;
+        domain = "example.org";
+      };
+      qbittorrent = {
+        enable = true;
+        domain = "example.org";
+      };
     };
 
     programs.beets = {

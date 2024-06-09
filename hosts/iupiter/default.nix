@@ -23,6 +23,7 @@
   networking = {
     firewall.allowedTCPPorts = [ 2234 ]; # Soulseek
     hostName = "iupiter";
+    hosts."192.168.1.99" = [ "bt.example.org" ];
   };
 
   nixpkgs.config.allowUnfree = true;
