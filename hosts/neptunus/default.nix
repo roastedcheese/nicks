@@ -82,6 +82,7 @@
           patches = [ ./streamrip.patch ]; # I hate python so much
         };
       })
+      pkgs.sox
     ];
   };
 
