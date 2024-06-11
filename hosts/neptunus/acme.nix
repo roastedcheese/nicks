@@ -8,8 +8,8 @@
       extraDomainNames = [ "*.nromano.net" ];
       dnsProvider = "porkbun";
       credentialFiles = {
-        "PORKBUN_API_KEY_FILE" = "/run/secrets/porkbun_api";
-        "PORKBUN_SECRET_API_KEY_FILE" = "/run/secrets/porkbun_api_secret";
+        "PORKBUN_API_KEY_FILE" = "/var/secrets/porkbun_api";
+        "PORKBUN_SECRET_API_KEY_FILE" = "/var/secrets/porkbun_api_secret";
       };
     };
   };
