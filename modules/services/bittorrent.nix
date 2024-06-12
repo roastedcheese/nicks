@@ -27,6 +27,8 @@ in
       };
       groups.bittorrent = {};
     };
+    users.users.${config.opt.system.username}.extraGroups = [ "bittorrent" ];
+    opt.home.packages = [ pkgs.mktorrent ];
 
     services.nginx.virtualHosts."bt.${cfg.domain}" = {
       forceSSL = true;
