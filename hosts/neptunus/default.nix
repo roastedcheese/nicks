@@ -98,7 +98,6 @@
       "ahci"
     ];
 
-    kernelPackages = pkgs.linuxKernel.packages.linux_testing;
     kernelParams = [
       "console=tty1"
       "console=ttyS0,1500000"
