@@ -35,6 +35,7 @@ in
       s = "switch";
       ss = "status";
       d = "diff";
+      cl = "clone";
     };
 
     delta.enable = true;
