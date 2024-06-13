@@ -4,7 +4,7 @@ let
   cfg = config.opt.programs.firefox; 
   extensions = builtins.attrValues {
     inherit (inputs.firefox-addons.packages.${pkgs.system}) 
-      ublock-origin darkreader noscript localcdn indie-wiki-buddy ff2mpv vimium firefox-color violentmonkey;
+      ublock-origin darkreader noscript localcdn indie-wiki-buddy ff2mpv vimium firefox-color;
   };
 
   search = {
@@ -118,6 +118,63 @@ in
             user_pref("_user.js.parrot", "b");
           '';
         };
+
+        trackers = {
+          id = 2;
+          extensions = extensions ++  [
+            inputs.firefox-addons.packages.${pkgs.system}.violentmonkey
+          ];
+            
+          search = {
+            force = true;
+            default = "Searx";
+            order = [ "OPS" "Discogs" "MusicBrainz Release Group" "MusicBrainz Artist" "Qobuz" "Searx" ];
+            engines = {
+              "Searx" = {
+                urls = [{ template = "https://searx.be/search?q={searchTerms}"; }];
+                iconUpdateURL = "https://searx.be/static/themes/oscar/img/favicon.png";
+                updateInterval = 24 * 60 * 60 * 1000;
+              };
+
+              "OPS" = {
+                urls = [{ template = "https://orpheus.network/torrents.php?searchstr={searchTerms}"; } ];
+                iconUpdateURL = "https://interview.orpheus.network/favicon.ico";
+                updateInterval = 24 * 60 * 60 * 1000;
+              };
+
+              "Discogs" = {
+                urls = [{ template = "https://www.discogs.com/search?q={searchTerms}&type=all"; }];
+                iconUpdateUrl = "https://discogs.com/favicon.ico";
+                updateInterval = 24 * 60 * 60 * 1000;
+              };
+
+              "MusicBrainz Release Group" = {
+                urls = [{ template = "https://musicbrainz.org/search?query={searchTerms}&type=release_group"; }];
+                iconUpdateUrl = "https://musicbrainz.org/favicon.ico";
+                updateInterval = 24 * 60 * 60 * 1000;
+              };
+
+              "MusicBrainz Artist" = {
+                urls = [{ template = "https://musicbrainz.org/search?query={searchTerms}&type=artist"; }];
+                iconUpdateUrl = "https://musicbrainz.org/favicon.ico";
+                updateInterval = 24 * 60 * 60 * 1000;
+              };
+
+              "Qobuz" = {
+                urls = [{ template = "https://www.qobuz.com/it-it/search?q={searchTerms}"; }];
+                iconUpdateUrl = "https://www.qobuz.com/favicon.ico";
+                updateInterval = 24 * 60 * 60 * 1000;
+              };
+            };
+          };
+
+          extraConfig = overrides + ''
+            user_pref("privacy.resistFingerprinting", false);
+            user_pref("privacy.sanitize.sanitizeOnShutdown", false);
+            user_pref("privacy.antitracking.enableWebcompat", false);
+            user_pref("_user.js.parrot", "trackers");
+          '';
+        };
       };
     };
 
@@ -126,6 +183,11 @@ in
         name = "Firefox (logins)";
         type = "Application";
         exec = "${pkgs.firefox}/bin/firefox -P logins";
+      };
+      firefox-trackers= {
+        name = "Firefox (trackers)";
+        type = "Application";
+        exec = "${pkgs.firefox}/bin/firefox -P trackers";
       };
     };
   };
