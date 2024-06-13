@@ -13,7 +13,10 @@ in
 
   config = mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [ 27194 ];
-    services.prowlarr.enable = true;
+    services = {
+      prowlarr.enable = true;
+      lidarr.enable = true;
+    };
     systemd.packages = [ pkgs.qbittorrent-nox ];
     systemd.services."qbittorrent-nox@qbt" = {
       overrideStrategy = "asDropin";
@@ -47,7 +50,7 @@ in
           '';
         };
 
-        "/" = {
+        "/prowlarr" = {
           proxyPass = "http://localhost:9696";
           extraConfig = ''
             proxy_set_header Host $host;
@@ -63,6 +66,26 @@ in
 
         " /prowlarr(/[0-9]+)?/api" = {
           proxyPass = "http://localhost:9696";
+          extraConfig = ''
+            auth_basic off;
+          '';
+        };
+        "/lidarr" = {
+          proxyPass = "http://localhost:8686";
+          extraConfig = ''
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Host $host;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_redirect off;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $http_connection; 
+          '';
+        };
+
+        " /lidarr/api" = {
+          proxyPass = "http://localhost:8686";
           extraConfig = ''
             auth_basic off;
           '';
