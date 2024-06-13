@@ -165,6 +165,11 @@ in
                 iconUpdateUrl = "https://www.qobuz.com/favicon.ico";
                 updateInterval = 24 * 60 * 60 * 1000;
               };
+              "Bing".metaData.hidden = true;
+              "Google".metaData.hidden = true;
+              "Amazon.com".metaData.hidden = true;
+              "DuckDuckGo".metaData.hidden = true;
+              "eBay".metaData.hidden = true;
             };
           };
 
