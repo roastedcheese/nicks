@@ -1,19 +1,41 @@
 {
   description = "RoastedCheese's NixOS flake";
 
-  outputs = { self, nixpkgs, ... }@inputs:
-  {
-    nixosConfigurations = import ./hosts { inherit inputs; };
+  outputs = { self, nixpkgs, flake-parts, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = import inputs.systems;
+      flake = {
+        nixosConfigurations = import ./hosts { inherit inputs; };
 
-    lib = {
-      niv = import ./nix/sources.nix;
+        lib.niv = import ./nix/sources.nix;
+      };
+
+      perSystem = { pkgs, config, ... }: {
+        devShells.python = pkgs.mkShell { # Stuff I need to run some python scripts
+          packages = with pkgs; [
+            flac fish python3 python312Packages.mutagen
+          ];
+
+          # I like fish
+          shellHook = ''
+            fish
+          '';
+        };
+      };
     };
-  };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
-    
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    devshell.url = "github:numtide/devshell";
+    systems.url = "github:nix-systems/default-linux";
+
     ags = {
       url = "github:Aylur/ags/";
       inputs.nixpkgs.follows = "nixpkgs";
