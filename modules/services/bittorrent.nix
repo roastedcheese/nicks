@@ -24,13 +24,18 @@ in
     };
 
     users = {
-      users."qbt" = {
-        isNormalUser = true;
-        group = "bittorrent";
+      users = {
+        "qbt".isNormalUser = true;
       };
-      groups.bittorrent = {};
+      extraGroups.bittorrent = {
+        members = [
+          config.opt.system.username
+          "lidarr"
+          "prowlarr"
+          "qbt"
+        ];
+      };
     };
-    users.users.${config.opt.system.username}.extraGroups = [ "bittorrent" ];
     opt.home.packages = [ pkgs.mktorrent ];
 
     services.nginx.virtualHosts."bt.${cfg.domain}" = {
