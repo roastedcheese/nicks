@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ pkgs, ... }:
 {
 
   imports = [
@@ -46,6 +46,7 @@
         ];
       };
     };
+    home.packages = [ pkgs.gocryptfs ];
 
     hardware = {
       nvidia.enable = true;
