@@ -8,6 +8,7 @@
     inputs.agenix.nixosModules.default
   ];
 
+  time.timeZone = "Europe/Berlin";
   opt.system.roles.headless = true;
   services = {
     openssh.settings.PermitRootLogin = lib.mkForce "prohibit-password"; # :P

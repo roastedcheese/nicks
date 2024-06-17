@@ -70,7 +70,7 @@
     system.roles.headless = true;
     home.packages = let
       inherit (inputs.p2n.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryApplication;
-    in [
+    in with pkgs; [
       (mkPoetryApplication {
         projectDir = pkgs.applyPatches {  
           src = pkgs.fetchFromGitHub {
@@ -82,7 +82,7 @@
           patches = [ ./streamrip.patch ]; # I hate python so much
         };
       })
-      pkgs.sox pkgs.flac pkgs.lame
+      sox flac lame rename
     ];
   };
 

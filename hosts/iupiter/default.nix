@@ -7,6 +7,7 @@
   ];
 
 
+  time.timeZone = "Europe/Rome";
   users = {
     mutableUsers = false; # Oh my fucking God
     users = {
