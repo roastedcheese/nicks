@@ -48,11 +48,11 @@
     mutable = false;
     useLegacyConfig = false;
     openFirewall = true;
-    confOptions.modules = [ "adminlog" "log" ];
+    confOptions.modules = [ "adminlog" ];
     config = let
       certDir = "/var/lib/acme/roastedcheese.org";
     in {
-      LoadModule = [ "adminlog" "cyrusauth saslauthd" ];
+      LoadModule = [ "adminlog" "cyrusauth saslauthd" "log" ];
       SSLCertFile = certDir + "/fullchain.pem";
       SSLDHParamFile = certDir + "/fullchain.pem";
       SSLKeyFile = certDir + "/key.pem";
