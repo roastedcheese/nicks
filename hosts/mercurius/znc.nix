@@ -48,7 +48,7 @@
     mutable = false;
     useLegacyConfig = false;
     openFirewall = true;
-    confOptions.modules = [ "adminlog" ];
+    confOptions.modules = [ "adminlog" "log" ];
     config = let
       certDir = "/var/lib/acme/roastedcheese.org";
     in {
