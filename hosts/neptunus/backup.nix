@@ -2,7 +2,7 @@
 {
   environment.systemPackages = [ pkgs.sshfs ];
   fileSystems.mail = {
-    device = "root@roastedcheese.org:/var/mail";
+    device = "root@roastedcheese.org:/var/mail/";
     mountPoint = "/mnt/mail";
     fsType = "fuse.sshfs";
     options = [ "x-systemd.automount" "_netdev" "users" "idmap=user" "IdentityFile=/home/nick/.ssh/mercurius" "allow_other" "reconnect" "port=4545" ];
