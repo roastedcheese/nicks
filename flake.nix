@@ -12,6 +12,7 @@
 
       imports = [
         ./flake/shells.nix
+        ./flake/pkgs
       ];
     };
 
