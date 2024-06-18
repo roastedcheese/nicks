@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.opt.programs.ssh;
@@ -8,29 +8,32 @@ in
 {
   options.opt.programs.ssh.enable = mkEnableOption "ssh config";
 
-  config.home-manager.users.${user}.programs.ssh = mkIf cfg.enable {
-    enable = true;
-    matchBlocks = {
-      "*".identityFile = "${home.home.homeDirectory}/.ssh/main";
-      github = {
-        hostname = "github.com";
-        user = "git";
-        identityFile = "${home.home.homeDirectory}/.ssh/github";
-      };
-      gitlab = {
-        hostname = "gitlab.com";
-        user = "git";
-        identityFile = "${home.home.homeDirectory}/.ssh/github";
-      };
-      "roastedcheese.org" = {
-        hostname = "roastedcheese.org";
-        port = 4545;
-        user = "nick";
-      };
-      "neptunus" = {
-        hostname = "192.168.1.99";
-        port = 4545;
-        user = "nick";
+  config.home-manager.users.${user} = {
+    home.packages = [ pkgs.sshfs ];
+    programs.ssh = mkIf cfg.enable {
+      enable = true;
+      matchBlocks = {
+        "*".identityFile = "${home.home.homeDirectory}/.ssh/main";
+        github = {
+          hostname = "github.com";
+          user = "git";
+          identityFile = "${home.home.homeDirectory}/.ssh/github";
+        };
+        gitlab = {
+          hostname = "gitlab.com";
+          user = "git";
+          identityFile = "${home.home.homeDirectory}/.ssh/github";
+        };
+        "roastedcheese.org" = {
+          hostname = "roastedcheese.org";
+          port = 4545;
+          user = "nick";
+        };
+        "neptunus" = {
+          hostname = "192.168.1.99";
+          port = 4545;
+          user = "nick";
+        };
       };
     };
   };
