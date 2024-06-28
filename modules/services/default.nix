@@ -12,5 +12,6 @@
     ./navidrome.nix
     ./slskd.nix
     ./bittorrent.nix
+    ./vaultwarden.nix
   ];
 }

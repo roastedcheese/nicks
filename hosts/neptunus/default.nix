@@ -60,6 +60,10 @@
         enable = true;
         domain = "example.org";
       };
+      vaultwarden = {
+        enable = true;
+        domain = "example.org";
+      };
     };
 
     programs.beets = {
