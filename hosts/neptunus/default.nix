@@ -60,6 +60,10 @@
         enable = true;
         domain = "nromano.net";
       };
+      vaultwarden = {
+        enable = true;
+        domain = "nromano.net";
+      };
     };
 
     programs.beets = {
