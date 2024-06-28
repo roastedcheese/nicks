@@ -36,6 +36,12 @@ in
 
     services.nginx.virtualHosts."bt.${cfg.domain}" = {
       forceSSL = true;
+      extraConfig = ''
+        auth_basic "Admin area";
+        auth_basic_user_file /var/secrets/nginx;
+        # allow 192.168.1.0/24;
+        # deny all;
+      '';
       useACMEHost = cfg.domain;
       locations = {
         "/qbt/" = {
@@ -67,16 +73,11 @@ in
 
         " /prowlarr(/[0-9]+)?/api" = {
           proxyPass = "http://localhost:9696";
-          extraConfig = ''
-            auth_basic off;
-          '';
+          # extraConfig = ''
+          #   auth_basic off;
+          # '';
         };
       };
-
-      extraConfig = ''
-        allow 192.168.1.0/24;
-        deny all;
-      '';
     };
   };
 }
