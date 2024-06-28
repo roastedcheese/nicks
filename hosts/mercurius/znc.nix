@@ -48,6 +48,7 @@
     mutable = false;
     useLegacyConfig = false;
     openFirewall = true;
+    modulePackages = [ pkgs.zncModules.backlog ];
     confOptions.modules = [ "adminlog" ];
     config = let
       certDir = "/var/lib/acme/roastedcheese.org";
@@ -72,16 +73,16 @@
           Pass = "md5#::#::#";
           Nick = "RoastedCheese";
           AltNick = "RoastedCheese_";
-          Ident = "roastedcheese";
-          QuitMsg = "Bye Bye";
+          Ident = "cheese";
+          QuitMsg = "see you";
           realname = "RoastedCheese";
           Network."liberachat" = {
-            LoadModule = [ "sasl" "simple_away" ];
+            LoadModule = [ "sasl" "simple_away" "backlog" ];
             Server = "irc.libera.chat +6697";
             Chan."#nixos" = {};
           };
           Network."ops" = {
-            LoadModule = [ "nickserv" "simple_away" ];
+            LoadModule = [ "nickserv" "simple_away" "backlog"];
             Server = "irc.orpheus.network +7000";
           };
         };
