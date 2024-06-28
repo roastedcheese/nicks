@@ -9,4 +9,8 @@
   time.timeZone = "Europe/Rome";
 
   networking.networkmanager.enable = lib.mkForce true;
+  opt = {
+    system.roles.workstation = true;
+    services.ssh.enable = true;
+  };
 }
