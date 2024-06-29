@@ -12,6 +12,7 @@ in
     home.packages = [ pkgs.sshfs ];
     programs.ssh = mkIf cfg.enable {
       enable = true;
+      serverAliveInterval = 120;
       matchBlocks = {
         "*".identityFile = "${home.home.homeDirectory}/.ssh/main";
         github = {
