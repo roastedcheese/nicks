@@ -4,7 +4,7 @@ let
   cfg = config.opt.programs.firefox; 
   extensions = builtins.attrValues {
     inherit (inputs.firefox-addons.packages.${pkgs.system}) 
-      ublock-origin darkreader noscript localcdn indie-wiki-buddy ff2mpv vimium firefox-color;
+      ublock-origin darkreader noscript localcdn indie-wiki-buddy ff2mpv tridactyl firefox-color;
   };
 
   search = {
@@ -115,6 +115,7 @@ in
             user_pref("privacy.resistFingerprinting", false);
             user_pref("privacy.sanitize.sanitizeOnShutdown", false);
             user_pref("privacy.antitracking.enableWebcompat", false);
+            user_pref("browser.startup.page", 3); # Resume previous session
             user_pref("_user.js.parrot", "b");
           '';
         };
