@@ -41,6 +41,7 @@ in
     delta.enable = true;
     signing = {
       inherit (cfg.user) key;
+      signByDefault = true;
     };
 
     userEmail = cfg.user.email;
