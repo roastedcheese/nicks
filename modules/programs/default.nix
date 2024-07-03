@@ -34,6 +34,6 @@ in
     element.enable = mkEnableOption "element desktop";
   };
 
-  config.opt.home.packages = with pkgs; [ niv tree zip mediainfo] ++ (optional cfg.thunderbird.enable pkgs.thunderbird) 
-  ++ (optional cfg.element.enable pkgs.element-desktop);
+  config.opt.home.packages = with pkgs; [ niv tree zip mediainfo rename ] ++ (optional cfg.thunderbird.enable pkgs.thunderbird) 
+    ++ (optional cfg.element.enable pkgs.element-desktop);
 }
