@@ -23,15 +23,15 @@ in
 
   config.home-manager.users.${config.opt.system.username} = mkIf cfg.enable {
     inherit (config.opt.services) gtk;
-    dconf.settings = let
-      notNull = k: mkIf (k != null) k;
-    in {
-      "org/gnome/desktop/interface" = {
-        gtk-theme = notNull cfg.theme.name;
-        font-name = notNull cfg.font.name;
-        cursor-theme = notNull cfg.cursorTheme.name;
-      };
-    };
+    # dconf.settings = let
+    #   notNull = k: mkIf (k != null) k;
+    # in {
+    #   "org/gnome/desktop/interface" = {
+    #     gtk-theme = notNull cfg.theme.name;
+    #     font-name = notNull cfg.font.name;
+    #     cursor-theme = notNull cfg.cursorTheme.name;
+    #   };
+    # };
 
     home.file = {
       rose-pine-cursor = {

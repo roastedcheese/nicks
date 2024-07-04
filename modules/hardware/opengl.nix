@@ -8,7 +8,6 @@ in
 
   config.hardware.opengl = mkIf cfg.enable {
     enable = true;
-    driSupport = true;
     driSupport32Bit = true;
   };
 }
