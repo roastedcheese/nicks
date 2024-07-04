@@ -76,14 +76,20 @@
           Ident = "cheese";
           QuitMsg = "see you";
           realname = "RoastedCheese";
-          Network."liberachat" = {
-            LoadModule = [ "sasl" "simple_away" "backlog" ];
-            Server = "irc.libera.chat +6697";
-            Chan."#nixos" = {};
-          };
-          Network."ops" = {
-            LoadModule = [ "nickserv" "simple_away" "backlog"];
-            Server = "irc.orpheus.network +7000";
+          Network = {
+            "liberachat" = {
+              LoadModule = [ "sasl" "simple_away" "backlog" ];
+              Server = "irc.libera.chat +6697";
+              Chan."#nixos" = {};
+            };
+            "ops" = {
+              LoadModule = [ "nickserv" "simple_away" "backlog"];
+              Server = "irc.orpheus.network +7000";
+            };
+            "mam" = {
+              LoadModule = [ "nickserv" "simple_away" "backlog"];
+              Server = "irc.myanonamouse.net +6697";
+            };
           };
         };
       };
