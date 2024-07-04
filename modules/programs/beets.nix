@@ -20,7 +20,10 @@ in
         directory = cfg.musicDir;
         library = "~/.local/share/beets/library.db";
         plugins = [ "info" "missing" "fetchart" "lyrics" "scrub" "zero" ];
-        lyrics.sources = [ "lrclib" "tekstowo" "genius" ];
+        lyrics = {
+          synced = "yes";
+          sources = [ "lrclib" "tekstowo" "genius" ];
+        };
         zero = {
           fields = "comments";
           update_database = true;
