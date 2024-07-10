@@ -6,6 +6,8 @@
     ./disko.nix
   ];
 
+  environment.systemPackages = [ pkgs.quickemu ];
+
 
   time.timeZone = "Europe/Rome";
   users = {
