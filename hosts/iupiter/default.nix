@@ -60,4 +60,6 @@
       music = "Music";
     };
   };
+
+  virtualisation.libvirtd.enable = true;
 }
