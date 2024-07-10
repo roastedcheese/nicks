@@ -33,7 +33,7 @@ let
         definedAliases = [ "@np" ];
       };
       "NixOS" = {
-        urls = [{ template = "https://search.nixos.org/options?channel=23.11&from=0&size=50&sort=relevance&type=packages&query={searchTerms}"; }];
+        urls = [{ template = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}"; }];
         iconUpdateURL = "https://nixos.org/favicon.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
         definedAliases = [ "@nx" ];
