@@ -120,10 +120,6 @@ in
             preserve_split = "yes";
           };
 
-          master = {
-            new_is_master = true;
-          };
-
           gestures = {
             workspace_swipe = "off";
           };
