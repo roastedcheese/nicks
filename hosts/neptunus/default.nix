@@ -7,6 +7,7 @@
     inputs.rock.nixosModules.fan-control
     inputs.agenix.nixosModules.default
   ];
+  time.timeZone = "Europe/Rome";
 
   age.secrets = { 
     slskd_env.file = "${inputs.self}/secrets/slskd_env.age";
