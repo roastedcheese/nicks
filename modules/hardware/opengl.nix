@@ -6,8 +6,8 @@ in
 {
   options.opt.hardware.opengl.enable = mkEnableOption "OpenGL";
 
-  config.hardware.opengl = mkIf cfg.enable {
+  config.hardware.graphics = mkIf cfg.enable {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 }
