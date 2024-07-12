@@ -1,5 +1,5 @@
 {
-  perSystem = { pkgs, config, ... }: {
+  perSystem = { self', pkgs, config, ... }: {
     devShells.python = pkgs.mkShell { # Stuff I need to run some python scripts
       packages = let
         packaging = let # Ahah imagine if you could override a python package wouldn't that be cool
@@ -30,7 +30,7 @@
         };
       in 
       with pkgs; [
-        python3 flac fish python311Packages.mutagen python311Packages.mechanicalsoup packaging
+        python3 flac fish python311Packages.mutagen python311Packages.mechanicalsoup packaging self'.packages.bcoding
       ];
 
       # I like fish
