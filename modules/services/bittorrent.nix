@@ -32,7 +32,16 @@ in
         ];
       };
     };
-    opt.home.packages = [ pkgs.mktorrent ];
+    opt.home.packages = [
+      (pkgs.mktorrent.overrideAttrs (f: p: {
+        src = pkgs.fetchFromGitHub {
+          owner = "pobrn";
+          repo = "mktorrent";
+          rev = "de7d011b35458de1472665f50b96c9cf6c303f39";
+          hash = "sha256-mLeyjcV/TcVDbM1adG29rk1prSJcuk0P4NrlLmPwU78=";
+        };
+      }))
+    ];
 
     services.nginx.virtualHosts."bt.${cfg.domain}" = {
       forceSSL = true;
