@@ -82,6 +82,10 @@
               Server = "irc.libera.chat +6697";
               Chan."#nixos" = {};
             };
+            "red" = {
+              LoadModule = [ "nickserv" "simple_away" "backlog"];
+              Server = "irc.scratch-network.net +7000";
+            };
             "ops" = {
               LoadModule = [ "nickserv" "simple_away" "backlog"];
               Server = "irc.orpheus.network +7000";
