@@ -33,6 +33,7 @@ in
       };
     };
     opt.home.packages = [
+      pkgs.intermodal
       (pkgs.mktorrent.overrideAttrs (f: p: {
         src = pkgs.fetchFromGitHub {
           owner = "pobrn";
