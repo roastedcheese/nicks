@@ -6,6 +6,7 @@ in
 {
   options.opt.services.bittorrent = {
     enable = mkEnableOption "bittorrent setup with qbittorrent and prowlarr";
+    prowlarr = mkEnableOption "prowlarr indexer";
     domain = mkOption {
       type = types.str;
     };
@@ -13,7 +14,7 @@ in
 
   config = mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [ 27194 ];
-    services.prowlarr.enable = true;
+    services.prowlarr.enable = mkIf cfg.prowlarr true;
     systemd.packages = [ pkgs.qbittorrent-nox ];
     systemd.services."qbittorrent-nox@qbt" = {
       overrideStrategy = "asDropin";
@@ -27,9 +28,8 @@ in
       extraGroups.bittorrent = {
         members = [
           config.opt.system.username
-          "prowlarr"
           "qbt"
-        ];
+        ] ++ (lib.optional cfg.prowlarr "prowlarr");
       };
     };
     opt.home.packages = [
@@ -61,7 +61,7 @@ in
           '';
         };
 
-        "/prowlarr" = {
+        "/prowlarr" = mkIf cfg.prowlarr {
           proxyPass = "http://localhost:9696";
           extraConfig = ''
             proxy_set_header Host $host;
@@ -75,7 +75,7 @@ in
           '';
         };
 
-        " /prowlarr(/[0-9]+)?/api" = {
+        " /prowlarr(/[0-9]+)?/api" = mkIf cfg.prowlarr {
           proxyPass = "http://localhost:9696";
           extraConfig = ''
             auth_basic off;
