@@ -47,7 +47,7 @@ in
       };
 
       home.packages = builtins.attrValues {
-          inherit (pkgs) wofi swww swaylock swayidle glib wl-clipboard copyq rose-pine-gtk-theme jq;
+          inherit (pkgs) wofi swww swaylock swayidle glib wl-clipboard rose-pine-gtk-theme jq;
           inherit (inputs.hyprcontrib.packages.${pkgs.system}) grimblast;
       };
 
@@ -64,7 +64,6 @@ in
             "swww-daemon & ${configHome}/hypr/scripts/wp.sh"
             "swayidle -w timeout 300 '${configHome}/hypr/scripts/lock.sh'"
             "ags"
-            "copyq"
           ];
 
           general = {
@@ -192,7 +191,7 @@ in
             "$mainMod SHIFT, P, exec, ~/.config/hypr/scripts/lock.sh"
             "$mainMod SHIFT, M, exec, pidof mpd || mpd; foot ncmpcpp "
             "$mainMod SHIFT, W, exec, ~/.config/hypr/scripts/wpnext.sh 9"
-            "$mainMod SHIFT, O, exec, copyq show"
+            # "$mainMod SHIFT, O, exec, copyq show"
             "$mainMod SHIFT, D, exec, foot lfub"
             "$mainMod SHIFT, C, exec, foot cava"
             "$mainMod SHIFT, A, exec, foot pulsemixer"
