@@ -61,6 +61,17 @@ in
           '';
         };
 
+        "/ss" = {
+          proxyPass = "http://127.0.0.1:55110"; # Smoked salmon webserver
+          extraConfig = ''
+            proxy_http_version 1.1;
+            proxy_set_header   Host               127.0.0.1:55110;
+            proxy_set_header   X-Forwarded-Proto  $scheme;
+            proxy_set_header   X-Forwarded-Host   $http_host;
+            proxy_set_header   X-Forwarded-For    $remote_addr; 
+          '';
+        };
+
         "/prowlarr" = mkIf cfg.prowlarr {
           proxyPass = "http://localhost:9696";
           extraConfig = ''
