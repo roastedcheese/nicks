@@ -13,12 +13,6 @@ in
       nixPath = [ "nixpkgs=flake:nixpkgs" ];
       inherit registry;
 
-      gc = {
-        automatic = true;
-        dates = "Mon *-*-* 03:00";
-        options = "--delete-older-than 7d";
-      };
-
       optimise = {
         automatic = true;
         dates = [ "04:00" ];
