@@ -48,7 +48,9 @@
     mutable = false;
     useLegacyConfig = false;
     openFirewall = true;
-    modulePackages = [ pkgs.zncModules.backlog ];
+    modulePackages = [ (pkgs.zncModules.backlog.overrideAttrs (f: p: {
+      patches = [ ./backlog.patch ];
+    })) ];
     confOptions.modules = [ "adminlog" ];
     config = let
       certDir = "/var/lib/acme/roastedcheese.org";

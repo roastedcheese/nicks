@@ -1,0 +1,13 @@
+diff --git a/backlog.cpp b/backlog.cpp
+index 9ad9d21..49991ee 100644
+--- a/backlog.cpp
++++ b/backlog.cpp
+@@ -98,7 +98,7 @@ void CBacklogMod::OnModCommand(const CString& sCommand) {
+     if(reqLines <= 0) {
+         reqLines = 150;
+     }
+-    reqLines = std::max(std::min(reqLines, 1000), 1);
++    reqLines = std::max(std::min(reqLines, 10000), 1);
+ 
+     CString Path = GetNV("LogPath").substr(); // make copy
+     Path.Replace("$NETWORK", Network);
