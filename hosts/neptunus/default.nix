@@ -65,6 +65,7 @@
         enable = true;
         domain = "example.org";
       };
+      wireguard.enable = true;
     };
 
     programs.beets = {
