@@ -13,9 +13,9 @@ in
 
     hardware.nvidia = {
       modesetting.enable = true;
-      powerManagement.enable = mkDefault true; # nvidia power management, experimental and can cause sleep/suspend to fail.
-      powerManagement.finegrained = mkDefault false; # finegrained power management, turns off GPU when not in use, only works on newer GPUs.
-      open = mkDefault true; # the open source kernel module, https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
+      powerManagement.enable = true; # nvidia power management, experimental and can cause sleep/suspend to fail.
+      powerManagement.finegrained = false; # finegrained power management, turns off GPU when not in use, only works on newer GPUs.
+      open = true; # the open source kernel module, https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
 
       package = let # use 535 nvidia driver, https://github.com/NixOS/nixpkgs/blob/nixos-23.11/pkgs/os-specific/linux/nvidia-x11/default.nix#L20
           rcu_patch = pkgs.fetchpatch {
