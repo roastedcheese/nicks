@@ -12,18 +12,22 @@
   opt.system.roles.headless = true;
   services = {
     openssh.settings.PermitRootLogin = lib.mkForce "prohibit-password"; # :P
-    nginx.virtualHosts."roastedcheese.org" = {
-      default = true;
-      useACMEHost = "roastedcheese.org";
-      forceSSL = true;
-      root = "/var/www";
+
+    nginx = {
+      enable = true;
+      enableReload = true;
+      virtualHosts."roastedcheese.org" = {
+        default = true;
+        useACMEHost = "roastedcheese.org";
+        forceSSL = true;
+        root = "/var/www";
+      };
     };
   };
   boot.loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
   };
-
 
   networking = {
     hostName = "mercurius";
