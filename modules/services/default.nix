@@ -13,5 +13,6 @@
     ./slskd.nix
     ./bittorrent.nix
     ./vaultwarden.nix
+    ./wireguard.nix
   ];
 }

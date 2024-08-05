@@ -65,6 +65,7 @@
         enable = true;
         domain = "nromano.net";
       };
+      wireguard.enable = true;
     };
 
     programs.beets = {
