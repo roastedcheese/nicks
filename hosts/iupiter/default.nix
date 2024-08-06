@@ -23,6 +23,7 @@
       efi.canTouchEfiVariables = true;
   };
 
+  services.mullvad-vpn.enable = true;
   networking = {
     firewall.allowedTCPPorts = [ 2234 ]; # Soulseek
     hostName = "iupiter";
@@ -49,7 +50,7 @@
         ];
       };
     };
-    home.packages = [ pkgs.gocryptfs ];
+    home.packages = with pkgs; [ mullvad-vpn gocryptfs ];
 
     hardware = {
       nvidia.enable = true;
