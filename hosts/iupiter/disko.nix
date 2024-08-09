@@ -66,9 +66,14 @@ in
 
   fileSystems."/persist".neededForBoot = true;
 
-  environment.etc.crypttab.text = ''
-    media /dev/disk/by-id/wwn-0x5000c500e324ad19-part2 /etc/media.key luks
-  '';
+  environment.etc = {
+    crypttab.text = ''
+      media /dev/disk/by-id/wwn-0x5000c500e324ad19-part2 /etc/media.key luks
+    '';
+    fstab.text = ''
+      /dev/sr0 /mnt/cd auto ro,user,noauto,unhide 0 0
+    '';
+  };
 
   systemd.mounts = [
     {
