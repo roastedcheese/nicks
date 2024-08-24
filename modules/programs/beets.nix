@@ -13,13 +13,13 @@ in
   };
 
   config.home-manager.users.${config.opt.system.username} = mkIf cfg.enable {
-    home.packages = with pkgs; [ python311Packages.requests ];
+    home.packages = with pkgs.python311Packages; [ discogs-client requests ];
     programs.beets = {
       enable = true;
       settings = {
         directory = cfg.musicDir;
         library = "~/.local/share/beets/library.db";
-        plugins = [ "info" "missing" "fetchart" "lyrics" "scrub" "zero" ];
+        plugins = [ "info" "missing" "fetchart" "lyrics" "scrub" "zero" "discogs" ];
         lyrics = {
           synced = "yes";
           sources = [ "lrclib" "tekstowo" "genius" ];
