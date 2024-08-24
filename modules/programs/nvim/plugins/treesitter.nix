@@ -6,8 +6,6 @@ in
   config.home-manager.users.${config.opt.system.username}.programs.neovim = lib.mkIf (cfg.plugins.treesitter && cfg.enable) {
     plugins = [ pkgs.vimPlugins.nvim-treesitter.withAllGrammars ];
 
-    extraPackages = [ pkgs.gcc ];
-
     extraLuaConfig = ''
       require'nvim-treesitter.configs'.setup({
         highlight = { enable = true },

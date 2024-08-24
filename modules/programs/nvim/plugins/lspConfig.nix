@@ -7,7 +7,7 @@ in
     plugins = [ pkgs.vimPlugins.nvim-lspconfig ];
     
     extraPackages = with pkgs; [
-      luajitPackages.lua-lsp
+      lua-language-server
       nodePackages.typescript-language-server
       nil
       ccls

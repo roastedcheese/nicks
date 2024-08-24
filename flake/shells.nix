@@ -1,5 +1,5 @@
 {
-  perSystem = { self', pkgs, config, ... }: {
+  perSystem = { self', pkgs, ... }: {
     devShells.python = pkgs.mkShell { # Stuff I need to run some python scripts
       packages = builtins.attrValues {
         inherit (pkgs) python3 flac fish;

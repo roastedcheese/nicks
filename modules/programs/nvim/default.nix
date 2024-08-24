@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ pkgs, lib, config, ... }:
 let
   cfg = config.opt.programs.neovim;
   inherit (lib) strings mkOption mkEnableOption types mkIf;
@@ -31,12 +31,18 @@ in
       nvimTree = mkPlOption "the nvim-tree plugin";
       rosePine = mkPlOption "the rose pine theme";
       telescope = mkPlOption "the telescope plugin";
-     treesitter = mkPlOption "the treesitter plugin";
+      treesitter = mkPlOption "the treesitter plugin";
+      dap = mkPlOption "the nvim-dap plugin";
+      indent-blankline = mkPlOption "the indent-blankline plugin";
     };
   };
 
   config = mkIf cfg.enable {
-    opt.programs.neovim.noUndoFile = [ "/docs/*" "*.age" "*.ssh/*" "*.gnupg/*" "*/etc/ssh*" ];
+    opt = {
+      home.packages = with pkgs; [ clang clang-tools gnumake ];
+      programs.neovim.plugins.indent-blankline = false;
+    };
+
     home-manager.users.${config.opt.system.username}.programs.neovim = {
       enable = true;
       extraLuaConfig = let
@@ -74,6 +80,7 @@ in
       '';
     };
   };
+  
 
   imports = [ ./plugins ];
 }

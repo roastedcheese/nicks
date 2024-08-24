@@ -25,7 +25,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    devshell.url = "github:numtide/devshell";
     systems.url = "github:nix-systems/default-linux";
 
     ags = {

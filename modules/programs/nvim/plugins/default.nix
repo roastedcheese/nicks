@@ -14,5 +14,7 @@
     ./telescope.nix
     ./treesitter.nix
     ./bufferline.nix
+    ./indent-blankline.nix
+    ./dap.nix
   ];
 }
