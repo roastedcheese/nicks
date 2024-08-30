@@ -11,6 +11,7 @@ in
       nodePackages.typescript-language-server
       nil
       ccls
+      pyright
     ];
 
     # TODO: write an lsp option
@@ -23,6 +24,7 @@ in
       lspconfig.tsserver.setup({ capabilities = capabilities })
       lspconfig.nil_ls.setup({ capabilities = capabilities })
       lspconfig.ccls.setup({ capabilities = capabilities })
+      lspconfig.pyright.setup({ capabilities = capabilities })
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
