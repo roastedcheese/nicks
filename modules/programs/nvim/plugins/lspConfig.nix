@@ -12,6 +12,7 @@ in
       nil
       ccls
       pyright
+      gopls
     ];
 
     # TODO: write an lsp option
@@ -25,6 +26,7 @@ in
       lspconfig.nil_ls.setup({ capabilities = capabilities })
       lspconfig.ccls.setup({ capabilities = capabilities })
       lspconfig.pyright.setup({ capabilities = capabilities })
+      lspconfig.gopls.setup({ capabilities = capabilities })
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
