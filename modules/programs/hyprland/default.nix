@@ -6,7 +6,7 @@ let
   package = inputs.hyprland.packages.${pkgs.system}.default.overrideAttrs (final: prev: {
     postPatch = ''
       # Useless 48MB default wallpapers
-      rm assets/wall*.png
+      rm assets/install/wall*.png
       tail -n 1 assets/meson.build > assets/meson.build
 
     '' + prev.postPatch;
@@ -35,6 +35,7 @@ in
 
     programs.hyprland = {
       inherit package;
+      portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
       enable = true;
     };
 
