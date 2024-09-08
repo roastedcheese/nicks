@@ -10,7 +10,7 @@ in
       lua-language-server
       nodePackages.typescript-language-server
       nil
-      ccls
+      clang-tools
       pyright
       gopls
     ];
@@ -24,7 +24,7 @@ in
       lspconfig.lua_ls.setup({ capabilities = capabilities })
       lspconfig.tsserver.setup({ capabilities = capabilities })
       lspconfig.nil_ls.setup({ capabilities = capabilities })
-      lspconfig.ccls.setup({ capabilities = capabilities })
+      lspconfig.clangd.setup({ capabilities = capabilities })
       lspconfig.pyright.setup({ capabilities = capabilities })
       lspconfig.gopls.setup({ capabilities = capabilities })
 
