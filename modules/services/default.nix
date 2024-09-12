@@ -14,5 +14,6 @@
     ./bittorrent.nix
     ./vaultwarden.nix
     ./wireguard.nix
+    ./minecraft.nix
   ];
 }

@@ -181,20 +181,20 @@ in
             user_pref("_user.js.parrot", "trackers");
           '';
         };
+        misc.id = 3;
       };
     };
 
-    xdg.desktopEntries = {
-      firefox-logins = {
-        name = "Firefox (logins)";
+    xdg.desktopEntries = let
+      profile = name: {
+        name = "Firefox (${name})";
         type = "Application";
-        exec = "${pkgs.firefox}/bin/firefox -P logins";
+        exec = "${pkgs.firefox}/bin/firefox -P ${name}";
       };
-      firefox-trackers= {
-        name = "Firefox (trackers)";
-        type = "Application";
-        exec = "${pkgs.firefox}/bin/firefox -P trackers";
-      };
+    in {
+      firefox-logins = profile "logins";
+      firefox-trackers = profile "trackers";
+      firefox-misc = profile "misc";
     };
   };
 }
