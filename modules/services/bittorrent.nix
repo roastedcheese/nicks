@@ -10,10 +10,14 @@ in
     domain = mkOption {
       type = types.str;
     };
+    port = mkOption {
+      type = types.port;
+      description = "bittorrent port";
+    };
   };
 
   config = mkIf cfg.enable {
-    networking.firewall.allowedTCPPorts = [ 27194 ];
+    networking.firewall.allowedTCPPorts = [ cfg.port ];
     services.prowlarr.enable = mkIf cfg.prowlarr true;
     systemd.packages = [ pkgs.qbittorrent-nox ];
     systemd.services."qbittorrent-nox@qbt" = {
