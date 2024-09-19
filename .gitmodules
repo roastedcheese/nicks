@@ -1,0 +1,3 @@
+[submodule "hosts/neptunus"]
+	path = hosts/neptunus
+	url = github:roastedcheese/neptunus
