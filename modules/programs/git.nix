@@ -47,7 +47,7 @@ in
     userEmail = cfg.user.email;
     userName = cfg.user.name;
     extraConfig = {
-      user.defaultBranch = "main";
+      init.defaultBranch = "main";
       push.autoSetupRemote = true;
     };
   };
