@@ -58,7 +58,12 @@ in
         inherit package;
         settings = {
           debug.disable_logs = false;
-          misc.disable_hyprland_logo = true; # fuck anime
+          misc = {
+            disable_hyprland_logo = true; # fuck anime
+            enable_swallow = true;
+            swallow_regex = "foot";
+          };
+          cursor.allow_dumb_copy = true; # Should remove cursor from screenshots
           general.allow_tearing = true;
 
           exec-once = [
