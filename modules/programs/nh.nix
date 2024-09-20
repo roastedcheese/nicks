@@ -8,7 +8,7 @@ in
   options.opt.programs.nh.enable = mkEnableOption "nh nix helper";
   config.programs.nh = mkIf cfg.enable {
     enable = true;
-    flake = "${home}/nicks";
+    flake = "${home}/nicks?submodules=1";
     clean = {
       enable = true;
       dates = "Mon *-*-* 03:00";
