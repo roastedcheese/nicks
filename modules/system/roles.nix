@@ -52,7 +52,7 @@ in
     system.fonts.packages = [ (pkgs.nerdfonts.override { fonts = [ "Hack" "FiraCode" ]; }) ];
     home.packages = builtins.attrValues {
       inherit (pkgs)
-        gimp calibre ffmpeg sox weechat rnnoise-plugin tenacity imv copyq libnotify keepassxc vorta borgbackup tor-browser libreoffice;
+        gimp calibre ffmpeg sox weechat rnnoise-plugin tenacity imv copyq libnotify keepassxc vorta borgbackup tor-browser libreoffice go;
     };
   })
     (mkIf cfg.gaming (mkTrue [
