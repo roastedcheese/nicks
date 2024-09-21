@@ -1,10 +1,13 @@
-{ inputs, lib, config, ...}:
-let
+{
+  inputs,
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkEnableOption mkOption types mkIf;
   cfg = config.opt.services.mailserver;
-in 
-{
-  imports = [ inputs.snm.nixosModule ];
+in {
+  imports = [inputs.snm.nixosModule];
 
   options.opt.services.mailserver = {
     enable = mkEnableOption "Simple NixOS Mailserver";
@@ -52,7 +55,7 @@ in
     indexDir = "/var/mail/index";
     sieveDirectory = "/var/mail/sieve";
     fqdn = "mail.${cfg.domain}";
-    domains = [ cfg.domain ];
+    domains = [cfg.domain];
 
     enableImap = true;
     enableImapSsl = true;

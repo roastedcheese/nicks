@@ -1,13 +1,16 @@
-{ pkgs, config, lib, ... }:
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
   cfg = config.opt.programs.neovim;
   luasnip = pkgs.vimPlugins.luasnip.overrideAttrs {
-    dependencies = with pkgs.vimPlugins; [ cmp_luasnip friendly-snippets ];
+    dependencies = with pkgs.vimPlugins; [cmp_luasnip friendly-snippets];
   };
-in 
-{
+in {
   config.home-manager.users.${config.opt.system.username}.programs.neovim = lib.mkIf (cfg.plugins.completions && cfg.enable) {
-    plugins = with pkgs.vimPlugins; [ 
+    plugins = with pkgs.vimPlugins; [
       cmp-nvim-lsp
       nvim-cmp
       luasnip

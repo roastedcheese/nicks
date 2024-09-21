@@ -1,6 +1,6 @@
 {
   python3Packages,
-  fetchPypi
+  fetchPypi,
 }:
 python3Packages.buildPythonPackage rec {
   pname = "packaging";
@@ -16,7 +16,7 @@ python3Packages.buildPythonPackage rec {
     python3Packages.setuptools
   ];
 
-  propagatedBuildInputs = with python3Packages; [ pyparsing six wheel ];
+  propagatedBuildInputs = with python3Packages; [pyparsing six wheel];
 
   checkInputs = with python3Packages; [
     pytestCheckHook

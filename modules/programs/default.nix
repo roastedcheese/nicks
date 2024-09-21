@@ -1,9 +1,12 @@
-{ lib, config, pkgs, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkEnableOption optional;
   cfg = config.opt.programs;
-in 
-{
+in {
   imports = [
     ./chromium.nix
     ./gpg.nix
@@ -34,6 +37,8 @@ in
     element.enable = mkEnableOption "element desktop";
   };
 
-  config.opt.home.packages = with pkgs; [ glow niv tree zip mediainfo rename ] ++ (optional cfg.thunderbird.enable pkgs.thunderbird) 
+  config.opt.home.packages = with pkgs;
+    [glow niv tree zip mediainfo rename]
+    ++ (optional cfg.thunderbird.enable pkgs.thunderbird)
     ++ (optional cfg.element.enable pkgs.element-desktop);
 }

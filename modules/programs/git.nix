@@ -1,9 +1,11 @@
-{ lib, config, ... }:
-let
+{
+  lib,
+  config,
+  ...
+}: let
   cfg = config.opt.programs.git;
   inherit (lib) mkOption mkEnableOption types mkIf;
-in 
-{
+in {
   options.opt.programs.git = {
     enable = mkEnableOption "the git version control software";
     user = {

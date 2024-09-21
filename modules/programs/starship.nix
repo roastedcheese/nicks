@@ -1,9 +1,11 @@
-{ lib, config, ... }:
-let
+{
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.opt.programs.starship;
-in
-{
+in {
   options.opt.programs.starship.enable = mkEnableOption "starship prompt";
 
   config.home-manager.users.${config.opt.system.username}.programs.starship = mkIf cfg.enable {

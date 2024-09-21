@@ -13,5 +13,5 @@ python3Packages.buildPythonPackage rec {
     hash = "sha256-c8Vf/bnf6wyiI0OGvMS3Or7CPZK6ruK2mg5PzQqNcgI=";
   };
 
-  nativeBuildInputs = [ python3Packages.poetry-core ];
+  nativeBuildInputs = [python3Packages.poetry-core];
 }

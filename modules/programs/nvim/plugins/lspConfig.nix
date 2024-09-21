@@ -1,11 +1,14 @@
-{ pkgs, config, lib, ... }:
-let
-  cfg = config.opt.programs.neovim;
-in 
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.opt.programs.neovim;
+in {
   config.home-manager.users.${config.opt.system.username}.programs.neovim = lib.mkIf (cfg.plugins.lspConfig && cfg.enable) {
-    plugins = [ pkgs.vimPlugins.nvim-lspconfig ];
-    
+    plugins = [pkgs.vimPlugins.nvim-lspconfig];
+
     extraPackages = with pkgs; [
       lua-language-server
       nodePackages.typescript-language-server

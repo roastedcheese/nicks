@@ -1,17 +1,20 @@
-{ lib, config, pkgs, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.opt.services.pipewire;
   home = config.home-manager.users.${config.opt.system.username};
-in 
-{
+in {
   options.opt.services.pipewire = {
     enable = mkEnableOption "PipeWire sound server";
     noiseTorch = mkEnableOption "NoiseTorch for noise reduction";
   };
 
   config = mkIf cfg.enable {
-    opt.home.packages = with pkgs; [ pulseaudio ];
+    opt.home.packages = with pkgs; [pulseaudio];
     programs.noisetorch.enable = mkIf cfg.noiseTorch true;
     services = {
       pipewire = {

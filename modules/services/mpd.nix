@@ -1,14 +1,17 @@
-{ lib, config, pkgs, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.opt.services.mpd;
   home = config.home-manager.users.${config.opt.system.username};
-in 
-{
+in {
   options.opt.services.mpd.enable = mkEnableOption "Music Player Daemon";
 
   config.home-manager.users.${config.opt.system.username} = {
-    home.packages = [ pkgs.playerctl ];
+    home.packages = [pkgs.playerctl];
     services = mkIf cfg.enable {
       playerctld.enable = true;
       mpdris2.enable = true;

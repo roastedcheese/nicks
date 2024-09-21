@@ -1,9 +1,12 @@
-{ lib, config, pkgs, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkEnableOption mkIf mkOption types;
   cfg = config.opt.services.bittorrent;
-in 
-{
+in {
   options.opt.services.bittorrent = {
     enable = mkEnableOption "bittorrent setup with qbittorrent and prowlarr";
     prowlarr = mkEnableOption "prowlarr indexer";
@@ -17,12 +20,12 @@ in
   };
 
   config = mkIf cfg.enable {
-    networking.firewall.allowedTCPPorts = [ cfg.port ];
+    networking.firewall.allowedTCPPorts = [cfg.port];
     services.prowlarr.enable = mkIf cfg.prowlarr true;
-    systemd.packages = [ pkgs.qbittorrent-nox ];
+    systemd.packages = [pkgs.qbittorrent-nox];
     systemd.services."qbittorrent-nox@qbt" = {
       overrideStrategy = "asDropin";
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = ["multi-user.target"];
     };
 
     users = {
@@ -30,10 +33,12 @@ in
         "qbt".isNormalUser = true;
       };
       extraGroups.bittorrent = {
-        members = [
-          config.opt.system.username
-          "qbt"
-        ] ++ (lib.optional cfg.prowlarr "prowlarr");
+        members =
+          [
+            config.opt.system.username
+            "qbt"
+          ]
+          ++ (lib.optional cfg.prowlarr "prowlarr");
       };
     };
     opt.home.packages = [
@@ -72,7 +77,7 @@ in
             proxy_set_header   Host               127.0.0.1:55110;
             proxy_set_header   X-Forwarded-Proto  $scheme;
             proxy_set_header   X-Forwarded-Host   $http_host;
-            proxy_set_header   X-Forwarded-For    $remote_addr; 
+            proxy_set_header   X-Forwarded-For    $remote_addr;
           '';
         };
 
@@ -86,7 +91,7 @@ in
             proxy_redirect off;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection $http_connection; 
+            proxy_set_header Connection $http_connection;
           '';
         };
 

@@ -1,11 +1,16 @@
 {
   description = "RoastedCheese's NixOS flake";
 
-  outputs = { self, nixpkgs, flake-parts, ... }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs = {
+    self,
+    nixpkgs,
+    flake-parts,
+    ...
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
       systems = import inputs.systems;
       flake = {
-        nixosConfigurations = import ./hosts { inherit inputs; };
+        nixosConfigurations = import ./hosts {inherit inputs;};
 
         lib.niv = import ./nix/sources.nix;
       };

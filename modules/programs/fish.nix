@@ -1,16 +1,19 @@
-{ lib, config, pkgs, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.opt.programs.fish;
   home = config.home-manager.users.${config.opt.system.username};
-in 
-{
+in {
   options.opt.programs.fish.enable = mkEnableOption "fish shell";
 
   config = mkIf cfg.enable {
     programs.fish.enable = true;
     users.defaultUserShell = pkgs.fish;
-    environment.systemPackages = with pkgs; [ unzip zip wget killall ];
+    environment.systemPackages = with pkgs; [unzip zip wget killall];
 
     home-manager.users.${config.opt.system.username}.programs = {
       ripgrep.enable = true;
@@ -43,7 +46,6 @@ in
           lf = "lfub";
           v = "$EDITOR";
           adb = "HOME=${home.xdg.dataHome}/android command adb";
-
 
           update = "nix flake update; niv update";
 

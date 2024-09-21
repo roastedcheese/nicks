@@ -1,18 +1,21 @@
-{ config, inputs, lib, ... }:
-let
+{
+  config,
+  inputs,
+  lib,
+  ...
+}: let
   inherit (lib) mkOption mkIf types;
   inherit (config.opt.system) username;
   cfg = config.opt.home-manager;
-in 
-{
-  imports = [ inputs.hm.nixosModules.home-manager ];
+in {
+  imports = [inputs.hm.nixosModules.home-manager];
 
-  options.opt= {
+  options.opt = {
     home.packages = mkOption {
       type = types.listOf types.package;
       default = [];
     };
-    home-manager.enable = mkOption { 
+    home-manager.enable = mkOption {
       type = types.bool;
       default = true;
     };
@@ -23,7 +26,7 @@ in
       useUserPackages = true;
       useGlobalPkgs = true;
       backupFileExtension = "bak";
-      extraSpecialArgs = { inherit inputs; };
+      extraSpecialArgs = {inherit inputs;};
 
       users.${username} = {
         programs.home-manager.enable = true;

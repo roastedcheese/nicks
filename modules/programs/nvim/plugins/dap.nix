@@ -1,11 +1,15 @@
-{ config, pkgs, lib, ... }:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   cfg = config.opt.programs.neovim;
 in {
   config.home-manager.users.${config.opt.system.username}.programs.neovim = lib.mkIf cfg.plugins.dap {
-    plugins = with pkgs.vimPlugins; [ nvim-nio nvim-dap-ui lazydev-nvim nvim-dap ];
-    extraPackages = [ pkgs.lldb ];
-    
+    plugins = with pkgs.vimPlugins; [nvim-nio nvim-dap-ui lazydev-nvim nvim-dap];
+    extraPackages = [pkgs.lldb];
+
     extraLuaConfig = ''
       local dap = require("dap")
       require("dapui").setup()

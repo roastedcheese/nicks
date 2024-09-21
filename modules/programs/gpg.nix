@@ -1,8 +1,11 @@
-{ lib, config, pkgs, ... }:
-let
-  inherit (lib) mkOption mkIf types;
-in 
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
+  inherit (lib) mkOption mkIf types;
+in {
   options.opt.programs.gpg.enable = mkOption {
     type = types.bool;
     default = true;

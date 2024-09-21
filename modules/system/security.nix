@@ -1,8 +1,11 @@
 # security tweaks stolen from @fufexan
 # security tweaks borrowed from @hlissner
-{ config, lib, pkgs, ... }:
 {
-
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   boot = {
     # tmpfs = /tmp is mounted in ram. Doing so makes temp file management speedy
     # on ssd systems, and volatile! Because it's wiped on reboot.
@@ -59,7 +62,7 @@
     pam.services.swaylock.text = "auth include login";
     sudo = {
       execWheelOnly = true;
-      package = pkgs.sudo.override { withInsults = true; };
+      package = pkgs.sudo.override {withInsults = true;};
       extraConfig = ''
         Defaults insults
       '';

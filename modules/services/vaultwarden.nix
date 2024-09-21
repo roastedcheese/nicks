@@ -1,9 +1,11 @@
-{ config, lib, ... }:
-let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib) mkIf mkEnableOption mkOption types;
   cfg = config.opt.services.vaultwarden;
-in 
-{
+in {
   options.opt.services.vaultwarden = {
     enable = mkEnableOption "vaultwarden";
     domain = mkOption {

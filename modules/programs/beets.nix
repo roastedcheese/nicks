@@ -1,9 +1,12 @@
-{ config, lib, pkgs, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkOption types mkEnableOption mkIf;
   cfg = config.opt.programs.beets;
-in 
-{
+in {
   options.opt.programs.beets = {
     enable = mkEnableOption "beets music tagger";
     musicDir = mkOption {
@@ -13,16 +16,16 @@ in
   };
 
   config.home-manager.users.${config.opt.system.username} = mkIf cfg.enable {
-    home.packages = with pkgs.python311Packages; [ discogs-client requests ];
+    home.packages = with pkgs.python311Packages; [discogs-client requests];
     programs.beets = {
       enable = true;
       settings = {
         directory = cfg.musicDir;
         library = "~/.local/share/beets/library.db";
-        plugins = [ "info" "missing" "fetchart" "lyrics" "scrub" "zero" "discogs" ];
+        plugins = ["info" "missing" "fetchart" "lyrics" "scrub" "zero" "discogs"];
         lyrics = {
           synced = "yes";
-          sources = [ "lrclib" "tekstowo" "genius" ];
+          sources = ["lrclib" "tekstowo" "genius"];
         };
         zero = {
           fields = "comments";

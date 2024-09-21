@@ -1,9 +1,11 @@
-{ lib, config, ... }:
-let
+{
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkIf mkEnableOption types mkOption;
   cfg = config.opt.services.slskd;
-in 
-{
+in {
   options.opt.services.slskd = {
     enable = mkEnableOption "slskd";
     envFile = mkOption {
@@ -21,7 +23,7 @@ in
       inherit (cfg) domain;
       environmentFile = cfg.envFile;
       settings = {
-        shares.directories = [ "/srv/music" ];
+        shares.directories = ["/srv/music"];
         directories.downloads = "/srv/musicDown";
         permissions.file.mode = "774";
       };

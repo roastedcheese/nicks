@@ -1,9 +1,12 @@
-{ lib, config, pkgs, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkEnableOption optional;
   cfg = config.opt.programs.gaming;
-in 
-{
+in {
   options.opt.programs.gaming = {
     steam = mkEnableOption "steam";
     prism = mkEnableOption "prism launcher";

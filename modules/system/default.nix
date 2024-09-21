@@ -1,10 +1,12 @@
-{ lib, config, ... }:
-let
-  inherit (lib) mkOption types;
-in 
 {
+  lib,
+  config,
+  ...
+}: let
+  inherit (lib) mkOption types;
+in {
   imports = [
-    ./security.nix 
+    ./security.nix
     ./fonts.nix
     ./nix.nix
     ./roles.nix
@@ -20,8 +22,8 @@ in
 
   config = {
     users.users.${config.opt.system.username} = {
-       isNormalUser = true;
-       extraGroups = [ "wheel" ]; 
+      isNormalUser = true;
+      extraGroups = ["wheel"];
     };
 
     networking = {

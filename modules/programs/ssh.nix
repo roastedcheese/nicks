@@ -1,15 +1,18 @@
-{ config, pkgs, lib, ... }:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.opt.programs.ssh;
   user = config.opt.system.username;
   home = config.home-manager.users.${user};
-in 
-{
+in {
   options.opt.programs.ssh.enable = mkEnableOption "ssh config";
 
   config.home-manager.users.${user} = {
-    home.packages = [ pkgs.sshfs ];
+    home.packages = [pkgs.sshfs];
     programs.ssh = mkIf cfg.enable {
       enable = true;
       serverAliveInterval = 120;

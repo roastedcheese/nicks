@@ -1,7 +1,7 @@
 {
   python3Packages,
   fetchPypi,
-  fetchpatch
+  fetchpatch,
 }:
 python3Packages.buildPythonPackage rec {
   pname = "heybrochecklog";
@@ -14,8 +14,9 @@ python3Packages.buildPythonPackage rec {
     hash = "sha256-VZsYlNtWEFNwwWZqpYH6A2zll8ZAXDQ8WB8due1YDps=";
   };
 
-  patches = [ ./build.patch ];
-  nativeBuildInputs = let # :P
+  patches = [./build.patch];
+  nativeBuildInputs = let
+    # :P
     chardet = python3Packages.buildPythonPackage rec {
       pname = "chardet";
       version = "3.0.4";
@@ -33,8 +34,8 @@ python3Packages.buildPythonPackage rec {
         })
       ];
 
-      checkInputs = with python3Packages; [ pytest pytestrunner hypothesis ];
+      checkInputs = with python3Packages; [pytest pytestrunner hypothesis];
     };
-  in [ python3Packages.poetry-core chardet ];
-  nativeCheckInputs = [ python3Packages.pytest ];
+  in [python3Packages.poetry-core chardet];
+  nativeCheckInputs = [python3Packages.pytest];
 }

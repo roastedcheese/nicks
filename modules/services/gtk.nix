@@ -1,5 +1,10 @@
-{ lib, pkgs, config, inputs, ... }:
-let
+{
+  lib,
+  pkgs,
+  config,
+  inputs,
+  ...
+}: let
   inherit (lib) mkOption types mkIf mkEnableOption;
   mkGtk = n: pkg: {
     name = mkOption {
@@ -12,8 +17,7 @@ let
     };
   };
   cfg = config.opt.services.gtk;
-in 
-{
+in {
   options.opt.services.gtk = {
     enable = mkEnableOption "gtk";
     theme = mkGtk "rose-pine" pkgs.rose-pine-gtk-theme;
@@ -42,7 +46,7 @@ in
 
       themeIndex = {
         text = ''
-          [Icon theme] 
+          [Icon theme]
           Inherits=BreezeX-RoséPine
         '';
         target = ".icons/default/index.theme";

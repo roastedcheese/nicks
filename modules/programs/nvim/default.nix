@@ -1,21 +1,25 @@
-{ pkgs, lib, config, ... }:
-let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   cfg = config.opt.programs.neovim;
   inherit (lib) strings mkOption mkEnableOption types mkIf;
-  mkPlOption = desc: mkOption {
-    type = types.bool;
-    default = true;
-    description = "Wheter to enable ${desc}";
-  };
-in 
-{
+  mkPlOption = desc:
+    mkOption {
+      type = types.bool;
+      default = true;
+      description = "Wheter to enable ${desc}";
+    };
+in {
   options.opt.programs.neovim = {
     enable = mkEnableOption "neovim text editor";
     noUndoFile = mkOption {
       type = types.listOf types.str;
-      default = [ "/docs/*" "*.age" "*.ssh/*" "*.gnupg/*" "*/etc/ssh*" ];
+      default = ["/docs/*" "*.age" "*.ssh/*" "*.gnupg/*" "*/etc/ssh*"];
       description = "filename patterns not to write undo history for";
-      example = [ "*.secret" "*.age" ];
+      example = ["*.secret" "*.age"];
     };
     plugins = {
       alpha = mkPlOption "the alpha.nvim dashboard";
@@ -39,7 +43,7 @@ in
 
   config = mkIf cfg.enable {
     opt = {
-      home.packages = with pkgs; [ clang clang-tools gnumake ];
+      home.packages = with pkgs; [clang clang-tools gnumake];
       programs.neovim.plugins.indent-blankline = false;
     };
 
@@ -80,7 +84,6 @@ in
       '';
     };
   };
-  
 
-  imports = [ ./plugins ];
+  imports = [./plugins];
 }

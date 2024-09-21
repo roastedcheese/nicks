@@ -1,18 +1,24 @@
-{ lib, config, pkgs, inputs, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}: let
   inherit (lib) mkEnableOption mkOption types mkIf;
   cfg = config.opt.programs.hyprland;
   inherit (config.home-manager.users.${config.opt.system.username}.xdg) configHome;
   package = inputs.hyprland.packages.${pkgs.system}.default.overrideAttrs (final: prev: {
-    postPatch = ''
-      # Useless 48MB default wallpapers
-      rm assets/install/wall*.png
-      tail -n 1 assets/meson.build > assets/meson.build
+    postPatch =
+      ''
+        # Useless 48MB default wallpapers
+        rm assets/install/wall*.png
+        tail -n 1 assets/meson.build > assets/meson.build
 
-    '' + prev.postPatch;
+      ''
+      + prev.postPatch;
   });
-in 
-{
+in {
   options.opt.programs.hyprland = {
     enable = mkEnableOption "hyprland with greetd";
     settings = {
@@ -48,10 +54,9 @@ in
       };
 
       home.packages = builtins.attrValues {
-          inherit (pkgs) wofi swww swaylock swayidle glib wl-clipboard rose-pine-gtk-theme jq;
-          inherit (inputs.hyprcontrib.packages.${pkgs.system}) grimblast;
+        inherit (pkgs) wofi swww swaylock swayidle glib wl-clipboard rose-pine-gtk-theme jq;
+        inherit (inputs.hyprcontrib.packages.${pkgs.system}) grimblast;
       };
-
 
       wayland.windowManager.hyprland = {
         enable = true;
@@ -78,14 +83,17 @@ in
             border_size = 0;
           };
 
-          env = [
-            "XCURSOR_SIZE,24"
-          ] ++ (lib.optionals config.opt.hardware.nvidia.enable [
-            "XDG_SESSION_TYPE,wayland"
-            "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-          ]);
+          env =
+            [
+              "XCURSOR_SIZE,24"
+            ]
+            ++ (lib.optionals config.opt.hardware.nvidia.enable [
+              "XDG_SESSION_TYPE,wayland"
+              "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+            ]);
 
-          monitor = builtins.attrValues (builtins.mapAttrs (n: v: "${n},${v},auto,auto") config.opt.hardware.displays)
+          monitor =
+            builtins.attrValues (builtins.mapAttrs (n: v: "${n},${v},auto,auto") config.opt.hardware.displays)
             # TODO: Remove this if upgrading to 545+
             ++ lib.optional config.opt.hardware.nvidia.enable "Unknown-1,disable";
 
@@ -211,7 +219,7 @@ in
             "$mainMod SHIFT, Space, exec, hyprctl switchxkblayout keychron-keychron-q3-keyboard next"
           ];
 
-          bindl = [ ", F slash, exec, foot" ];
+          bindl = [", F slash, exec, foot"];
 
           bindm = [
             "$mainMod, mouse:272, movewindow"

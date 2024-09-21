@@ -1,10 +1,13 @@
-{ lib, config, inputs, ... }:
-let
+{
+  lib,
+  config,
+  inputs,
+  ...
+}: let
   inherit (lib) mkOption mkEnableOption optionals types mkIf;
   cfg = config.opt.system.impermanence;
-in 
-{
-  imports = [ inputs.impermanence.nixosModule ];
+in {
+  imports = [inputs.impermanence.nixosModule];
 
   options.opt.system.impermanence = {
     enable = mkEnableOption "the system impermanence module";
@@ -35,22 +38,30 @@ in
     };
 
     directories = mkOption {
-      type = with types; nullOr (listOf (oneOf [ str attrs ]));
+      type = with types; nullOr (listOf (oneOf [str attrs]));
       description = "directories to bind mount to persistent storage";
       example = [
         "/var/log"
         "/var/lib/nixos"
-        { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
+        {
+          directory = "/var/lib/colord";
+          user = "colord";
+          group = "colord";
+          mode = "u=rwx,g=rx,o=";
+        }
       ];
       default = null;
     };
 
     files = mkOption {
-      type = with types; nullOr (listOf (oneOf [ str attrs ]));
+      type = with types; nullOr (listOf (oneOf [str attrs]));
       description = "files to link or bind to persistent storage";
       example = [
         "/etc/machine-id"
-        { file = "/var/keys/secret_file"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
+        {
+          file = "/var/keys/secret_file";
+          parentDirectory = {mode = "u=rwx,g=,o=";};
+        }
       ];
       default = null;
     };
@@ -85,16 +96,20 @@ in
 
     environment.persistence.${cfg.persistent} = {
       hideMounts = true;
-      directories = (optionals (cfg.directories != null) cfg.directories) ++ [
-        "/var/log"
-        "/var/lib/nixos"
-        "/etc/ssh"
-        "/var/lib/systemd/coredump"
-        "/mnt"
-      ];
-      files = (optionals (cfg.files != null) cfg.files) ++ [
-        "/etc/machine-id"
-      ];
+      directories =
+        (optionals (cfg.directories != null) cfg.directories)
+        ++ [
+          "/var/log"
+          "/var/lib/nixos"
+          "/etc/ssh"
+          "/var/lib/systemd/coredump"
+          "/mnt"
+        ];
+      files =
+        (optionals (cfg.files != null) cfg.files)
+        ++ [
+          "/etc/machine-id"
+        ];
     };
   };
 }

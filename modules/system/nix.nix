@@ -1,21 +1,24 @@
-{ lib, config, inputs, pkgs, ... }:
-let
-  inherit (lib) mapAttrs mkIf;
-in 
 {
+  lib,
+  config,
+  inputs,
+  pkgs,
+  ...
+}: let
+  inherit (lib) mapAttrs mkIf;
+in {
+  config = {
+    environment.systemPackages = [pkgs.git];
 
-  config = { 
-    environment.systemPackages = [ pkgs.git ];
-
-    nix = let 
-      registry = mapAttrs (_: v: { flake = v; }) inputs;
+    nix = let
+      registry = mapAttrs (_: v: {flake = v;}) inputs;
     in {
-      nixPath = [ "nixpkgs=flake:nixpkgs" ];
+      nixPath = ["nixpkgs=flake:nixpkgs"];
       inherit registry;
 
       optimise = {
         automatic = true;
-        dates = [ "04:00" ];
+        dates = ["04:00"];
       };
 
       settings = {
@@ -23,7 +26,7 @@ in
         trusted-users = ["root" "@wheel" "nix-builder"];
 
         auto-optimise-store = true;
-        experimental-features = [ "nix-command" "flakes" ];
+        experimental-features = ["nix-command" "flakes"];
         use-xdg-base-directories = true;
 
         warn-dirty = false;

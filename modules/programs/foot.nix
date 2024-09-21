@@ -1,10 +1,13 @@
-{ lib, config, inputs, ... }:
-let
+{
+  lib,
+  config,
+  inputs,
+  ...
+}: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.opt.programs.foot;
   home = config.home-manager.users.${config.opt.system.username};
-in
-{
+in {
   options.opt.programs.foot.enable = mkEnableOption "foot terminal"; # feet
 
   config.home-manager.users.${config.opt.system.username} = mkIf cfg.enable {

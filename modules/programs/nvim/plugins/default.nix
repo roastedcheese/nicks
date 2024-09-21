@@ -1,4 +1,5 @@
-{ # TODO: import func
+{
+  # TODO: import func
   imports = [
     ./alpha.nix
     ./autopairs.nix

@@ -1,9 +1,11 @@
-{ lib, config, ... }:
-let
+{
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.opt.programs.eza;
-in 
-{
+in {
   options.opt.programs.eza.enable = mkEnableOption "eza";
 
   config.home-manager.users.${config.opt.system.username}.programs.eza = mkIf cfg.enable {
@@ -11,6 +13,6 @@ in
     enableFishIntegration = mkIf config.opt.programs.fish.enable true;
     icons = true;
     git = true;
-    extraOptions = [ "--group-directories-first" ];
+    extraOptions = ["--group-directories-first"];
   };
 }

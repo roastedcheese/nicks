@@ -1,12 +1,15 @@
-{ lib, config, pkgs, ... }:
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkPackageOption mkEnableOption mkOption types mkIf;
   cfg = config.opt.services.minecraft;
-in 
-{
+in {
   options.opt.services.minecraft = {
     enable = mkEnableOption "minecraft sever";
-    package = mkPackageOption pkgs "minecraft-server" { example = "minecraft-server"; };
+    package = mkPackageOption pkgs "minecraft-server" {example = "minecraft-server";};
     jvmOpts = mkOption {
       type = types.separatedString " ";
       default = "-Xmx2048M -Xms2048M";

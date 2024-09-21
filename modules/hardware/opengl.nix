@@ -1,9 +1,11 @@
-{ lib, config, ... }:
-let
+{
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.opt.hardware.opengl;
-in 
-{
+in {
   options.opt.hardware.opengl.enable = mkEnableOption "OpenGL";
 
   config.hardware.graphics = mkIf cfg.enable {

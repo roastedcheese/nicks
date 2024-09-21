@@ -1,9 +1,11 @@
-{ lib, config, ... }:
-let
+{
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) types mkOption mkEnableOption mkIf;
   cfg = config.opt.services.navidrome;
-in 
-{
+in {
   options.opt.services.navidrome = {
     enable = mkEnableOption "the Navidrome music server";
     musicDir = mkOption {
@@ -28,7 +30,7 @@ in
       };
     };
 
-    networking.firewall.allowedTCPPorts = [ 443 80 ];
+    networking.firewall.allowedTCPPorts = [443 80];
     services.navidrome = {
       enable = true;
       settings = {

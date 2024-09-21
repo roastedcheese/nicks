@@ -1,12 +1,16 @@
-{ pkgs, config, lib, ... }:
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
   cfg = config.opt.programs.neovim;
   telescope = pkgs.vimPlugins.telescope-nvim.overrideAttrs {
-    dependencies = [ pkgs.vimPlugins.plenary-nvim ];
+    dependencies = [pkgs.vimPlugins.plenary-nvim];
   };
 in {
   config.home-manager.users.${config.opt.system.username}.programs.neovim = lib.mkIf (cfg.plugins.telescope && cfg.enable) {
-    plugins = [ telescope pkgs.vimPlugins.telescope-ui-select-nvim ];
+    plugins = [telescope pkgs.vimPlugins.telescope-ui-select-nvim];
 
     extraLuaConfig = ''
       local builtin = require("telescope.builtin")

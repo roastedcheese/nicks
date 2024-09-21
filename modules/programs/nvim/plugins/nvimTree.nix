@@ -1,13 +1,16 @@
-{ pkgs, config, lib, ... }:
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
   cfg = config.opt.programs.neovim;
   nvim-tree = pkgs.vimPlugins.nvim-tree-lua.overrideAttrs {
-    dependencies = [ pkgs.vimPlugins.nvim-web-devicons ];
+    dependencies = [pkgs.vimPlugins.nvim-web-devicons];
   };
-in 
-{
+in {
   config.home-manager.users.${config.opt.system.username}.programs.neovim = lib.mkIf (cfg.plugins.nvimTree && cfg.enable) {
-    plugins = [ nvim-tree ];
+    plugins = [nvim-tree];
 
     extraLuaConfig = ''
       require("nvim-tree").setup {}
