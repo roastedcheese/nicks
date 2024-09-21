@@ -10,7 +10,7 @@ in {
     plugins = [pkgs.vimPlugins.none-ls-nvim];
 
     extraPackages = builtins.attrValues {
-      inherit (pkgs) yapf statix stylua alejandra clang-tools go;
+      inherit (pkgs) yapf statix stylua alejandra clang-tools go gofumpt gotools;
       inherit (pkgs.nodePackages) prettier;
     };
 
@@ -28,7 +28,8 @@ in {
             extra_args = { "-style=file" },
           }),
           null_ls.builtins.formatting.yapf,
-          null_ls.builtins.formatting.gofmt,
+          null_ls.builtins.formatting.gofumpt,
+          null_ls.builtins.formatting.goimports,
         },
       })
 
