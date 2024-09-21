@@ -38,6 +38,7 @@ in {
       treesitter = mkPlOption "the treesitter plugin";
       dap = mkPlOption "the nvim-dap plugin";
       indent-blankline = mkPlOption "the indent-blankline plugin";
+      nvim-lint = mkPlOption "the nvim-lint plugin";
     };
   };
 

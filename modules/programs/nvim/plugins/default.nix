@@ -7,15 +7,16 @@
     ./comment.nix
     ./completions.nix
     ./gitsigns.nix
-    ./lspConfig.nix
+    ./lspconfig.nix
     ./lualine.nix
-    ./noneLs.nix
-    ./nvimTree.nix
-    ./rosePine.nix
+    ./none-ls.nix
+    ./nvim-tree.nix
+    ./rose-pine.nix
     ./telescope.nix
     ./treesitter.nix
     ./bufferline.nix
     ./indent-blankline.nix
     ./dap.nix
+    ./nvim-lint.nix
   ];
 }
