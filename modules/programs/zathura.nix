@@ -11,7 +11,7 @@ in {
   config.home-manager.users.${config.opt.system.username}.programs = mkIf cfg.enable {
     zathura = {
       enable = true;
-      options.selection-clipboard = "system-clipboard";
+      options.selection-clipboard = "clipboard";
     };
     fish.shellAbbrs.z = mkIf config.opt.programs.fish.enable "zathura";
   };
