@@ -1,10 +1,13 @@
-{ pkgs, config, lib, ... }:
-let
-  cfg = config.opt.programs.neovim;
-in 
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.opt.programs.neovim;
+in {
   config.home-manager.users.${config.opt.system.username}.programs.neovim = lib.mkIf (cfg.plugins.noneLs && cfg.enable) {
-    plugins = [ pkgs.vimPlugins.none-ls-nvim ];
+    plugins = [pkgs.vimPlugins.none-ls-nvim];
 
     extraPackages = builtins.attrValues {
       inherit (pkgs) yapf statix stylua alejandra clang-tools go;
@@ -30,6 +33,12 @@ in
       })
 
       vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+
+      vim.api.nvim_create_autocmd({"BufWritePre"}, {
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+      })
     '';
   };
 }
