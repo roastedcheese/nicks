@@ -7,8 +7,8 @@
   cfg = config.opt.programs.neovim;
 in {
   config.home-manager.users.${config.opt.system.username}.programs.neovim = lib.mkIf cfg.plugins.dap {
-    plugins = with pkgs.vimPlugins; [nvim-nio nvim-dap-ui lazydev-nvim nvim-dap];
-    extraPackages = [pkgs.lldb];
+    plugins = with pkgs.vimPlugins; [nvim-nio nvim-dap-ui lazydev-nvim nvim-dap nvim-dap-go];
+    extraPackages = [pkgs.lldb pkgs.delve];
 
     extraLuaConfig = ''
       local dap = require("dap")
@@ -20,22 +20,26 @@ in {
         name = 'lldb'
       }
 
-      dap.configurations.c = {
-        {
-          name = 'Launch',
-          type = 'lldb',
-          request = 'launch',
-          program = function()
-            local program = vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-            return program
-          end,
-          cwd = '$''\{workspaceFolder}',
-          stopOnEntry = false,
-          args = function()
-             return vim.split(vim.fn.input("Enter args: ", "", 'file'), "+", { trimempty = true })
-          end
+      dap.configurations = {
+        c = {
+           {
+             name = 'Launch',
+             type = 'lldb',
+             request = 'launch',
+             program = function()
+               local program = vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+               return program
+             end,
+             cwd = '$''\{workspaceFolder}',
+             stopOnEntry = false,
+             args = function()
+                return vim.split(vim.fn.input("Enter args: ", "", 'file'), "+", { trimempty = true })
+             end
+           }
         }
       }
+      require('dap-go').setup()
+
 
       local widgets = require('dap.ui.widgets')
       local scopes = widgets.sidebar(widgets.scopes)

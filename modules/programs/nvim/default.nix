@@ -82,6 +82,8 @@ in {
 
         map('n', '<leader>t', ':term<CR>', opts)
         map('t', '<C-n>', '<C-\\><C-n>', opts)
+        map('n', '[g', vim.diagnostic.goto_prev)
+        map('n', ']g', vim.diagnostic.goto_next)
       '';
     };
   };
