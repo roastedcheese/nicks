@@ -98,7 +98,7 @@ in {
             ++ lib.optional config.opt.hardware.nvidia.enable "Unknown-1,disable";
 
           input = {
-            kb_layout = "us,it";
+            kb_layout = "us,it,graphite-us";
             follow_mouse = 1;
             touchpad.natural_scroll = "no";
             accel_profile = "flat";

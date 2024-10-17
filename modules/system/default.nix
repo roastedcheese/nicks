@@ -11,6 +11,7 @@ in {
     ./nix.nix
     ./roles.nix
     ./impermanence.nix
+    ./keyboard.nix
   ];
 
   options.opt.system = {
