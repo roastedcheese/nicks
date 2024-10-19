@@ -11,7 +11,7 @@ in {
   config.home-manager.users.${config.opt.system.username}.programs.eza = mkIf cfg.enable {
     enable = true;
     enableFishIntegration = mkIf config.opt.programs.fish.enable true;
-    icons = true;
+    icons = "auto";
     git = true;
     extraOptions = ["--group-directories-first"];
   };
