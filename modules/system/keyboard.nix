@@ -63,9 +63,9 @@
         key <AB09> {[ minus, quotedbl ]};
         key <AB10> {[ slash, less ]};
 
-        key.type = "ONE_LEVEL";
-        key <CAPS> { [ Escape ] };
-        key <ESC> { [ Caps_Lock ] };
+        key.type = "THREE_LEVEL";
+        key <CAPS> { [ Escape, Escape, Caps_Lock ] };
+        key <ESC> { [ Escape, Escape, Caps_Lock ] };
       };
     '';
   };
