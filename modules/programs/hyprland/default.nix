@@ -67,6 +67,7 @@ in {
             disable_hyprland_logo = true; # fuck anime
             enable_swallow = true;
             swallow_regex = "foot";
+            swallow_exception_regex = ".*#ns.*";
           };
           cursor.allow_dumb_copy = true; # Should remove cursor from screenshots
           general.allow_tearing = true;
@@ -98,7 +99,7 @@ in {
             ++ lib.optional config.opt.hardware.nvidia.enable "Unknown-1,disable";
 
           input = {
-            kb_layout = "us,it,graphite-us";
+            kb_layout = "us,it,graphite";
             follow_mouse = 1;
             touchpad.natural_scroll = "no";
             accel_profile = "flat";
