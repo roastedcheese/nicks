@@ -30,6 +30,7 @@ in {
     ./ssh.nix
     ./yt-dlp.nix
     ./beets.nix
+    ./via.nix
   ];
 
   options.opt.programs = {
