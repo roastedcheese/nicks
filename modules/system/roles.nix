@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  inputs,
   ...
 }: let
   inherit (lib) mkIf mkEnableOption mkDefault attrsets strings;
@@ -59,6 +58,7 @@ in {
         inherit
           (pkgs)
           gimp
+          calibre
           ffmpeg
           sox
           weechat
@@ -74,7 +74,6 @@ in {
           libreoffice
           go
           ;
-        inherit (inputs.nixpkgs-stable.legacyPackages.${pkgs.system}) calibre;
       };
     })
     (mkIf cfg.gaming (mkTrue [
