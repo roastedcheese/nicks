@@ -20,11 +20,21 @@ in {
       enable = true;
       server.enable = true;
       settings = {
-        main.include = "${home.xdg.configHome}/foot/themes/rose-pine";
-        main.font = "Hack Nerd Font:size=12";
+        main = {
+          include = "${home.xdg.configHome}/foot/themes/rose-pine";
+          font = "Hack Nerd Font:size=12";
+        };
         cursor = {
           style = "beam";
           blink = "yes";
+        };
+        key-bindings = {
+          scrollback-up-half-page = "Control+bracketleft";
+          scrollback-down-half-page = "Control+bracketright";
+          scrollback-up-page = "Control+braceleft";
+          scrollback-down-page = "Control+braceright";
+          scrollback-up-line = "Control+Shift+k";
+          scrollback-down-line = "Control+Shift+j";
         };
       };
     };
