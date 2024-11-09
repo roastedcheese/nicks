@@ -54,7 +54,7 @@ in {
       };
 
       home.packages = builtins.attrValues {
-        inherit (pkgs) wofi swww swaylock swayidle glib wl-clipboard rose-pine-gtk-theme jq;
+        inherit (pkgs) wofi swww swaylock swayidle glib wl-clipboard rose-pine-gtk-theme jq pulsemixer;
         inherit (inputs.hyprcontrib.packages.${pkgs.system}) grimblast;
       };
 
@@ -99,7 +99,7 @@ in {
             ++ lib.optional config.opt.hardware.nvidia.enable "Unknown-1,disable";
 
           input = {
-            kb_layout = "us,it,graphite";
+            kb_layout = "graphite,us,it";
             follow_mouse = 1;
             touchpad.natural_scroll = "no";
             accel_profile = "flat";
@@ -108,10 +108,12 @@ in {
 
           decoration = {
             rounding = 3;
-            drop_shadow = "yes";
-            shadow_range = 4;
-            shadow_render_power = 3;
-            "col.shadow" = "rgba(1a1a1aee)";
+            shadow = {
+              enabled = true;
+              range = 4;
+              render_power = 3;
+              color = "rgba(1a1a1aee)";
+            };
           };
 
           animations = {
@@ -141,21 +143,23 @@ in {
           "$mainMod" = "SUPER";
           bind = [
             # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-            "$mainMod, Q, exec, foot"
+            "$mainMod, T, exec, foot"
             "$mainMod, C, killactive,"
-            "$mainMod SHIFT, Q, exit,"
+            "$mainMod SHIFT, E, exit,"
             "$mainMod, V, togglefloating,"
             "$mainMod, R, exec, killall wofi || wofi --show drun"
-            "$mainMod, P, pseudo,"
             "$mainMod, Space, togglesplit,"
             "$mainMod, F, fullscreen"
             "$mainMod SHIFT, F, fullscreen, 1"
 
-            # Move focus with mainMod + arrow keys
-            "$mainMod, h, movefocus, l"
-            "$mainMod, l, movefocus, r"
-            "$mainMod, k, movefocus, u"
-            "$mainMod, j, movefocus, d"
+            "$mainMod, H, movefocus, l"
+            "$mainMod, I, movefocus, r"
+            "$mainMod, E, movefocus, u"
+            "$mainMod, A, movefocus, d"
+            "$mainMod SHIFT, H, movewindow, l"
+            "$mainMod SHIFT, I, movewindow, r"
+            "$mainMod SHIFT, E, movewindow, u"
+            "$mainMod SHIFT, A, movewindow, d"
 
             # Switch workspaces with mainMod + [0-9]
             "$mainMod, 1, workspace, 1"
@@ -190,10 +194,6 @@ in {
             "$mainMod, mouse_up, workspace, e-1"
             "$mainMod, right, workspace, e+1"
             "$mainMod, left, workspace, e-1"
-            "$mainMod SHIFT, h, movewindow, l"
-            "$mainMod SHIFT, l, movewindow, r"
-            "$mainMod SHIFT, j, movewindow, d"
-            "$mainMod SHIFT, k, movewindow, u"
 
             # Media
             ", XF86AudioPlay, exec, playerctl play-pause"
@@ -206,9 +206,6 @@ in {
             "$mainMod SHIFT, P, exec, ~/.config/hypr/scripts/lock.sh"
             "$mainMod SHIFT, M, exec, pidof mpd || mpd; foot ncmpcpp "
             "$mainMod SHIFT, W, exec, ~/.config/hypr/scripts/wpnext.sh 9"
-            # "$mainMod SHIFT, O, exec, copyq show"
-            "$mainMod SHIFT, D, exec, foot lfub"
-            "$mainMod SHIFT, C, exec, foot cava"
             "$mainMod SHIFT, A, exec, foot pulsemixer"
             "$mainMod SHIFT, N, exec, foot nixos-rebuild switch --use-remote-sudo --flake /home/nick/nicks##myNixos --show-trace"
 

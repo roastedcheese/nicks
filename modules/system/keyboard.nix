@@ -35,8 +35,8 @@
         key <AD06> {[ apostrophe, underscore ]};
         key <AD07> {type= "THREE_LEVEL", symbols= [ f, F, parenleft]};
         key <AD08> {type= "THREE_LEVEL", symbols= [ o, O, parenright ]};
-        key <AD09> {type= "THREE_LEVEL", symbols= [ u, U, plus ]};
-        key <AD10> {type= "THREE_LEVEL", symbols= [ j, J, minus ]};
+        key <AD09> {[ u, U ]};
+        key <AD10> {[ j, J ]};
         key <AD11> {[ semicolon, colon ]};
         key <AD12> {[ equal, plus ]};
 
@@ -50,23 +50,92 @@
         key <AC08> {type= "THREE_LEVEL", symbols= [ a, A, Down ]};
         key <AC09> {type= "THREE_LEVEL", symbols= [ e, E, Up ]};
         key <AC10> {type= "THREE_LEVEL", symbols= [ i, I, Right ]};
-
         key <AC11> {[ comma, question ]};
+
         key <AB01> {[ q, Q ]};
         key <AB02> {[ x, X ]};
         key <AB03> {[ m, M ]};
         key <AB04> {[ c, C ]};
         key <AB05> {[ v, V ]};
-        key <AB06> {type= "THREE_LEVEL", symbols= [ k, K, BackSpace]};
-        key <AB07> {[ p, P ]};
+        key <AB06> {[ k, K ]};
+        key <AB07> {type= "THREE_LEVEL", symbols= [ p, P, BackSpace ]};
         key <AB08> {[ period, greater ]};
         key <AB09> {[ minus, quotedbl ]};
         key <AB10> {[ slash, less ]};
 
-        key.type = "THREE_LEVEL";
-        key <CAPS> { [ Escape, Escape, Caps_Lock ] };
-        key <ESC> { [ Escape, Escape, Caps_Lock ] };
+        key.type = "ONE_LEVEL";
+        key <ESC> { [ Escape ] };
+        key <CAPS> { [ Escape ] };
       };
     '';
   };
+
+  console.keyMap = pkgs.writeText "graphite.map" ''
+    include "qwerty-layout"
+    include "linux-with-alt-and-altgr"
+    strings as usual
+
+    keycode 41 = grave asciitilde
+    keycode 2 = one exclam
+    keycode 3 = two at
+    keycode 4 = three numbersign euro
+    keycode 5 = four dollar
+    keycode 6 = five percent
+    keycode 7 = six asciicircum
+    keycode 8 = seven ampersand
+    keycode 9 = eight asterisk
+    keycode 10 = nine parenleft
+    keycode 11 = zero parenright
+    keycode 12 = bracketleft braceleft
+    keycode 13 = bracketright braceright
+
+    keycode 16 = b
+    keycode 17 = l
+    keycode 18 = +d +D less
+    keycode 19 = +w +W greater
+    keycode 20 = z
+    keycode 21 = apostrophe underscore
+    keycode 22 = +f +F parenleft
+    keycode 23 = +o +O parenright
+    keycode 24 = u
+    keycode 25 = j
+    keycode 26 = semicolon colon
+    keycode 27 = equal plus
+
+    keycode 30 = +n +N braceleft
+    keycode 31 = +r +R braceright
+    keycode 32 = +t +T bracketleft
+    keycode 33 = +s +S bracketright
+    keycode 34 = g
+    keycode 35 = y
+    keycode 36 = +h +H Left
+    keycode 37 = +a +A Down
+    keycode 38 = +e +E Up
+    keycode 39 = +i +I Right
+    keycode 40 = comma question
+
+    keycode 44 = q
+    keycode 45 = x
+    keycode 46 = m
+    keycode 47 = c
+    keycode 48 = v
+    keycode 49 = k
+    keycode 50 = +p +P Delete
+    keycode 51 = period greater
+    keycode 52 = minus quotedbl
+    keycode 53 = slash less
+
+    keycode 58 = Escape
+
+    keycode 1 = Escape
+    keycode 14 = Delete
+    keycode 15 = Tab
+    keycode 28 = Return
+     alt keycode 28 = Meta_Control_m
+    keycode 29 = Control
+    keycode 42 = Shift
+    keycode 54 = Shift
+    keycode 56 = Alt
+    keycode 97 = Control
+  '';
 }
