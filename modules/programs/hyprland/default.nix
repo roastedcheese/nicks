@@ -69,7 +69,6 @@ in {
             swallow_regex = "foot";
             swallow_exception_regex = ".*#ns.*";
           };
-          cursor.allow_dumb_copy = true; # Should remove cursor from screenshots
           general.allow_tearing = true;
 
           exec-once = [

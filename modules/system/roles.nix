@@ -53,7 +53,7 @@ in {
       (g "zathura")
     ]))
     (mkIf cfg.workstation {
-      system.fonts.packages = [(pkgs.nerdfonts.override {fonts = ["Hack" "FiraCode"];})];
+      system.fonts.packages = with pkgs.nerd-fonts; [hack fira-code];
       home.packages = builtins.attrValues {
         inherit
           (pkgs)
