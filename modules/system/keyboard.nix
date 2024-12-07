@@ -136,6 +136,7 @@
     keycode 42 = Shift
     keycode 54 = Shift
     keycode 56 = Alt
+    keycode 57 = space
     keycode 97 = Control
   '';
 }
