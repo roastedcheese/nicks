@@ -35,8 +35,8 @@
       };
 
       "Searx" = {
-        urls = [{template = "https://searx.be/search?q={searchTerms}";}];
-        iconUpdateURL = "https://searx.be/static/themes/oscar/img/favicon.png";
+        urls = [{template = "https://search.notashelf.dev/search?q={searchTerms}";}];
+        iconUpdateURL = "https://search.notashelf.dev/static/themes/oscar/img/favicon.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
       };
 
@@ -154,8 +154,8 @@ in {
             order = ["OPS" "Discogs" "MusicBrainz Release Group" "MusicBrainz Artist" "Qobuz" "Searx"];
             engines = {
               "Searx" = {
-                urls = [{template = "https://searx.be/search?q={searchTerms}";}];
-                iconUpdateURL = "https://searx.be/static/themes/oscar/img/favicon.png";
+                urls = [{template = "https://search.notashelf.dev/search?q={searchTerms}";}];
+                iconUpdateURL = "https://search.notashelf.dev/static/themes/oscar/img/favicon.png";
                 updateInterval = 24 * 60 * 60 * 1000;
               };
 
