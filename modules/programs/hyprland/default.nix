@@ -83,6 +83,11 @@ in {
             border_size = 0;
           };
 
+          ecosystem = {
+            no_update_news = true;
+            no_donation_nag = true;
+          };
+
           env =
             [
               "XCURSOR_SIZE,24"
