@@ -34,7 +34,7 @@ python3Packages.buildPythonPackage rec {
         })
       ];
 
-      checkInputs = with python3Packages; [pytest pytestrunner hypothesis];
+      checkInputs = with python3Packages; [pytest hypothesis];
     };
   in [python3Packages.poetry-core chardet];
   nativeCheckInputs = [python3Packages.pytest];
