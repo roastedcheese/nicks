@@ -218,7 +218,7 @@ in {
             "$mainMod CTRL SHIFT, R, exec, killall .ags-wrapped; ags inspector"
 
             # Switch keyboard layout
-            "$mainMod SHIFT, Space, exec, hyprctl switchxkblayout keychron-keychron-q3-keyboard next"
+            "$mainMod SHIFT, Space, exec, hyprctl switchxkblayout keychron-keychron-q3 next"
           ];
 
           bindl = [", F slash, exec, foot"];

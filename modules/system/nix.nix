@@ -13,6 +13,7 @@ in {
     nix = let
       registry = mapAttrs (_: v: {flake = v;}) inputs;
     in {
+      package = pkgs.lix;
       nixPath = ["nixpkgs=flake:nixpkgs"];
       inherit registry;
 
@@ -22,6 +23,7 @@ in {
       };
 
       settings = {
+        flake-registry = "${inputs.flake-registry}/flake-registry.json";
         allowed-users = ["root" "@wheel" "nix-builder"];
         trusted-users = ["root" "@wheel" "nix-builder"];
 

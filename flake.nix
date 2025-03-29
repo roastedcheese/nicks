@@ -32,6 +32,11 @@
 
     systems.url = "github:nix-systems/default-linux";
 
+    flake-registry = {
+      url = "github:nixos/flake-registry";
+      flake = false;
+    };
+
     ags = {
       url = "github:Aylur/ags/v1";
       inputs.nixpkgs.follows = "nixpkgs";
