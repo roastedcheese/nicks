@@ -20,6 +20,8 @@ in {
 
     # TODO: write an lsp option
     extraLuaConfig = ''
+      vim.diagnostic.config({ virtual_text = true })
+
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
       local lspconfig = require("lspconfig")
