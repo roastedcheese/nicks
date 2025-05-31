@@ -140,9 +140,9 @@ in {
             preserve_split = "yes";
           };
 
-          gestures = {
-            workspace_swipe = "off";
-          };
+          gestures.workspace_swipe = "off";
+
+          binds.movefocus_cycles_fullscreen = true;
 
           "$mainMod" = "SUPER";
           bind = [
