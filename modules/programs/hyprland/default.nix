@@ -53,6 +53,7 @@ in {
         target = "${configHome}/hypr/scripts";
       };
 
+      xdg.portal.extraPackages = config.xdg.portal.extraPackages + [pkgs.xdg-desktop-portal-gtk];
       home.packages = builtins.attrValues {
         inherit (pkgs) wofi swww swaylock swayidle glib wl-clipboard rose-pine-gtk-theme jq pulsemixer;
         inherit (inputs.hyprcontrib.packages.${pkgs.system}) grimblast;
