@@ -29,33 +29,33 @@
     engines = {
       "Invidious" = {
         urls = [{template = "https://yewtu.be/search?q={searchTerms}";}];
-        iconUpdateURL = "https://yewtu.be/favicon-32x32.png";
+        icon = "https://yewtu.be/favicon-32x32.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
         definedAliases = ["@iv"];
       };
 
       "Searx" = {
         urls = [{template = "https://search.notashelf.dev/search?q={searchTerms}";}];
-        iconUpdateURL = "https://search.notashelf.dev/static/themes/oscar/img/favicon.png";
+        icon = "https://search.notashelf.dev/static/themes/oscar/img/favicon.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
       };
 
       "nixpkgs" = {
         urls = [{template = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";}];
-        iconUpdateURL = "https://nixos.org/favicon.png";
+        icon = "https://nixos.org/favicon.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
         definedAliases = ["@np"];
       };
       "NixOS" = {
         urls = [{template = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";}];
-        iconUpdateURL = "https://nixos.org/favicon.png";
+        icon = "https://nixos.org/favicon.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
         definedAliases = ["@nx"];
       };
 
       "hm options search" = {
         urls = [{template = "https://home-manager-options.extranix.com/?query={searchTerms}";}];
-        iconUpdateURL = "https://mipmip.github.io/home-manager-option-search/images/favicon.png";
+        icon = "https://mipmip.github.io/home-manager-option-search/images/favicon.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
         definedAliases = ["@hm"];
       };
@@ -114,7 +114,8 @@ in {
       profiles = {
         schizo = {
           isDefault = true;
-          inherit extensions search;
+          inherit search;
+          extensions.packages = extensions;
 
           extraConfig =
             overrides
@@ -127,7 +128,8 @@ in {
         logins = {
           # Slightly less schizophrenic, only used for certain websites
           id = 1;
-          inherit search extensions;
+          inherit search;
+          extensions.packages = extensions;
 
           extraConfig =
             overrides
@@ -142,7 +144,7 @@ in {
 
         trackers = {
           id = 2;
-          extensions =
+          extensions.packages =
             extensions
             ++ [
               inputs.firefox-addons.packages.${pkgs.system}.violentmonkey
@@ -155,13 +157,13 @@ in {
             engines = {
               "Searx" = {
                 urls = [{template = "https://search.notashelf.dev/search?q={searchTerms}";}];
-                iconUpdateURL = "https://search.notashelf.dev/static/themes/oscar/img/favicon.png";
+                icon = "https://search.notashelf.dev/static/themes/oscar/img/favicon.png";
                 updateInterval = 24 * 60 * 60 * 1000;
               };
 
               "OPS" = {
                 urls = [{template = "https://orpheus.network/torrents.php?searchstr={searchTerms}";}];
-                iconUpdateURL = "https://interview.orpheus.network/favicon.ico";
+                icon = "https://interview.orpheus.network/favicon.ico";
                 updateInterval = 24 * 60 * 60 * 1000;
               };
 
@@ -188,11 +190,11 @@ in {
                 iconUpdateUrl = "https://www.qobuz.com/favicon.ico";
                 updateInterval = 24 * 60 * 60 * 1000;
               };
-              "Bing".metaData.hidden = true;
-              "Google".metaData.hidden = true;
-              "Amazon.com".metaData.hidden = true;
-              "DuckDuckGo".metaData.hidden = true;
-              "eBay".metaData.hidden = true;
+              "bing".metaData.hidden = true;
+              "google".metaData.hidden = true;
+              "amazondotcom-us".metaData.hidden = true;
+              "ddg".metaData.hidden = true;
+              "ebay".metaData.hidden = true;
             };
           };
 

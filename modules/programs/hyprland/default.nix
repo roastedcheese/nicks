@@ -8,6 +8,7 @@
   inherit (lib) mkEnableOption mkOption types mkIf;
   cfg = config.opt.programs.hyprland;
   inherit (config.home-manager.users.${config.opt.system.username}.xdg) configHome;
+  portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   package = inputs.hyprland.packages.${pkgs.system}.default.overrideAttrs (final: prev: {
     postPatch =
       ''
@@ -40,8 +41,7 @@ in {
     };
 
     programs.hyprland = {
-      inherit package;
-      portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+      inherit package portalPackage;
       enable = true;
     };
 
@@ -53,7 +53,6 @@ in {
         target = "${configHome}/hypr/scripts";
       };
 
-      xdg.portal.extraPackages = config.xdg.portal.extraPackages + [pkgs.xdg-desktop-portal-gtk];
       home.packages = builtins.attrValues {
         inherit (pkgs) wofi swww swaylock swayidle glib wl-clipboard rose-pine-gtk-theme jq pulsemixer;
         inherit (inputs.hyprcontrib.packages.${pkgs.system}) grimblast;
