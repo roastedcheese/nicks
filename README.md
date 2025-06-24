@@ -6,7 +6,7 @@ My personal NixOS and home-manager flake.
 
 Flakes I ~~stole from~~ was inspired by
 
-[poz](https://git.jacekpoz.pl/jacekpoz/niksos)
+[poz](https://flake.poz.pet)
 
 [fufexan](https://github.com/fufexan/dotfiles)
 
