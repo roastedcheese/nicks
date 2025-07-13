@@ -11,6 +11,9 @@ in {
 
   options.opt.services.mailserver = {
     enable = mkEnableOption "Simple NixOS Mailserver";
+    stateVersion = mkOption {
+      type = types.int;
+    };
     domain = mkOption {
       type = types.str;
       description = "Base domain name used for the mailserver. The mailserver itself will live under the \"mail.\" subdomain. Note that this module is not suited for more complex configurations e.g. with multiple domains.";
@@ -51,6 +54,7 @@ in {
 
   config.mailserver = mkIf cfg.enable {
     enable = true;
+    inherit (cfg) stateVersion;
     mailDirectory = "/var/mail/vmail";
     indexDir = "/var/mail/index";
     sieveDirectory = "/var/mail/sieve";
