@@ -23,37 +23,55 @@
 
   search = {
     force = true;
-    default = "Searx";
-    order = ["Invidious" "Searx" "nixpkgs" "hm options search"];
+    default = "searx";
+    order = [
+      "invidious"
+      "searx"
+      "nixpkgs"
+      "home-manager"
+    ];
 
     engines = {
-      "Invidious" = {
-        urls = [{template = "https://yewtu.be/search?q={searchTerms}";}];
-        icon = "https://yewtu.be/favicon-32x32.png";
+      invidious = {
+        name = "invidious";
+        urls = [{template = "https://inv.nadeko.net/search?q={searchTerms}";}];
+        icon = "https://inv.nadeko.net/favicon-32x32.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
         definedAliases = ["@iv"];
       };
 
-      "Searx" = {
-        urls = [{template = "https://search.notashelf.dev/search?q={searchTerms}";}];
-        icon = "https://search.notashelf.dev/static/themes/oscar/img/favicon.png";
+      searx = {
+        name = "searx";
+        urls = [{template = "https://searx.stream/search?q={searchTerms}";}];
+        icon = "https://searx.stream/static/themes/oscar/img/favicon.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
       };
 
-      "nixpkgs" = {
-        urls = [{template = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";}];
+      nixpkgs = {
+        name = "nixpkgs";
+        urls = [
+          {
+            template = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";
+          }
+        ];
         icon = "https://nixos.org/favicon.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
         definedAliases = ["@np"];
       };
-      "NixOS" = {
-        urls = [{template = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";}];
+      nixos = {
+        name = "nixos";
+        urls = [
+          {
+            template = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";
+          }
+        ];
         icon = "https://nixos.org/favicon.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
         definedAliases = ["@nx"];
       };
 
-      "hm options search" = {
+      hm = {
+        name = "home-manager";
         urls = [{template = "https://home-manager-options.extranix.com/?query={searchTerms}";}];
         icon = "https://mipmip.github.io/home-manager-option-search/images/favicon.png";
         updateInterval = 24 * 60 * 60 * 1000; # every day
@@ -152,49 +170,81 @@ in {
 
           search = {
             force = true;
-            default = "Searx";
-            order = ["OPS" "Discogs" "MusicBrainz Release Group" "MusicBrainz Artist" "Qobuz" "Searx"];
+            default = "searx";
+            order = [
+              "invidious"
+              "searx"
+              "nixpkgs"
+              "home-manager"
+            ];
+
             engines = {
-              "Searx" = {
-                urls = [{template = "https://search.notashelf.dev/search?q={searchTerms}";}];
-                icon = "https://search.notashelf.dev/static/themes/oscar/img/favicon.png";
-                updateInterval = 24 * 60 * 60 * 1000;
+              invidious = {
+                name = "invidious";
+                urls = [{template = "https://inv.nadeko.net/search?q={searchTerms}";}];
+                icon = "https://inv.nadeko.net/favicon-32x32.png";
+                updateInterval = 24 * 60 * 60 * 1000; # every day
+                definedAliases = ["@iv"];
               };
 
-              "OPS" = {
+              ops = {
+                name = "ops";
                 urls = [{template = "https://orpheus.network/torrents.php?searchstr={searchTerms}";}];
                 icon = "https://interview.orpheus.network/favicon.ico";
                 updateInterval = 24 * 60 * 60 * 1000;
+                definedAliases = ["@o"];
               };
 
-              "Discogs" = {
-                urls = [{template = "https://www.discogs.com/search?q={searchTerms}&type=all";}];
-                iconUpdateUrl = "https://discogs.com/favicon.ico";
+              red = {
+                name = "red";
+                urls = [{template = "https://redacted.sh/torrents.php?searchstr={searchTerms}";}];
+                icon = "https://interview.orpheus.network/favicon.ico";
                 updateInterval = 24 * 60 * 60 * 1000;
+                definedAliases = ["@r"];
               };
 
-              "MusicBrainz Release Group" = {
-                urls = [{template = "https://musicbrainz.org/search?query={searchTerms}&type=release_group";}];
-                iconUpdateUrl = "https://musicbrainz.org/favicon.ico";
-                updateInterval = 24 * 60 * 60 * 1000;
+              searx = {
+                name = "searx";
+                urls = [{template = "https://searx.stream/search?q={searchTerms}";}];
+                icon = "https://searx.stream/static/themes/oscar/img/favicon.png";
+                updateInterval = 24 * 60 * 60 * 1000; # every day
               };
 
-              "MusicBrainz Artist" = {
-                urls = [{template = "https://musicbrainz.org/search?query={searchTerms}&type=artist";}];
-                iconUpdateUrl = "https://musicbrainz.org/favicon.ico";
-                updateInterval = 24 * 60 * 60 * 1000;
+              nixpkgs = {
+                name = "nixpkgs";
+                urls = [
+                  {
+                    template = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";
+                  }
+                ];
+                icon = "https://nixos.org/favicon.png";
+                updateInterval = 24 * 60 * 60 * 1000; # every day
+                definedAliases = ["@np"];
+              };
+              nixos = {
+                name = "nixos";
+                urls = [
+                  {
+                    template = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";
+                  }
+                ];
+                icon = "https://nixos.org/favicon.png";
+                updateInterval = 24 * 60 * 60 * 1000; # every day
+                definedAliases = ["@nx"];
               };
 
-              "Qobuz" = {
-                urls = [{template = "https://www.qobuz.com/it-it/search?q={searchTerms}";}];
-                iconUpdateUrl = "https://www.qobuz.com/favicon.ico";
-                updateInterval = 24 * 60 * 60 * 1000;
+              hm = {
+                name = "home-manager";
+                urls = [{template = "https://home-manager-options.extranix.com/?query={searchTerms}";}];
+                icon = "https://mipmip.github.io/home-manager-option-search/images/favicon.png";
+                updateInterval = 24 * 60 * 60 * 1000; # every day
+                definedAliases = ["@hm"];
               };
-              "bing".metaData.hidden = true;
-              "google".metaData.hidden = true;
-              "amazondotcom-us".metaData.hidden = true;
-              "ddg".metaData.hidden = true;
-              "ebay".metaData.hidden = true;
+              "Bing".metaData.hidden = true;
+              "Google".metaData.hidden = true;
+              "Amazon.com".metaData.hidden = true;
+              "DuckDuckGo".metaData.hidden = true;
+              "eBay".metaData.hidden = true;
             };
           };
 
