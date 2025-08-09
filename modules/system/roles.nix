@@ -4,9 +4,19 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf mkEnableOption mkDefault attrsets strings;
+  inherit
+    (lib)
+    mkIf
+    mkEnableOption
+    mkDefault
+    attrsets
+    strings
+    ;
   cfg = config.opt.system.roles;
-  mkTrue = l: lib.mkMerge (builtins.map (x: (attrsets.setAttrByPath (strings.splitString "." x) (mkDefault true))) l); # True...
+  mkTrue = l:
+    lib.mkMerge (
+      builtins.map (x: (attrsets.setAttrByPath (strings.splitString "." x) (mkDefault true))) l
+    ); # True...
   g = s: "programs.${s}.enable"; # g
 in {
   options.opt.system.roles = {
@@ -48,12 +58,14 @@ in {
       (g "qbittorrent")
       (g "nicotinePlus")
       (g "hyprland")
-      (g "ags")
       (g "thunderbird")
       (g "zathura")
     ]))
     (mkIf cfg.workstation {
-      system.fonts.packages = with pkgs.nerd-fonts; [hack fira-code];
+      system.fonts.packages = with pkgs.nerd-fonts; [
+        hack
+        fira-code
+      ];
       home.packages = builtins.attrValues {
         inherit
           (pkgs)

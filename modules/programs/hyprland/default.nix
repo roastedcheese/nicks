@@ -5,20 +5,28 @@
   inputs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption types mkIf;
+  inherit
+    (lib)
+    mkEnableOption
+    mkOption
+    types
+    mkIf
+    ;
   cfg = config.opt.programs.hyprland;
   inherit (config.home-manager.users.${config.opt.system.username}.xdg) configHome;
   portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-  package = inputs.hyprland.packages.${pkgs.system}.default.overrideAttrs (final: prev: {
-    postPatch =
-      ''
-        # Useless 48MB default wallpapers
-        rm assets/install/wall*.png
-        tail -n 1 assets/meson.build > assets/meson.build
+  package = inputs.hyprland.packages.${pkgs.system}.default.overrideAttrs (
+    final: prev: {
+      postPatch =
+        ''
+          # Useless 48MB default wallpapers
+          rm assets/install/wall*.png
+          tail -n 1 assets/meson.build > assets/meson.build
 
-      ''
-      + prev.postPatch;
-  });
+        ''
+        + prev.postPatch;
+    }
+  );
 in {
   options.opt.programs.hyprland = {
     enable = mkEnableOption "hyprland with greetd";
@@ -37,7 +45,7 @@ in {
   config = mkIf cfg.enable {
     services.greetd = {
       enable = true;
-      settings.default_session.command = "${pkgs.greetd.greetd}/bin/agreety --cmd Hyprland";
+      settings.default_session.command = "${pkgs.greetd}/bin/agreety --cmd Hyprland";
     };
 
     programs.hyprland = {
@@ -54,7 +62,18 @@ in {
       };
 
       home.packages = builtins.attrValues {
-        inherit (pkgs) wofi swww swaylock swayidle glib wl-clipboard rose-pine-gtk-theme jq pulsemixer;
+        inherit
+          (pkgs)
+          wofi
+          swww
+          swaylock
+          swayidle
+          glib
+          wl-clipboard
+          rose-pine-gtk-theme
+          jq
+          pulsemixer
+          ;
         inherit (inputs.hyprcontrib.packages.${pkgs.system}) grimblast;
       };
 

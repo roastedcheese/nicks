@@ -25,7 +25,6 @@ in {
     ./qbittorrent.nix
     ./starship.nix
     ./nicotineplus.nix
-    ./ags
     ./zathura.nix
     ./ssh.nix
     ./yt-dlp.nix
@@ -39,7 +38,14 @@ in {
   };
 
   config.opt.home.packages = with pkgs;
-    [glow niv tree zip mediainfo rename]
+    [
+      glow
+      niv
+      tree
+      zip
+      mediainfo
+      rename
+    ]
     ++ (optional cfg.thunderbird.enable pkgs.thunderbird)
     ++ (optional cfg.element.enable pkgs.element-desktop);
 }
