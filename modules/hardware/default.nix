@@ -2,18 +2,42 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   inherit (lib) mkOption types;
-in {
+in
+{
   imports = [
     ./nvidia.nix
     ./opengl.nix
   ];
 
   options.opt.hardware.displays = mkOption {
-    type = types.attrsOf (types.strMatching "^[[:digit:]]{1,4}x[[:digit:]]{1,4}@[[:digit:]]{1,3}$");
-    default = {};
-    description = "define display names, resolution and refresh rate";
-    example = {"" = "x1920x1080@60";};
+    type = types.attrsOf (
+      types.submodule (_: {
+        options = {
+          width = mkOption {
+            type = types.ints.u16;
+          };
+          height = mkOption {
+            type = types.ints.u16;
+          };
+          refreshRate = mkOption {
+            type = types.ints.u16;
+          };
+          scale = mkOption {
+            type = types.oneOf [
+              types.float
+              (types.strMatching "^auto$")
+            ];
+            default = "auto";
+          };
+        };
+      })
+    );
+    description = "Display information fed to the compositor";
+    example = {
+      "" = "1920x1080@60";
+    };
   };
 }

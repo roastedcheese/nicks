@@ -24,10 +24,11 @@ in {
   config = {
     users.users.${config.opt.system.username} = {
       isNormalUser = true;
-      extraGroups = ["wheel"];
+      extraGroups = ["wheel"] ++ lib.optional config.networking.networkmanager.enable "networkmanager";
     };
 
     networking = {
+      networkmanager.enable = lib.mkIf config.opt.system.roles.workstation true;
       dhcpcd.wait = "background"; # TODO: write networking module
       timeServers = [
         "0.nixos.pool.ntp.org"

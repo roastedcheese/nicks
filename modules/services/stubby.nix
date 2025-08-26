@@ -4,7 +4,13 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkOption types mkIf mkForce;
+  inherit
+    (lib)
+    mkOption
+    types
+    mkIf
+    mkForce
+    ;
   cfg = config.opt.services.stubby;
 in {
   options.opt.services.stubby = {
@@ -19,6 +25,10 @@ in {
         {
           address_data = "194.242.2.2";
           tls_auth_name = "dns.mullvad.net";
+        }
+        {
+          address_data = "94.140.14.14";
+          tls_auth_name = "dns.adguard.com";
         }
       ];
       description = "The DNS servers to use, see https://dnsprivacy.org/dns_privacy_daemon_-_stubby/configuring_stubby/";
