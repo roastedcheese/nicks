@@ -27,12 +27,6 @@ in {
       requests
     ];
     programs.beets = {
-      package = pkgs.beets.overrideAttrs {
-        disabledTests = [
-          # https://github.com/beetbox/beets/issues/5880
-          "test_reject_different_art"
-        ];
-      };
       enable = true;
       settings = {
         directory = cfg.musicDir;
