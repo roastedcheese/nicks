@@ -4,9 +4,9 @@
   pkgs,
   inputs,
   ...
-}:
-let
-  inherit (lib)
+}: let
+  inherit
+    (lib)
     mkEnableOption
     mkOption
     types
@@ -17,17 +17,17 @@ let
   portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   package = inputs.hyprland.packages.${pkgs.system}.default.overrideAttrs (
     final: prev: {
-      postPatch = ''
-        # Useless 48MB default wallpapers
-        rm assets/install/wall*.png
-        tail -n 1 assets/meson.build > assets/meson.build
+      postPatch =
+        ''
+          # Useless 48MB default wallpapers
+          rm assets/install/wall*.png
+          tail -n 1 assets/meson.build > assets/meson.build
 
-      ''
-      + prev.postPatch;
+        ''
+        + prev.postPatch;
     }
   );
-in
-{
+in {
   options.opt.programs.hyprland = {
     enable = mkEnableOption "hyprland with greetd";
     settings = {
@@ -62,7 +62,8 @@ in
       };
 
       home.packages = builtins.attrValues {
-        inherit (pkgs)
+        inherit
+          (pkgs)
           wofi
           swww
           swaylock
@@ -106,19 +107,20 @@ in
             no_donation_nag = true;
           };
 
-          env = [
-            "XCURSOR_SIZE,24"
-          ]
-          ++ (lib.optionals config.opt.hardware.nvidia.enable [
-            "XDG_SESSION_TYPE,wayland"
-            "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-          ]);
+          env =
+            [
+              "XCURSOR_SIZE,24"
+            ]
+            ++ (lib.optionals config.opt.hardware.nvidia.enable [
+              "XDG_SESSION_TYPE,wayland"
+              "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+            ]);
 
           monitor = builtins.attrValues (
             builtins.mapAttrs (
-              n: v:
-              "${n},${builtins.toString v.width}x${builtins.toString v.height}@${builtins.toString v.refreshRate},auto,${builtins.toString v.scale}"
-            ) config.opt.hardware.displays
+              n: v: "${n},${builtins.toString v.width}x${builtins.toString v.height}@${builtins.toString v.refreshRate},auto,${builtins.toString v.scale}"
+            )
+            config.opt.hardware.displays
           );
 
           input = {
@@ -158,8 +160,6 @@ in
             pseudotile = "yes";
             preserve_split = "yes";
           };
-
-          gestures.workspace_swipe = "off";
 
           binds.movefocus_cycles_fullscreen = true;
 
@@ -240,7 +240,7 @@ in
             "$mainMod SHIFT, Space, exec, hyprctl switchxkblayout keychron-keychron-q3 next"
           ];
 
-          bindl = [ ", F slash, exec, foot" ];
+          bindl = [", F slash, exec, foot"];
 
           bindm = [
             "$mainMod, mouse:272, movewindow"
