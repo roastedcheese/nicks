@@ -30,6 +30,7 @@ in {
     ./yt-dlp.nix
     ./beets.nix
     ./via.nix
+    ./obs.nix
   ];
 
   options.opt.programs = {

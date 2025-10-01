@@ -60,6 +60,7 @@ in {
       (g "hyprland")
       (g "thunderbird")
       (g "zathura")
+      (g "obs")
     ]))
     (mkIf cfg.workstation {
       system.fonts.packages = with pkgs.nerd-fonts; [
