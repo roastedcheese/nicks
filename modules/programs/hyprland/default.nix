@@ -88,7 +88,6 @@ in {
             swallow_regex = "foot";
             swallow_exception_regex = ".*#ns.*";
           };
-          general.allow_tearing = true;
 
           exec-once = [
             "swww-daemon & ${configHome}/hypr/scripts/wp.sh"
