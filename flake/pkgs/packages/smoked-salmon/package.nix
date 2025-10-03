@@ -3,6 +3,7 @@
   fetchFromGitHub,
   pyoxipng,
   pycambia,
+  sox,
 }:
 python3Packages.buildPythonApplication rec {
   pname = "smoked-salmon";
@@ -18,6 +19,7 @@ python3Packages.buildPythonApplication rec {
 
   propagatedBuildInputs = with python3Packages; [
     pyoxipng
+    pycambia
     requests
     click
     beautifulsoup4
@@ -44,9 +46,10 @@ python3Packages.buildPythonApplication rec {
     setuptools-scm
     transmission-rpc
     deluge-client
-    pycambia
     ffmpeg-python
     humanfriendly
     pillow
   ];
+
+  runtimeInputs = [ sox ];
 }
