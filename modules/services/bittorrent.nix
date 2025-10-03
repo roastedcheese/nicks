@@ -4,7 +4,13 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf mkOption types;
+  inherit
+    (lib)
+    mkEnableOption
+    mkIf
+    mkOption
+    types
+    ;
   cfg = config.opt.services.bittorrent;
 in {
   options.opt.services.bittorrent = {
@@ -43,14 +49,16 @@ in {
     };
     opt.home.packages = [
       pkgs.intermodal
-      (pkgs.mktorrent.overrideAttrs (f: p: {
-        src = pkgs.fetchFromGitHub {
-          owner = "pobrn";
-          repo = "mktorrent";
-          rev = "de7d011b35458de1472665f50b96c9cf6c303f39";
-          hash = "sha256-mLeyjcV/TcVDbM1adG29rk1prSJcuk0P4NrlLmPwU78=";
-        };
-      }))
+      (pkgs.mktorrent.overrideAttrs (
+        f: p: {
+          src = pkgs.fetchFromGitHub {
+            owner = "pobrn";
+            repo = "mktorrent";
+            rev = "de7d011b35458de1472665f50b96c9cf6c303f39";
+            hash = "sha256-mLeyjcV/TcVDbM1adG29rk1prSJcuk0P4NrlLmPwU78=";
+          };
+        }
+      ))
     ];
 
     services.nginx.virtualHosts."bt.${cfg.domain}" = {
@@ -73,6 +81,7 @@ in {
         "/ss" = {
           proxyPass = "http://127.0.0.1:55110"; # Smoked salmon webserver
           extraConfig = ''
+            rewrite /ss/(.*) /$1  break;
             proxy_http_version 1.1;
             proxy_set_header   Host               127.0.0.1:55110;
             proxy_set_header   X-Forwarded-Proto  $scheme;

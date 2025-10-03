@@ -17,9 +17,13 @@ python3Packages.buildPythonApplication rec {
     sha256 = "sha256-JOwqu/Hu7BjYLo3DdL6o+9TI/OQvlgj5Xu8WQ0cujwo=";
   };
 
+  # TODO: Figure out a sane workaround
+  patches = [ ./xdg.patch ];
+
   propagatedBuildInputs = with python3Packages; [
     pyoxipng
     pycambia
+    xdg-base-dirs
     requests
     click
     beautifulsoup4
