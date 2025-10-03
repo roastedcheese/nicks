@@ -15,9 +15,11 @@ in {
     home.packages = [pkgs.sshfs];
     programs.ssh = mkIf cfg.enable {
       enable = true;
-      serverAliveInterval = 120;
       matchBlocks = {
-        "*".identityFile = "${home.home.homeDirectory}/.ssh/main";
+        "*" = {
+          identityFile = "${home.home.homeDirectory}/.ssh/main";
+          serverAliveInterval = 120;
+        };
         github = {
           hostname = "github.com";
           user = "git";
