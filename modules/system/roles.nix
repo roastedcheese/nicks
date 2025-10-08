@@ -70,6 +70,7 @@ in {
       home.packages = builtins.attrValues {
         inherit
           (pkgs)
+          feishin
           gimp
           calibre
           ffmpeg
