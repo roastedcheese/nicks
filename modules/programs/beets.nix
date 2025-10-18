@@ -32,6 +32,7 @@ in {
         directory = cfg.musicDir;
         library = "~/.local/share/beets/library.db";
         plugins = [
+          "musicbrainz"
           "info"
           "missing"
           "fetchart"
