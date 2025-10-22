@@ -98,6 +98,10 @@ in {
       hideMounts = true;
       directories =
         (optionals (cfg.directories != null) cfg.directories)
+        ++ (optionals config.services.mullvad-vpn.enable [
+          "/etc/mullvad-vpn"
+          "/var/cache/mullvad-vpn"
+        ])
         ++ [
           "/var/log"
           "/var/lib/nixos"

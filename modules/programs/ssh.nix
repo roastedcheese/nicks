@@ -15,6 +15,7 @@ in {
     home.packages = [pkgs.sshfs];
     programs.ssh = mkIf cfg.enable {
       enable = true;
+      enableDefaultConfig = false;
       matchBlocks = {
         "*" = {
           identityFile = "${home.home.homeDirectory}/.ssh/main";
