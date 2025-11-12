@@ -12,7 +12,7 @@ in {
     ./gpg.nix
     ./hyprland
     ./nh.nix
-    ./nvim
+    ./nvim.nix
     ./git.nix
     ./fish.nix
     ./firefox.nix
