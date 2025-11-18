@@ -2,10 +2,17 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.opt.programs.git;
-  inherit (lib) mkOption mkEnableOption types mkIf;
-in {
+  inherit (lib)
+    mkOption
+    mkEnableOption
+    types
+    mkIf
+    ;
+in
+{
   options.opt.programs.git = {
     enable = mkEnableOption "the git version control software";
     user = {
@@ -27,30 +34,33 @@ in {
     };
   };
 
-  config.home-manager.users.${config.opt.system.username}.programs.git = mkIf cfg.enable {
-    enable = true;
-    aliases = {
-      a = "add";
-      co = "checkout";
-      c = "commit";
-      b = "branch";
-      s = "switch";
-      ss = "status";
-      d = "diff";
-      cl = "clone";
-    };
+  config.home-manager.users.${config.opt.system.username}.programs = mkIf cfg.enable {
+    git = {
+      enable = true;
 
+      signing = {
+        inherit (cfg.user) key;
+        signByDefault = true;
+      };
+
+      settings = {
+        user = {
+          inherit (cfg.user) email name;
+        };
+        init.defaultBranch = "main";
+        push.autoSetupRemote = true;
+        alias = {
+          a = "add";
+          co = "checkout";
+          c = "commit";
+          b = "branch";
+          s = "switch";
+          ss = "status";
+          d = "diff";
+          cl = "clone";
+        };
+      };
+    };
     delta.enable = true;
-    signing = {
-      inherit (cfg.user) key;
-      signByDefault = true;
-    };
-
-    userEmail = cfg.user.email;
-    userName = cfg.user.name;
-    extraConfig = {
-      init.defaultBranch = "main";
-      push.autoSetupRemote = true;
-    };
   };
 }
