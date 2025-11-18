@@ -4,19 +4,36 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.opt.programs.neovim;
-  inherit (lib) mkEnableOption strings mkIf types mkOption;
-in {
-  imports = [inputs.nvf.nixosModules.default];
+  inherit (lib)
+    mkEnableOption
+    strings
+    mkIf
+    types
+    mkOption
+    ;
+in
+{
+  imports = [ inputs.nvf.nixosModules.default ];
 
   options.opt.programs.neovim = {
     enable = mkEnableOption "neovim text editor";
     noUndoFile = mkOption {
       type = types.listOf types.str;
-      default = ["/docs/*" "*.age" "*.ssh/*" "*.gnupg/*" "*/etc/ssh*"];
+      default = [
+        "/docs/*"
+        "*.age"
+        "*.ssh/*"
+        "*.gnupg/*"
+        "*/etc/ssh*"
+      ];
       description = "filename patterns not to write undo history for";
-      example = ["*.secret" "*.age"];
+      example = [
+        "*.secret"
+        "*.age"
+      ];
     };
   };
 
@@ -25,6 +42,7 @@ in {
       enable = true;
       settings = {
         vim = {
+          extraPackages = [ pkgs.qt6.qtdeclarative ];
           options = {
             relativenumber = false;
             expandtab = true;
@@ -72,15 +90,17 @@ in {
 
           autocmds = [
             {
-              event = ["VimLeave"];
+              event = [ "VimLeave" ];
               command = "set guicursor= | call chansend(v:stderr, \"\\x1b[ q\")";
             }
             {
-              event = ["BufWritePre"];
+              event = [ "BufWritePre" ];
               command = "";
-              pattern = let
-                s = strings.concatMapStrings (x: "\"${x}\", ") cfg.noUndoFile;
-              in [''{vim.fn.expand("~") .. ${builtins.substring 0 ((builtins.stringLength s) - 2) s}}''];
+              pattern =
+                let
+                  s = strings.concatMapStrings (x: "\"${x}\", ") cfg.noUndoFile;
+                in
+                [ ''{vim.fn.expand("~") .. ${builtins.substring 0 ((builtins.stringLength s) - 2) s}}'' ];
             }
           ];
           maps.normal."<leader>t" = {
@@ -112,6 +132,8 @@ in {
             lua.enable = true;
             nix.enable = true;
             clang.enable = true;
+            python.enable = true;
+            markdown.enable = true;
           };
 
           treesitter = {
@@ -122,8 +144,26 @@ in {
 
           lsp = {
             enable = true;
+            servers = {
+              "*" = {
+                root_markers = [ ".git" ];
+                capabilities = {
+                  textDocument = {
+                    semanticTokens = {
+                      multilineTokenSupport = true;
+                    };
+                  };
+                };
+              };
+              "qmlls" = {
+                filetypes = [
+                  "qml"
+                  "qmljs"
+                ];
+                cmd = [ "qmlls" ];
+              };
+            };
             formatOnSave = true;
-            lspconfig.enable = true;
             null-ls.enable = true;
           };
           diagnostics = {
