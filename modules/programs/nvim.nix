@@ -165,11 +165,19 @@ in
             };
             formatOnSave = true;
             null-ls.enable = true;
+            mappings = {
+              nextDiagnostic = "<leader>}";
+              previousDiagnostic = "<leader>{";
+            };
           };
           diagnostics = {
             enable = true;
             nvim-lint.enable = true;
-            config.virtual_text = true;
+            config = {
+              signs = true;
+              underline = true;
+              virtual_text.current_line = true;
+            };
           };
           autocomplete.blink-cmp = {
             enable = true;
