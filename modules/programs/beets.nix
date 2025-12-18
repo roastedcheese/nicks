@@ -43,6 +43,7 @@ in {
         ];
         lyrics = {
           synced = "yes";
+          fallback = "";
           sources = [
             "lrclib"
             "tekstowo"
