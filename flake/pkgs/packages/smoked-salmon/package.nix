@@ -18,7 +18,7 @@ python3Packages.buildPythonApplication rec {
   };
 
   # TODO: Figure out a sane workaround
-  patches = [ ./xdg.patch ];
+  patches = [./xdg.patch];
 
   propagatedBuildInputs = with python3Packages; [
     pyoxipng
@@ -55,5 +55,5 @@ python3Packages.buildPythonApplication rec {
     pillow
   ];
 
-  runtimeInputs = [ sox ];
+  runtimeInputs = [sox];
 }

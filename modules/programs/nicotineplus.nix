@@ -4,22 +4,21 @@
   pkgs,
   inputs,
   ...
-}:
-let
-  inherit (lib)
+}: let
+  inherit
+    (lib)
     mkOption
     mkEnableOption
     types
     mkIf
     ;
   cfg = config.opt.programs.nicotinePlus;
-in
-{
+in {
   options.opt.programs.nicotinePlus = {
     enable = mkEnableOption "the nicotine-plus soulseek client";
     ports = mkOption {
       type = types.nullOr (types.listOf types.port);
-      default = [ 2234 ];
+      default = [2234];
       description = "Ports to open in the firewall";
     };
   };

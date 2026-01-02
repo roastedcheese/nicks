@@ -4,19 +4,18 @@
   lib,
   config,
   ...
-}:
-let
+}: let
   cfg = config.opt.programs.neovim;
-  inherit (lib)
+  inherit
+    (lib)
     mkEnableOption
     strings
     mkIf
     types
     mkOption
     ;
-in
-{
-  imports = [ inputs.nvf.nixosModules.default ];
+in {
+  imports = [inputs.nvf.nixosModules.default];
 
   options.opt.programs.neovim = {
     enable = mkEnableOption "neovim text editor";
@@ -42,7 +41,7 @@ in
       enable = true;
       settings = {
         vim = {
-          extraPackages = [ pkgs.qt6.qtdeclarative ];
+          extraPackages = [pkgs.qt6.qtdeclarative];
           options = {
             relativenumber = false;
             expandtab = true;
@@ -90,17 +89,15 @@ in
 
           autocmds = [
             {
-              event = [ "VimLeave" ];
+              event = ["VimLeave"];
               command = "set guicursor= | call chansend(v:stderr, \"\\x1b[ q\")";
             }
             {
-              event = [ "BufWritePre" ];
+              event = ["BufWritePre"];
               command = "";
-              pattern =
-                let
-                  s = strings.concatMapStrings (x: "\"${x}\", ") cfg.noUndoFile;
-                in
-                [ ''{vim.fn.expand("~") .. ${builtins.substring 0 ((builtins.stringLength s) - 2) s}}'' ];
+              pattern = let
+                s = strings.concatMapStrings (x: "\"${x}\", ") cfg.noUndoFile;
+              in [''{vim.fn.expand("~") .. ${builtins.substring 0 ((builtins.stringLength s) - 2) s}}''];
             }
           ];
           maps.normal."<leader>t" = {
@@ -146,7 +143,7 @@ in
             enable = true;
             servers = {
               "*" = {
-                root_markers = [ ".git" ];
+                root_markers = [".git"];
                 capabilities = {
                   textDocument = {
                     semanticTokens = {
@@ -160,7 +157,7 @@ in
                   "qml"
                   "qmljs"
                 ];
-                cmd = [ "qmlls" ];
+                cmd = ["qmlls"];
               };
             };
             formatOnSave = true;

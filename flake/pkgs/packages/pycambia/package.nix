@@ -25,5 +25,5 @@ python3Packages.buildPythonPackage rec {
     rustPlatform.maturinBuildHook
     pkg-config
   ];
-  buildInputs = [ openssl.dev ];
+  buildInputs = [openssl.dev];
 }
