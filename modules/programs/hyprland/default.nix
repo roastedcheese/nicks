@@ -165,7 +165,6 @@ in {
 
           "$mainMod" = "SUPER";
           bind = [
-            # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
             "$mainMod, T, exec, foot"
             "$mainMod, C, killactive,"
             "$mainMod SHIFT, E, exit,"
@@ -184,7 +183,6 @@ in {
             "$mainMod SHIFT, E, movewindow, u"
             "$mainMod SHIFT, A, movewindow, d"
 
-            # Switch workspaces with mainMod + [0-9]
             "$mainMod, 1, workspace, 1"
             "$mainMod, 2, workspace, 2"
             "$mainMod, 3, workspace, 3"
@@ -198,7 +196,6 @@ in {
             "$mainMod, S, togglespecialworkspace, magic"
             "$mainMod CTRL, M, togglespecialworkspace, min"
 
-            # Move active window to a workspace with mainMod + SHIFT + [0-9]
             "$mainMod SHIFT, 1, movetoworkspace, 1"
             "$mainMod SHIFT, 2, movetoworkspace, 2"
             "$mainMod SHIFT, 3, movetoworkspace, 3"
@@ -212,7 +209,6 @@ in {
             "$mainMod SHIFT, S, movetoworkspace, special:magic"
             "$mainMod, M, exec, bash ~/.config/hypr/scripts/minimize.sh special:min"
 
-            # Scroll through existing workspaces with mainMod + scroll
             "$mainMod, mouse_down, workspace, e+1"
             "$mainMod, mouse_up, workspace, e-1"
             "$mainMod, right, workspace, e+1"
@@ -231,10 +227,6 @@ in {
             "$mainMod SHIFT, W, exec, ~/.config/hypr/scripts/wpnext.sh 9"
             "$mainMod SHIFT, A, exec, foot pulsemixer"
             "$mainMod SHIFT, N, exec, foot nixos-rebuild switch --use-remote-sudo --flake /home/nick/nicks##myNixos --show-trace"
-
-            # Reload ags
-            "$mainMod SHIFT, R, exec, killall .ags-wrapped; ags"
-            "$mainMod CTRL SHIFT, R, exec, killall .ags-wrapped; ags inspector"
 
             # Switch keyboard layout
             "$mainMod SHIFT, Space, exec, hyprctl switchxkblayout keychron-keychron-q3 next"

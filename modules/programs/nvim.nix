@@ -39,6 +39,7 @@ in {
   config = mkIf cfg.enable {
     programs.nvf = {
       enable = true;
+      enableManpages = true;
       settings = {
         vim = {
           extraPackages = [pkgs.qt6.qtdeclarative];
@@ -127,7 +128,10 @@ in {
             go.enable = true;
             java.enable = true;
             lua.enable = true;
-            nix.enable = true;
+            nix = {
+              enable = true;
+              format.type = ["alejandra"];
+            };
             clang.enable = true;
             python.enable = true;
             markdown.enable = true;
