@@ -72,7 +72,7 @@ in {
       enforced = "body";
     };
 
-    certificateScheme = "acme";
+    x509.useACMEHost = cfg.domain;
 
     vmailUserName = "vmail";
     vmailGroupName = "vmail";

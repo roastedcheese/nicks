@@ -170,7 +170,7 @@ in {
             "$mainMod SHIFT, E, exit,"
             "$mainMod, V, togglefloating,"
             "$mainMod, R, exec, killall wofi || wofi --show drun"
-            "$mainMod, Space, togglesplit,"
+            "$mainMod, Space, layoutmsg, togglesplit"
             "$mainMod, F, fullscreen"
             "$mainMod SHIFT, F, fullscreen, 1"
 

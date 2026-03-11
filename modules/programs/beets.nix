@@ -23,7 +23,7 @@ in {
 
   config.home-manager.users.${config.opt.system.username} = mkIf cfg.enable {
     home.packages = with pkgs.python311Packages; [
-      discogs-client
+      # discogs-client
       requests
     ];
     programs.beets = {
