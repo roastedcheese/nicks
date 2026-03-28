@@ -77,6 +77,6 @@ in {
     vmailUserName = "vmail";
     vmailGroupName = "vmail";
 
-    useFsLayout = true;
+    useFSLayout = true;
   };
 }

@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
   inherit (lib) mkOption types mkEnableOption mkIf;
@@ -31,6 +30,11 @@ in {
   config.home-manager.users.${config.opt.system.username}.xdg = mkIf cfg.enable {
     enable = true;
 
-    userDirs = (builtins.mapAttrs (name: value: "${home.home.homeDirectory}/${value}") cfg.userDirs) // {enable = true;};
+    userDirs =
+      (builtins.mapAttrs (name: value: "${home.home.homeDirectory}/${value}") cfg.userDirs)
+      // {
+        enable = true;
+        setSessionVariables = true;
+      };
   };
 }

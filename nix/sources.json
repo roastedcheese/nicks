@@ -1,6 +1,6 @@
 {
     "foot-rose-pine": {
-        "sha256": "12lsvf2r74z3c36ixl73mkf6c047d4275052l04xgk8b1mrd8k1l",
+        "sha256": "ea741a1ec83672653ee2e5dec5aa59846cbc7fb51731ff56412cd3f26634c26e",
         "type": "file",
         "url": "https://codeberg.org/dnkl/foot/raw/branch/master/themes/rose-pine",
         "url_template": "https://codeberg.org/dnkl/foot/raw/branch/master/themes/rose-pine"
@@ -11,10 +11,10 @@
         "homepage": "",
         "owner": "jagannatharjun",
         "repo": "qbt-theme",
-        "rev": "c6b93a8a0a0e00d500fd206550f2d76c33385596",
-        "sha256": "162b2a75qnjrbn3sx1agalw0i0gi67icprfyhi87c91sd5z5nrfx",
+        "rev": "905049e1e868c668880ad6236f620b12559c64f8",
+        "sha256": "0xyv48061fxhzaazddizkda794akls5i6fxa1vcasry0b1g51a13",
         "type": "tarball",
-        "url": "https://github.com/jagannatharjun/qbt-theme/archive/c6b93a8a0a0e00d500fd206550f2d76c33385596.tar.gz",
+        "url": "https://github.com/jagannatharjun/qbt-theme/archive/905049e1e868c668880ad6236f620b12559c64f8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "rose-pine-cursor": {
@@ -35,10 +35,10 @@
         "homepage": "",
         "owner": "arkenfox",
         "repo": "user.js",
-        "rev": "ff5c959cb9b5a65ede9aab82b00cbb283b160e14",
-        "sha256": "1mqb00n4s6hcq69vgsgwywfs3iisklf9qhad4kn9dvw0raaflflj",
+        "rev": "0f14e030b3a9391e761c03ce3c260730a78a4db6",
+        "sha256": "0z1fsli3m0pml2m3qlk1h2x3az2gihh2zhlvhx0fwrnf8f4f5w1c",
         "type": "tarball",
-        "url": "https://github.com/arkenfox/user.js/archive/ff5c959cb9b5a65ede9aab82b00cbb283b160e14.tar.gz",
+        "url": "https://github.com/arkenfox/user.js/archive/0f14e030b3a9391e761c03ce3c260730a78a4db6.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

@@ -42,7 +42,7 @@ in {
           "discogs"
         ];
         lyrics = {
-          synced = "yes";
+          synced = true;
           fallback = "";
           sources = [
             "lrclib"

@@ -40,6 +40,7 @@ in {
       signing = {
         inherit (cfg.user) key;
         signByDefault = true;
+        format = "openpgp";
       };
 
       settings = {
