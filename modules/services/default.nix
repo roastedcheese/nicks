@@ -15,5 +15,6 @@
     ./vaultwarden.nix
     ./wireguard.nix
     ./minecraft.nix
+    ./tuwunel.nix
   ];
 }
