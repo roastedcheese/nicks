@@ -46,7 +46,7 @@ in {
       };
     };
 
-    loginAccounts = mkOption {
+    accounts = mkOption {
       type = types.attrs;
       description = "SNM account config"; # Very lazy
     };
@@ -55,17 +55,23 @@ in {
   config.mailserver = mkIf cfg.enable {
     enable = true;
     inherit (cfg) stateVersion;
-    mailDirectory = "/var/mail/vmail";
     indexDir = "/var/mail/index";
     sieveDirectory = "/var/mail/sieve";
     fqdn = "mail.${cfg.domain}";
     domains = [cfg.domain];
 
+    storage = {
+      directoryLayout = "fs";
+      path = "/var/mail/vmail";
+      owner = "vmail";
+      group = "vmail";
+    };
+
     enableImap = true;
     enableImapSsl = true;
     hierarchySeparator = "/";
 
-    inherit (cfg) mailboxes loginAccounts;
+    inherit (cfg) mailboxes accounts;
     fullTextSearch = {
       enable = true;
       autoIndex = true;
@@ -73,10 +79,5 @@ in {
     };
 
     x509.useACMEHost = cfg.domain;
-
-    vmailUserName = "vmail";
-    vmailGroupName = "vmail";
-
-    useFSLayout = true;
   };
 }
