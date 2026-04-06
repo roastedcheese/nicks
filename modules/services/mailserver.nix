@@ -59,6 +59,7 @@ in {
     sieveDirectory = "/var/mail/sieve";
     fqdn = "mail.${cfg.domain}";
     domains = [cfg.domain];
+    localDnsResolver = false;
 
     storage = {
       directoryLayout = "fs";
