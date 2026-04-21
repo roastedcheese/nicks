@@ -20,10 +20,9 @@
     _: prev: {
       postPatch =
         ''
-          # Useless 48MB default wallpapers
+          # Is it really worth it? Probably not
           rm assets/install/wall*.png
-          tail -n 1 assets/meson.build > assets/meson.build
-
+          cp ${./wallpaper.png} assets/install/wall0.png
         ''
         + prev.postPatch;
     }
@@ -66,7 +65,6 @@ in {
         inherit
           (pkgs)
           wofi
-          awww
           swaylock
           swayidle
           glib
@@ -84,15 +82,15 @@ in {
         settings = {
           debug.disable_logs = false;
           misc = {
-            disable_hyprland_logo = true; # fuck anime
+            force_default_wallpaper = 0;
+            disable_splash_rendering = true;
             enable_swallow = true;
             swallow_regex = "foot";
             swallow_exception_regex = ".*#ns.*";
           };
 
           exec-once = [
-            "awww-daemon & ${configHome}/hypr/scripts/wp.sh"
-            "swayidle -w timeout 300 '${configHome}/hypr/scripts/lock.sh'"
+            "swayidle -w timeout 300 'swaylock -i ${./lock.png}'"
             "ags"
           ];
 
@@ -222,9 +220,8 @@ in {
             # Misc
             '', Print, exec, grimblast --notify copysave screen ~/Pictures/Screenshots/$(date "+%d-%m-%y_%H:%M:%S").png''
             ''ctrl, Print, exec, grimblast --notify --freeze copysave area ~/Pictures/Screenshots/$(date "+%d-%m-%y_%H:%M").png''
-            "$mainMod SHIFT, P, exec, ~/.config/hypr/scripts/lock.sh"
+            "$mainMod SHIFT, P, exec, swaylock -i ${./lock.png}"
             "$mainMod SHIFT, M, exec, pidof mpd || mpd; foot ncmpcpp "
-            "$mainMod SHIFT, W, exec, ~/.config/hypr/scripts/wpnext.sh 9"
             "$mainMod SHIFT, A, exec, foot pulsemixer"
             "$mainMod SHIFT, N, exec, foot nixos-rebuild switch --use-remote-sudo --flake /home/nick/nicks##myNixos --show-trace"
 
