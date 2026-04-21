@@ -66,7 +66,7 @@ in {
         inherit
           (pkgs)
           wofi
-          swww
+          awww
           swaylock
           swayidle
           glib
@@ -91,7 +91,7 @@ in {
           };
 
           exec-once = [
-            "swww-daemon & ${configHome}/hypr/scripts/wp.sh"
+            "awww-daemon & ${configHome}/hypr/scripts/wp.sh"
             "swayidle -w timeout 300 '${configHome}/hypr/scripts/lock.sh'"
             "ags"
           ];

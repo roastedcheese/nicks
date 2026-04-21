@@ -8,5 +8,5 @@ if [ $i = $((max + 1)) ]; then
     i=1
 fi
 
-swww img ~/.config/hypr/scripts/wallpapers/$i* -t random
+awww img ~/.config/hypr/scripts/wallpapers/$i* -t random
 echo $i > ~/.config/hypr/scripts/wallpaper

@@ -16,5 +16,6 @@
     ./wireguard.nix
     ./minecraft.nix
     ./tuwunel.nix
+    ./jellyfin.nix
   ];
 }
