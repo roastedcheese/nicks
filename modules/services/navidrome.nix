@@ -26,6 +26,9 @@ in {
         useACMEHost = cfg.domain;
         locations."/" = {
           proxyPass = "http://localhost:4533";
+          extraConfig = ''
+            proxy_cache off;
+          '';
         };
       };
     };

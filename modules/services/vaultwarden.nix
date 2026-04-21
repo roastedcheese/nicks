@@ -36,6 +36,7 @@ in {
           proxyPass = "http://127.0.0.1:9999";
           extraConfig = ''
             proxy_set_header X-Real-IP $remote_addr;
+            proxy_cache off;
           '';
         };
       };
