@@ -90,7 +90,7 @@ in {
           };
 
           exec-once = [
-            "swayidle -w timeout 300 'swaylock -i ${./lock.png}'"
+            "swayidle -w timeout 300 'if ! pgrep -x swaylock; then swaylock -i ${./lock.png}; fi'"
             "ags"
           ];
 
