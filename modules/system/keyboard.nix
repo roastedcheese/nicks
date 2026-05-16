@@ -24,20 +24,20 @@
         key <AE08> {[ 8, asterisk ]};
         key <AE09> {[ 9, parenleft ]};
         key <AE10> {[ 0, parenright ]};
-        key <AE11> {type= "THREE_LEVEL", symbols= [ bracketleft, braceleft ]};
-        key <AE12> {type= "THREE_LEVEL", symbols= [ bracketright, braceright ]};
+        key <AE11> {[ bracketleft, braceleft ]};
+        key <AE12> {[ bracketright, braceright ]};
 
-        key <AD01> {[ b, B ]};
-        key <AD02> {[ l, L ]};
-        key <AD03> {type= "THREE_LEVEL", symbols= [ d, D, less ]};
-        key <AD04> {type= "THREE_LEVEL", symbols= [ w, W, greater ]};
-        key <AD05> {[ z, Z ]};
-        key <AD06> {[ apostrophe, underscore ]};
-        key <AD07> {type= "THREE_LEVEL", symbols= [ f, F, parenleft]};
-        key <AD08> {type= "THREE_LEVEL", symbols= [ o, O, parenright ]};
-        key <AD09> {[ u, U ]};
-        key <AD10> {[ j, J ]};
-        key <AD11> {[ semicolon, colon ]};
+        key <AD01> {type= "THREE_LEVEL", symbols= [ b, B, exclam ]};
+        key <AD02> {type= "THREE_LEVEL", symbols= [ l, L, at ]};
+        key <AD03> {type= "THREE_LEVEL", symbols= [ d, D, numbersign ]};
+        key <AD04> {type= "THREE_LEVEL", symbols= [ w, W, dollar ]};
+        key <AD05> {type= "THREE_LEVEL", symbols= [ z, Z, percent ]};
+        key <AD06> {type= "THREE_LEVEL", symbols= [ apostrophe, underscore, asciicircum ]};
+        key <AD07> {type= "THREE_LEVEL", symbols= [ f, F, ampersand ]};
+        key <AD08> {type= "THREE_LEVEL", symbols= [ o, O, asterisk ]};
+        key <AD09> {type= "THREE_LEVEL", symbols= [ u, U, parenleft ]};
+        key <AD10> {type= "THREE_LEVEL", symbols= [ j, J, parenright ]};
+        key <AD11> {type= "THREE_LEVEL", symbols= [ semicolon, colon, asciitilde ]};
         key <AD12> {[ equal, plus ]};
 
         key <AC01> {type= "THREE_LEVEL", symbols= [ n, N, braceleft]};
@@ -45,17 +45,17 @@
         key <AC03> {type= "THREE_LEVEL", symbols= [ t, T, bracketleft]};
         key <AC04> {type= "THREE_LEVEL", symbols= [ s, S, bracketright ]};
         key <AC05> {[ g, G ]};
-        key <AC06> {type= "THREE_LEVEL", symbols= [ y, Y, Delete ]};
+        key <AC06> {[ y, Y]};
         key <AC07> {type= "THREE_LEVEL", symbols= [ h, H, Left ]};
         key <AC08> {type= "THREE_LEVEL", symbols= [ a, A, Down ]};
         key <AC09> {type= "THREE_LEVEL", symbols= [ e, E, Up ]};
         key <AC10> {type= "THREE_LEVEL", symbols= [ i, I, Right ]};
         key <AC11> {[ comma, question ]};
 
-        key <AB01> {[ q, Q ]};
-        key <AB02> {[ x, X ]};
-        key <AB03> {[ m, M ]};
-        key <AB04> {[ c, C ]};
+        key <AB01> {type= "THREE_LEVEL", symbols= [ q, Q, plus ]};
+        key <AB02> {type= "THREE_LEVEL", symbols= [ x, X, minus ]};
+        key <AB03> {type= "THREE_LEVEL", symbols= [ m, M, equal ]};
+        key <AB04> {type= "FOUR_LEVEL", symbols= [ c, C, backslash, bar ]};
         key <AB05> {[ v, V ]};
         key <AB06> {[ k, K ]};
         key <AB07> {type= "THREE_LEVEL", symbols= [ p, P, BackSpace ]};
@@ -89,17 +89,17 @@
     keycode 12 = bracketleft braceleft
     keycode 13 = bracketright braceright
 
-    keycode 16 = b
-    keycode 17 = l
-    keycode 18 = +d +D less
-    keycode 19 = +w +W greater
-    keycode 20 = z
-    keycode 21 = apostrophe underscore
-    keycode 22 = +f +F parenleft
-    keycode 23 = +o +O parenright
-    keycode 24 = u
-    keycode 25 = j
-    keycode 26 = semicolon colon
+    keycode 16 = +b +B exclam
+    keycode 17 = +l +L at
+    keycode 18 = +d +D numbersign
+    keycode 19 = +w +W dollar
+    keycode 20 = +z +Z percent
+    keycode 21 = +apostrophe +underscore asciicircum
+    keycode 22 = +f +F ampersand
+    keycode 23 = +o +O asterisk
+    keycode 24 = +u +U parenleft
+    keycode 25 = +j +J parenright
+    keycode 26 = +semicolon +colon asciitilde
     keycode 27 = equal plus
 
     keycode 30 = +n +N braceleft
@@ -114,10 +114,10 @@
     keycode 39 = +i +I Right
     keycode 40 = comma question
 
-    keycode 44 = q
-    keycode 45 = x
-    keycode 46 = m
-    keycode 47 = c
+    keycode 44 = +q +Q plus
+    keycode 45 = +x +X minus
+    keycode 46 = +m +M equal
+    keycode 47 = +c +C backslash bar
     keycode 48 = v
     keycode 49 = k
     keycode 50 = +p +P Delete

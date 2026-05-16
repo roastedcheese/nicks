@@ -154,10 +154,7 @@ in {
             ];
           };
 
-          dwindle = {
-            pseudotile = "yes";
-            preserve_split = "yes";
-          };
+          dwindle.preserve_split = "yes";
 
           binds.movefocus_cycles_fullscreen = true;
 
@@ -226,7 +223,7 @@ in {
             "$mainMod SHIFT, N, exec, foot nixos-rebuild switch --use-remote-sudo --flake /home/nick/nicks##myNixos --show-trace"
 
             # Switch keyboard layout
-            "$mainMod SHIFT, Space, exec, hyprctl switchxkblayout keychron-keychron-q3 next"
+            "$mainMod SHIFT, Space, exec, hyprctl switchxkblayout all next"
           ];
 
           bindl = [", F slash, exec, foot"];
