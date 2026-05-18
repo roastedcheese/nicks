@@ -25,23 +25,23 @@ in {
       default = {
         Drafts = {
           auto = "subscribe";
-          specialUse = "Drafts";
+          special_use = "\\Drafts";
         };
         Junk = {
           auto = "subscribe";
-          specialUse = "Junk";
+          special_use = "\\Junk";
         };
         Sent = {
           auto = "subscribe";
-          specialUse = "Sent";
+          special_use = "\\Sent";
         };
         Trash = {
           auto = "no";
-          specialUse = "Trash";
+          special_use = "\\Trash";
         };
         Archive = {
           auto = "subscribe";
-          specialUse = "Archive";
+          special_use = "\\Archive";
         };
       };
     };
@@ -76,7 +76,6 @@ in {
     fullTextSearch = {
       enable = true;
       autoIndex = true;
-      enforced = "body";
     };
 
     x509.useACMEHost = cfg.domain;
